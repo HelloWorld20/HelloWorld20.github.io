@@ -1,0 +1,750 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="总结," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="17年10月29号有幸和同事参加了腾讯AlloyTeam Web前端大会，这是我参加过干货最多的一次大会。趁现在心情还未平静，想记下参加这次大会的感受和学到的知识。">
+<meta name="keywords" content="总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AlloyTeam Web 2017大会总结">
+<meta property="og:url" content="http://yoursite.com/2017/10/25/AlloyTeam-conf/index.html">
+<meta property="og:site_name" content="HelloWorld20">
+<meta property="og:description" content="17年10月29号有幸和同事参加了腾讯AlloyTeam Web前端大会，这是我参加过干货最多的一次大会。趁现在心情还未平静，想记下参加这次大会的感受和学到的知识。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-23T03:50:52.200Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AlloyTeam Web 2017大会总结">
+<meta name="twitter:description" content="17年10月29号有幸和同事参加了腾讯AlloyTeam Web前端大会，这是我参加过干货最多的一次大会。趁现在心情还未平静，想记下参加这次大会的感受和学到的知识。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"right","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/10/25/AlloyTeam-conf/"/>
+
+
+
+
+
+  <title> AlloyTeam Web 2017大会总结 | HelloWorld20 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HelloWorld20</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">there is nothing on subtitle</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/25/AlloyTeam-conf/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leon.W">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/timg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HelloWorld20">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                AlloyTeam Web 2017大会总结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-25T09:20:07+08:00">
+                2017-10-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>17年10月29号有幸和同事参加了腾讯AlloyTeam Web前端大会，这是我参加过干货最多的一次大会。趁现在心情还未平静，想记下参加这次大会的感受和学到的知识。</p>
+<a id="more"></a>
+<h2 id="AlloyTeam-Web-2017议程"><a href="#AlloyTeam-Web-2017议程" class="headerlink" title="AlloyTeam Web 2017议程"></a>AlloyTeam Web 2017议程</h2><h3 id="面向亿万级用户的Web同构直出"><a href="#面向亿万级用户的Web同构直出" class="headerlink" title="面向亿万级用户的Web同构直出"></a>面向亿万级用户的Web同构直出</h3><h3 id="大型Web项目可用性提升-零脚本错误的实战"><a href="#大型Web项目可用性提升-零脚本错误的实战" class="headerlink" title="大型Web项目可用性提升 - 零脚本错误的实战"></a>大型Web项目可用性提升 - 零脚本错误的实战</h3><h3 id="如何构建后现代前端工程化开发体系"><a href="#如何构建后现代前端工程化开发体系" class="headerlink" title="如何构建后现代前端工程化开发体系"></a>如何构建后现代前端工程化开发体系</h3><h3 id="Javascript与机器学习的前世今生"><a href="#Javascript与机器学习的前世今生" class="headerlink" title="Javascript与机器学习的前世今生"></a>Javascript与机器学习的前世今生</h3><h3 id="高效H5动画设计与性能优化"><a href="#高效H5动画设计与性能优化" class="headerlink" title="高效H5动画设计与性能优化"></a>高效H5动画设计与性能优化</h3><h3 id="ES2017时代的后函数式编程"><a href="#ES2017时代的后函数式编程" class="headerlink" title="ES2017时代的后函数式编程"></a>ES2017时代的后函数式编程</h3><h3 id="如何把自己构建成大型互联网公司需要的前端人才"><a href="#如何把自己构建成大型互联网公司需要的前端人才" class="headerlink" title="如何把自己构建成大型互联网公司需要的前端人才"></a>如何把自己构建成大型互联网公司需要的前端人才</h3><h2 id="AlloyTeam-不只是前端，更是“全端”"><a href="#AlloyTeam-不只是前端，更是“全端”" class="headerlink" title="AlloyTeam 不只是前端，更是“全端”"></a>AlloyTeam 不只是前端，更是“全端”</h2><p>参加这次会议我最大的感受就是：腾讯前端团队真是人才济济，不愧是汇聚国内最顶尖的人才的团队。本以为前端大会，大概也就讲讲html、css、javascript。但是完全错了。我参加的5个主题，就只有<code>大型Web项目可用性提升 - 零脚本错误的实战</code>和<code>高效H5动画设计与性能优化</code>比较接地气，其他的都是涉猎非常广泛的知识，用“全端”来概括这次大会更加贴切。</p>
+<p>特别是人工智能，人家涉及的是神经学习、量子计算，而我还在苦苦纠结IOS和android的兼容性，屏幕适配。唉，人比人气死人。别人走得比你远，还走得比你快。不过能接触这些人也是一笔很重要的财富，知道自己还有很多前进的空间。还需更加努力，至少比以前的自己要好。</p>
+<h2 id="前端的同构直出"><a href="#前端的同构直出" class="headerlink" title="前端的同构直出"></a>前端的同构直出</h2><p>前端的同构直出这个概念还是第一次接触。直出的概念其实早就存在，就是以前的前端服务端渲染，最开始的ASP、PHP渲染页面是一个意思，但是同构直出是node.js出现之后才能看到的概念。同构得益于前后端都是javascript，前后端可以写一套代码，两端复用，能极大地提高开发效率。</p>
+<p>先说下历史，web1.0版本的时候，都是后端代码计算渲染拼接html字符串并且传给前端，输出页面。ajax技术的面世和v8引擎的普及，web2.0时代主流是前后端分离，后端只负责数据服务，所有逻辑交由前端处理。首先前端拿到index.html。渲染后异步加载所需资源并且渲染。而下一代web开发模式很有可能就是这次大会接触到的<code>web同构直出</code>：前端js同时执行在前端和后端，由后端node.js来渲染首屏页面，直接向浏览器输出完整的首屏页面。这种写法结合了第一代后端渲染的优点，和第二代前后端分离的思想结合起来，达到最优web体验的目的。</p>
+<p>但是这也有一些不足点地方：</p>
+<ol>
+<li>极大的增加了后端服务器的计算能力</li>
+<li>增加不少前端开发的门槛</li>
+<li>前端调试可能会比较麻烦，（以前php有过类似体验，但是不敢确定同构指出是否会有）</li>
+</ol>
+<p>优点提升并不明显</p>
+<ol>
+<li>提高网页seo。（但是现在Google爬虫已经支持js异步渲染的页面，声称百度也已支持）</li>
+<li>提高首屏加载速度。（还得看情况，如果后端计算资源不足，渲染速度也不一定比得上前端渲染）</li>
+<li>为移动设备省电。。。</li>
+</ol>
+<p>总的来说，想要在人力有限的创业团队大规模使用同构直出开发前端页面，我觉得有很大的困难。只希望以后能有那位大大再开源某些库能解决这些问题，同构直出的春天才会到来。</p>
+<p>关于同构直出还有一个很重要的知识点就是<code>容灾</code>。</p>
+<p>在后端计算资源增加很多倍的情况下，还要让同构直出服务足够的稳定。需要一套良好的容灾设计。</p>
+<p>大会的方案，利用反向代理服务器来处理负载均衡。如果在同构直出服务器压力很大或者崩溃的情况下能把请求转接到普通的静态资源服务器，这样网站服务还能和正常网站一样运行，只是没有直出服务而已。</p>
+<h2 id="最接地气点，错误上报及处理"><a href="#最接地气点，错误上报及处理" class="headerlink" title="最接地气点，错误上报及处理"></a>最接地气点，错误上报及处理</h2><p>错误上报处理应该是大会里的几个主题里比较常见，应用比较广的功能。但是平时开发几乎没接触过错误处理的我，觉得讲师提供的方案还是很值得参考的。</p>
+<p>现在前端为了加快资源加载速度，都会把js代码合并压缩后再部署上线。这时候上报的资源往往不能指到具体哪一行代码出了错，这样错误上报也没有意义了。但是又不能妥协不压缩代码。压缩代码的过程中产生的sourcemap文件体积过大，也不能为了妥协而把sourcemap一起部署上线。</p>
+<p>所以，大会给的方案是：把sourcemap文件和错误上报的信息都放到错误处理服务器上。在错误处理服务器上把上报的信息，结合sourcemap解析出对应源码错误的位置。</p>
+<p>另外大会提到点sentry，是市面上这方案做的比较好的。但是现在我业务重点不在这，只能有时间再去研究。</p>
+<p>倒是业务根据业务需求和大会带来灵感。倒是觉得<code>alloylever</code>比较适合我当前的业务。</p>
+<h2 id="工欲善其事必先利其器"><a href="#工欲善其事必先利其器" class="headerlink" title="工欲善其事必先利其器"></a>工欲善其事必先利其器</h2><p>额，相对来说，这个讲师讲的内容比较水，大部分都是在推广自己的开源项目。估计不会用到。但是有一点我深有体会，就是<code>工欲善其事必先利其器</code></p>
+<p>我也觉得我当前最影响开发效率的一点是，定制开发没有很好的工程化，平台的开发环境也不是特别友好。一开始的时候嫌麻烦，总是一再妥协，用麻烦的方式开发—-在test环境上开发，在正式环境上测试。。。以至于把大量时间浪费在开发环境上。</p>
+<p>总结来说，我觉得我也有必要来一次“百日维新”：</p>
+<ol>
+<li>熟练使用git、gitx、iterm2、webpack等开发工具</li>
+<li>完善开发环境，强力要求不同环境要有同样环境的接口。避免不同环境不同表现的问题。</li>
+<li>在正式环境埋彩蛋。</li>
+<li>完善脚手架、完善文档</li>
+</ol>
+<h2 id="js的未来"><a href="#js的未来" class="headerlink" title="js的未来"></a>js的未来</h2><p>能用js来编写的终究会用js来写。</p>
+<p>当前的风口—-人工智能当然也不会错过。</p>
+<p>这门议程是最最高大上的一门，没有之一。所以基本上不会在项目中使用。</p>
+<p>在这门讲座中震撼我的是腾讯团队真的什么人才都有。真正的大牛不仅学习深度比你深，广度也远远超出普通人。而且，最怕比你强的人还比你努力。这位讲师也只是嗅到自己平时使用的js也能涉猎人工智能，就闲暇时间自己买了书自己研究，不耽误工作的情况下还能往自己感兴趣的方向深入，这才是最可怕的人。。。</p>
+<p>当然和AlloyTeam的顶尖人才比就是鸡蛋碰石头，达不到大牛的高度，自己也要努力创造我自己的新高度。不能比他们强，至少要和他们一样努力。</p>
+<p>花了8k买的新电脑，不能浪费了，周末要赶紧去咖啡厅图书馆装X。</p>
+<h2 id="真正能把前端变成全端的Service-Worker"><a href="#真正能把前端变成全端的Service-Worker" class="headerlink" title="真正能把前端变成全端的Service Worker"></a>真正能把前端变成全端的Service Worker</h2><p>Service worker提出的概念并不久，和Service Worker相应的技术是PWA（progressive web app），也就是渐进式web应用。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/总结/" rel="tag"># 总结</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/25/noopener/" rel="next" title="关于opener的问题">
+                <i class="fa fa-chevron-left"></i> 关于opener的问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/25/壹点壹客项目总结/" rel="prev" title="壹点壹客项目总结">
+                壹点壹客项目总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/timg.jpg"
+               alt="Leon.W" />
+          <p class="site-author-name" itemprop="name">Leon.W</p>
+           
+              <p class="site-description motion-element" itemprop="description">weijianghong's hexo personal blog. still under construction.</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/HelloWorld20" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2182668367" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#AlloyTeam-Web-2017议程"><span class="nav-number">1.</span> <span class="nav-text">AlloyTeam Web 2017议程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#面向亿万级用户的Web同构直出"><span class="nav-number">1.1.</span> <span class="nav-text">面向亿万级用户的Web同构直出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大型Web项目可用性提升-零脚本错误的实战"><span class="nav-number">1.2.</span> <span class="nav-text">大型Web项目可用性提升 - 零脚本错误的实战</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何构建后现代前端工程化开发体系"><span class="nav-number">1.3.</span> <span class="nav-text">如何构建后现代前端工程化开发体系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Javascript与机器学习的前世今生"><span class="nav-number">1.4.</span> <span class="nav-text">Javascript与机器学习的前世今生</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高效H5动画设计与性能优化"><span class="nav-number">1.5.</span> <span class="nav-text">高效H5动画设计与性能优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ES2017时代的后函数式编程"><span class="nav-number">1.6.</span> <span class="nav-text">ES2017时代的后函数式编程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何把自己构建成大型互联网公司需要的前端人才"><span class="nav-number">1.7.</span> <span class="nav-text">如何把自己构建成大型互联网公司需要的前端人才</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AlloyTeam-不只是前端，更是“全端”"><span class="nav-number">2.</span> <span class="nav-text">AlloyTeam 不只是前端，更是“全端”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前端的同构直出"><span class="nav-number">3.</span> <span class="nav-text">前端的同构直出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最接地气点，错误上报及处理"><span class="nav-number">4.</span> <span class="nav-text">最接地气点，错误上报及处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工欲善其事必先利其器"><span class="nav-number">5.</span> <span class="nav-text">工欲善其事必先利其器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js的未来"><span class="nav-number">6.</span> <span class="nav-text">js的未来</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#真正能把前端变成全端的Service-Worker"><span class="nav-number">7.</span> <span class="nav-text">真正能把前端变成全端的Service Worker</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-weijianghong"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leon.W</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

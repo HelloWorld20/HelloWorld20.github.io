@@ -1,0 +1,740 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="前端技术," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="再说说文件上传客户端的问题。阮一峰大神这篇解释挺清楚文件上传的渐进式增强。所以原理就不再赘述，就在这记录下实现的方法。">
+<meta name="keywords" content="前端技术">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于web文件上传">
+<meta property="og:url" content="http://yoursite.com/2017/04/12/file-upload/index.html">
+<meta property="og:site_name" content="HelloWorld20">
+<meta property="og:description" content="再说说文件上传客户端的问题。阮一峰大神这篇解释挺清楚文件上传的渐进式增强。所以原理就不再赘述，就在这记录下实现的方法。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-23T03:50:52.202Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于web文件上传">
+<meta name="twitter:description" content="再说说文件上传客户端的问题。阮一峰大神这篇解释挺清楚文件上传的渐进式增强。所以原理就不再赘述，就在这记录下实现的方法。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"right","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/04/12/file-upload/"/>
+
+
+
+
+
+  <title> 关于web文件上传 | HelloWorld20 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HelloWorld20</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">there is nothing on subtitle</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/12/file-upload/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leon.W">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/timg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HelloWorld20">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                关于web文件上传
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-12T13:26:07+08:00">
+                2017-04-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>再说说文件上传客户端的问题。阮一峰大神这篇解释挺清楚<a href="http://www.ruanyifeng.com/blog/2012/08/file_upload.html" target="_blank" rel="noopener">文件上传的渐进式增强</a>。所以原理就不再赘述，就在这记录下实现的方法。</p>
+<a id="more"></a>
+<h2 id="form表单上传"><a href="#form表单上传" class="headerlink" title="form表单上传"></a>form表单上传</h2><p>form表单上传是最简单的文件上传,只需要一个form标签，把enctype设为multipart/form-data。action设置为上传路径。缺点是提交后会跳转。基本不会再用。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">enctype</span>=<span class="string">"multipart/form-data"</span> <span class="attr">method</span>=<span class="string">"POST"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"file1"</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"file1"</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="利用iframe的form表单提交"><a href="#利用iframe的form表单提交" class="headerlink" title="利用iframe的form表单提交"></a>利用iframe的form表单提交</h2><p>把form表单的action值指向一个同页面隐藏的iframe。此方法页面不会跳转，也不会阻塞页面（传统form上传是同步上传），甚至可以获取到服务器的返回信息。</p>
+<h2 id="ajax上传"><a href="#ajax上传" class="headerlink" title="ajax上传"></a>ajax上传</h2><p>ajax上传是现在的主流方法，但是只能兼容IE10以上的高级浏览器。IE8呵呵</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//一份完整的请求示例</span></span><br><span class="line"><span class="keyword">var</span> formData = <span class="keyword">new</span> FormData();</span><br><span class="line"></span><br><span class="line">formData.append(<span class="string">'name1'</span>, $(<span class="string">'#upload'</span>).files[<span class="number">0</span>])</span><br><span class="line">formData.append(<span class="string">'name2'</span>, $(<span class="string">'#upload'</span>).files[<span class="number">1</span>])</span><br><span class="line">formData.append(<span class="string">'name3'</span>, $(<span class="string">"#text"</span>).val())</span><br><span class="line"></span><br><span class="line">$.ajax(&#123;</span><br><span class="line">    url: url,</span><br><span class="line">    method: <span class="string">"POST"</span>,</span><br><span class="line">    data: formData,</span><br><span class="line">    processData: <span class="literal">false</span>,     <span class="comment">//必须是false, 不然会被转换成字符串。</span></span><br><span class="line">    contentType: <span class="literal">false</span>,     <span class="comment">//必须是false</span></span><br><span class="line">    xhr: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> myXhr = $.ajaxSettings.xhr();</span><br><span class="line">        <span class="built_in">console</span>.log(myXhr)</span><br><span class="line">        <span class="keyword">if</span>(myXhr.upload) &#123;</span><br><span class="line">            myXhr.upload.onprogress = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (e.lengthComputable) &#123;</span><br><span class="line">                    <span class="comment">//这个是总进度，多个文件的总进度。</span></span><br><span class="line">                    progress(e.loaded, e.total, myXhr)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//一定要return xhr对象，否则不会上传</span></span><br><span class="line">        <span class="keyword">return</span> myXhr</span><br><span class="line">    &#125;,</span><br><span class="line">    success: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(res)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>有几点需要注意的。</p>
+<ul>
+<li>文件上传需要用到FormData对象来包装文件，模拟表单提交</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> formData = <span class="keyword">new</span> FormData();</span><br><span class="line">formData.append(<span class="string">'name1'</span>, $(<span class="string">'#upload'</span>).files[<span class="number">0</span>])   </span><br><span class="line">formData.append(<span class="string">'name2'</span>, $(<span class="string">'#upload'</span>).files[<span class="number">1</span>])</span><br><span class="line"><span class="comment">//单个input多文件</span></span><br><span class="line">formData.append(<span class="string">'name3'</span>, $(<span class="string">"#text"</span>).val())</span><br></pre></td></tr></table></figure>
+<ul>
+<li>用<code>append</code>方法给<code>formData</code>添加数据。</li>
+<li><code>dom.files[index]</code>方法来获取input标签内的文件数据。</li>
+<li>console.log(dom.files[index])也许打印出来的内容看起来是个普通的对象，好像并没有包含文件内容。但是事实上这样的确可以把文件上传上去。</li>
+</ul>
+<p>用jQuery上传。有两个参数是必须的：<br> <code>processData: false</code>和<code>contentType: false；</code> </p>
+<ul>
+<li><p>processData设置为false。因为data值是FormData对象，不需要对数据做处理。默认情况下，通过data选项传递进来的数据，如果是一个对象(技术上讲只要不是字符串)，都会处理转化成一个查询字符串，以配合默认内容类型 “application/x-www-form-urlencoded”。如果要发送 DOM 树信息或其它不希望转换的信息，请设置为 false。</p>
+</li>
+<li><p>contentType设置为false。因为是由form表单构造的FormData对象，且已经声明了属性enctype=”multipart/form-data”，所以这里设置为false。发送信息至服务器时内容编码类型。默认值是”application/x-www-form-urlencoded; charset=UTF-8”，适合大多数情况。</p>
+</li>
+<li><p>cache设置为false，上传文件不需要缓存。</p>
+</li>
+</ul>
+<h2 id="ajax进度条"><a href="#ajax进度条" class="headerlink" title="ajax进度条"></a>ajax进度条</h2><p>一切要说的话都在代码里</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// jQuery</span></span><br><span class="line"><span class="comment">// 官方解释：</span></span><br><span class="line"><span class="comment">// xhr (默认: 当可用的ActiveXObject（IE）中，否则为XMLHttpRequest)</span></span><br><span class="line"><span class="comment">// 类型: Function()</span></span><br><span class="line"><span class="comment">// 回调创建XMLHttpRequest对象。当可用时默认为ActiveXObject（IE）中，否则为XMLHttpRequest。提供覆盖你自己的执行的XMLHttpRequest或增强工厂。</span></span><br><span class="line">xhr: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//获取xhr对象。</span></span><br><span class="line">    <span class="keyword">var</span> myXhr = $.ajaxSettings.xhr();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(myXhr.upload) &#123;</span><br><span class="line">        <span class="comment">//在xhr对象的upload上绑定progress事件。还有一个下载事件对象。</span></span><br><span class="line">        myXhr.upload.onprogress = <span class="function"><span class="keyword">function</span>(<span class="params">ev</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (ev.lengthComputable) &#123;</span><br><span class="line">                <span class="comment">//这个是总进度，多个文件的总进度。</span></span><br><span class="line">                progress(ev.loaded, ev.total)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//一定要return xhr对象，否则不会上传</span></span><br><span class="line">    <span class="keyword">return</span> myXhr</span><br><span class="line">&#125;,</span><br><span class="line">success: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>原生的方法，需要在new一个xhr对象和open、send之间给xhr.upload绑定progress事件即可。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 摘抄自网络，未验证</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">upload</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">var</span> fd = <span class="keyword">new</span> FormData();  </span><br><span class="line"></span><br><span class="line">    fd.append(<span class="string">"fileName"</span>, file);  </span><br><span class="line"></span><br><span class="line">    <span class="comment">//监听事件  </span></span><br><span class="line">    xhr.upload.addEventListener(<span class="string">"progress"</span>, uploadProgress, <span class="literal">false</span>);  </span><br><span class="line"></span><br><span class="line">    <span class="comment">//发送文件和表单自定义参数  </span></span><br><span class="line">    xhr.open(<span class="string">"POST"</span>, <span class="string">"../UploadServlet"</span>,<span class="literal">true</span>);  </span><br><span class="line"></span><br><span class="line">    xhr.send(fd);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">uploadProgress</span>(<span class="params">evt</span>)</span>&#123;  </span><br><span class="line">    <span class="keyword">if</span> (evt.lengthComputable) &#123;                    </span><br><span class="line">        <span class="comment">//这个是总进度，多个文件的总进度。</span></span><br><span class="line">        progress(ev.loaded, ev.total)              </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="拖拽方法封装"><a href="#拖拽方法封装" class="headerlink" title="拖拽方法封装"></a>拖拽方法封装</h2><p>拖拽方法相关的事件有 dragenter、dragleave、dragover、drop。一般情况下都要配合起来用才能完成一次完整的退拽操作</p>
+<p>需要说明的有几点：</p>
+<p>1、 可以读取到文件路径和文件内容的事件对象在drop事件下。<br>2、 如果在绑定拖拽方法的对象下还有子元素，鼠标进入该子元素范围内也会触发dragleave、dragenter、dragover等事件。所以会导致一些奇怪的事情，比如提前移除高亮样式等。解决办法是添加一个计数器。当dragleave次数等于dragenter次数就可以触发真正的dragleave回调。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//初始化拖拽方法。只是要获取文件路径不需要readFile API</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">initDrag</span>(<span class="params"> selector, callback </span>) </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">let</span> $elem = $(selector);</span><br><span class="line">    $elem.counter = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    $(selector).on(<span class="string">'dragenter'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">        e.preventDefault();</span><br><span class="line">        e.stopPropagation();</span><br><span class="line"></span><br><span class="line">        $elem.counter++;</span><br><span class="line">        $elem.addClass( <span class="string">'highLight'</span> )</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    $(selector).on(<span class="string">'dragleave'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">        e.preventDefault();</span><br><span class="line">        e.stopPropagation();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//修正拖拽方法进入子元素时也会出发dragleave事件的方法</span></span><br><span class="line">        $elem.counter--;</span><br><span class="line">        <span class="keyword">if</span>($elem.counter === <span class="number">0</span>) &#123;</span><br><span class="line">            $elem.removeClass( <span class="string">'highLight'</span> )           </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    $(selector).on(<span class="string">'dragover'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">        e.preventDefault();</span><br><span class="line">        e.stopPropagation();</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    $(selector).on(<span class="string">'drop'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">        e.preventDefault();</span><br><span class="line">        e.stopPropagation();</span><br><span class="line"></span><br><span class="line">        $elem.counter--;</span><br><span class="line">        <span class="keyword">if</span>($elem.counter === <span class="number">0</span>) &#123;</span><br><span class="line">            $elem.removeClass( <span class="string">'highLight'</span> )</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>($.isFunction(callback)) callback(e);</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端技术/" rel="tag"># 前端技术</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/11/node-upload/" rel="next" title="使用express搭建文件上传服务器遇到的坑">
+                <i class="fa fa-chevron-left"></i> 使用express搭建文件上传服务器遇到的坑
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/25/vue-at-work/" rel="prev" title="在实际项目中使用vue开发遇到的问题">
+                在实际项目中使用vue开发遇到的问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/timg.jpg"
+               alt="Leon.W" />
+          <p class="site-author-name" itemprop="name">Leon.W</p>
+           
+              <p class="site-description motion-element" itemprop="description">weijianghong's hexo personal blog. still under construction.</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/HelloWorld20" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2182668367" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#form表单上传"><span class="nav-number">1.</span> <span class="nav-text">form表单上传</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用iframe的form表单提交"><span class="nav-number">2.</span> <span class="nav-text">利用iframe的form表单提交</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ajax上传"><span class="nav-number">3.</span> <span class="nav-text">ajax上传</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ajax进度条"><span class="nav-number">4.</span> <span class="nav-text">ajax进度条</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拖拽方法封装"><span class="nav-number">5.</span> <span class="nav-text">拖拽方法封装</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-weijianghong"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leon.W</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
