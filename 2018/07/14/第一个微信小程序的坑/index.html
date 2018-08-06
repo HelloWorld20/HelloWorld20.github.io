@@ -95,7 +95,7 @@
 <meta property="og:site_name" content="HelloWorld20">
 <meta property="og:description" content="项目概况时间大概是6月25号到7月15号这样，目的是给美宜佳优惠券小程序添加一个抽奖游戏模块和一个配套的控制后台。这个项目最大的挑战有几个：  没做过小程序 美宜佳方不提供源码 时间周期短 只能使用原生小程序代码  好处是，可以尝试一下未知的领域，扩充经验  阅读小程序文档、调研小程序可以使用的第三方库、了解小程序能力等。 知道小程序canvas库可以用：ECharts、WeZrender、wxD">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-06T12:20:12.399Z">
+<meta property="og:updated_time" content="2018-08-06T12:30:41.077Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="记第一个小程序遇到的那些坑">
 <meta name="twitter:description" content="项目概况时间大概是6月25号到7月15号这样，目的是给美宜佳优惠券小程序添加一个抽奖游戏模块和一个配套的控制后台。这个项目最大的挑战有几个：  没做过小程序 美宜佳方不提供源码 时间周期短 只能使用原生小程序代码  好处是，可以尝试一下未知的领域，扩充经验  阅读小程序文档、调研小程序可以使用的第三方库、了解小程序能力等。 知道小程序canvas库可以用：ECharts、WeZrender、wxD">
@@ -384,7 +384,7 @@
 <p>canvas游戏按理来说要在16ms时间内让js处理那么多像素、还要处理其他逻辑，确实很吃力，要达到满帧率很难，但是网上很多按理都能实现。所以说，满帧率复杂canvas游戏还是可以实现的，今后的一个重要的目标之一就是，<code>高性能canvas游戏</code>。嗯，加油</p>
 <h2 id="后台管理系统部分没有表单验证"><a href="#后台管理系统部分没有表单验证" class="headerlink" title="后台管理系统部分没有表单验证"></a>后台管理系统部分没有表单验证</h2><p>呃。。。element UI同一路由，两个表单，定义两个路由规则，有一个实现不了？没时间搞，且不是硬需求。以后再说。。。。</p>
 <h2 id="在使用jQuery-uploadify时，发现post不一定会先发一次OPTION请求"><a href="#在使用jQuery-uploadify时，发现post不一定会先发一次OPTION请求" class="headerlink" title="在使用jQuery.uploadify时，发现post不一定会先发一次OPTION请求"></a>在使用jQuery.uploadify时，发现post不一定会先发一次OPTION请求</h2><p>这个应该涉及到简单请求和非简单请求的知识点。先扔个链接，有空再学习学习：<a href="http://www.ruanyifeng.com/blog/2016/04/cors.html" target="_blank" rel="noopener">跨域资源共享 CORS 详解</a></p>
-<h2 id="游戏配置部分应该使用js的防篡改对象，防止意外修改配置表"><a href="#游戏配置部分应该使用js的防篡改对象，防止意外修改配置表" class="headerlink" title="游戏配置部分应该使用js的防篡改对象，防止意外修改配置表"></a>游戏配置部分应该使用js的防篡改对象，防止意外修改配置表</h2><p>Object有几个方法可以控制对象的访问、修改权限分别是：<code>preventExtensions`</code>isExtensible<code>seal</code>isSealed<code>freeze</code>isFrozen`；</p>
+<h2 id="游戏配置部分应该使用js的防篡改对象，防止意外修改配置表"><a href="#游戏配置部分应该使用js的防篡改对象，防止意外修改配置表" class="headerlink" title="游戏配置部分应该使用js的防篡改对象，防止意外修改配置表"></a>游戏配置部分应该使用js的防篡改对象，防止意外修改配置表</h2><p>Object有几个方法可以控制对象的访问、修改权限分别是：<code>preventExtensions</code> <code>isExtensible</code> <code>seal</code> <code>isSealed</code> <code>freeze</code> <code>isFrozen</code>；</p>
 <ul>
 <li><p>preventExtensions（不可扩展对象）<br>  Object.preventExtensions(obj)：obj不能添加、可以修改、可以删除</p>
 </li>
@@ -399,6 +399,7 @@
 <li><p>isFrozen<br>  Object.isFrozen(obj)：obj是否被冻结</p>
 </li>
 </ul>
+<p>所以配置表应该用seal来密封住会比较安全</p>
 
       
     </div>
