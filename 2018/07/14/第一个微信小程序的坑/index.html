@@ -95,7 +95,7 @@
 <meta property="og:site_name" content="HelloWorld20">
 <meta property="og:description" content="项目概况时间大概是6月25号到7月15号这样，目的是给美宜佳优惠券小程序添加一个抽奖游戏模块和一个配套的控制后台。这个项目最大的挑战有几个：  没做过小程序 美宜佳方不提供源码 时间周期短 只能使用原生小程序代码  好处是，可以尝试一下未知的领域，扩充经验  阅读小程序文档、调研小程序可以使用的第三方库、了解小程序能力等。 知道小程序canvas库可以用：ECharts、WeZrender、wxD">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-15T13:08:55.904Z">
+<meta property="og:updated_time" content="2018-08-06T12:20:12.399Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="记第一个小程序遇到的那些坑">
 <meta name="twitter:description" content="项目概况时间大概是6月25号到7月15号这样，目的是给美宜佳优惠券小程序添加一个抽奖游戏模块和一个配套的控制后台。这个项目最大的挑战有几个：  没做过小程序 美宜佳方不提供源码 时间周期短 只能使用原生小程序代码  好处是，可以尝试一下未知的领域，扩充经验  阅读小程序文档、调研小程序可以使用的第三方库、了解小程序能力等。 知道小程序canvas库可以用：ECharts、WeZrender、wxD">
@@ -384,6 +384,21 @@
 <p>canvas游戏按理来说要在16ms时间内让js处理那么多像素、还要处理其他逻辑，确实很吃力，要达到满帧率很难，但是网上很多按理都能实现。所以说，满帧率复杂canvas游戏还是可以实现的，今后的一个重要的目标之一就是，<code>高性能canvas游戏</code>。嗯，加油</p>
 <h2 id="后台管理系统部分没有表单验证"><a href="#后台管理系统部分没有表单验证" class="headerlink" title="后台管理系统部分没有表单验证"></a>后台管理系统部分没有表单验证</h2><p>呃。。。element UI同一路由，两个表单，定义两个路由规则，有一个实现不了？没时间搞，且不是硬需求。以后再说。。。。</p>
 <h2 id="在使用jQuery-uploadify时，发现post不一定会先发一次OPTION请求"><a href="#在使用jQuery-uploadify时，发现post不一定会先发一次OPTION请求" class="headerlink" title="在使用jQuery.uploadify时，发现post不一定会先发一次OPTION请求"></a>在使用jQuery.uploadify时，发现post不一定会先发一次OPTION请求</h2><p>这个应该涉及到简单请求和非简单请求的知识点。先扔个链接，有空再学习学习：<a href="http://www.ruanyifeng.com/blog/2016/04/cors.html" target="_blank" rel="noopener">跨域资源共享 CORS 详解</a></p>
+<h2 id="游戏配置部分应该使用js的防篡改对象，防止意外修改配置表"><a href="#游戏配置部分应该使用js的防篡改对象，防止意外修改配置表" class="headerlink" title="游戏配置部分应该使用js的防篡改对象，防止意外修改配置表"></a>游戏配置部分应该使用js的防篡改对象，防止意外修改配置表</h2><p>Object有几个方法可以控制对象的访问、修改权限分别是：<code>preventExtensions`</code>isExtensible<code>seal</code>isSealed<code>freeze</code>isFrozen`；</p>
+<ul>
+<li><p>preventExtensions（不可扩展对象）<br>  Object.preventExtensions(obj)：obj不能添加、可以修改、可以删除</p>
+</li>
+<li><p>isExtensible<br>  Object.isExtensible(obj) 判断obj是否被限制扩展</p>
+</li>
+<li><p>seal（密封对象）<br>  Object.seal(obj)：obj不可添加、不可删除、可以修改</p>
+</li>
+<li><p>isSealed<br>  Object.isSealed(obj)：判断obj是否被密封</p>
+</li>
+<li><p>freeze（冻结对象）<br>  Object.freeze(obj)：obj不可添加、不可删除、不可修改</p>
+</li>
+<li><p>isFrozen<br>  Object.isFrozen(obj)：obj是否被冻结</p>
+</li>
+</ul>
 
       
     </div>
@@ -578,7 +593,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#项目概况"><span class="nav-number">1.</span> <span class="nav-text">项目概况</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#遇到的问题"><span class="nav-number">2.</span> <span class="nav-text">遇到的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#canvas（好像仅限IOS）drawImage无法使用网络图片"><span class="nav-number">2.1.</span> <span class="nav-text">canvas（好像仅限IOS）drawImage无法使用网络图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在有canvas里的dom可以看见但是无法点击（好像还是仅限IOS）"><span class="nav-number">2.2.</span> <span class="nav-text">在有canvas里的dom可以看见但是无法点击（好像还是仅限IOS）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开启vconsole时不会验证域名"><span class="nav-number">2.3.</span> <span class="nav-text">开启vconsole时不会验证域名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#音乐播放器的问题"><span class="nav-number">2.4.</span> <span class="nav-text">音乐播放器的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IOS和Android-canvas性能差异"><span class="nav-number">2.5.</span> <span class="nav-text">IOS和Android canvas性能差异</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#遗留的问题"><span class="nav-number">3.</span> <span class="nav-text">遗留的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#游戏性能差"><span class="nav-number">3.1.</span> <span class="nav-text">游戏性能差</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后台管理系统部分没有表单验证"><span class="nav-number">3.2.</span> <span class="nav-text">后台管理系统部分没有表单验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在使用jQuery-uploadify时，发现post不一定会先发一次OPTION请求"><span class="nav-number">3.3.</span> <span class="nav-text">在使用jQuery.uploadify时，发现post不一定会先发一次OPTION请求</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#项目概况"><span class="nav-number">1.</span> <span class="nav-text">项目概况</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#遇到的问题"><span class="nav-number">2.</span> <span class="nav-text">遇到的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#canvas（好像仅限IOS）drawImage无法使用网络图片"><span class="nav-number">2.1.</span> <span class="nav-text">canvas（好像仅限IOS）drawImage无法使用网络图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在有canvas里的dom可以看见但是无法点击（好像还是仅限IOS）"><span class="nav-number">2.2.</span> <span class="nav-text">在有canvas里的dom可以看见但是无法点击（好像还是仅限IOS）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开启vconsole时不会验证域名"><span class="nav-number">2.3.</span> <span class="nav-text">开启vconsole时不会验证域名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#音乐播放器的问题"><span class="nav-number">2.4.</span> <span class="nav-text">音乐播放器的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IOS和Android-canvas性能差异"><span class="nav-number">2.5.</span> <span class="nav-text">IOS和Android canvas性能差异</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#遗留的问题"><span class="nav-number">3.</span> <span class="nav-text">遗留的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#游戏性能差"><span class="nav-number">3.1.</span> <span class="nav-text">游戏性能差</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后台管理系统部分没有表单验证"><span class="nav-number">3.2.</span> <span class="nav-text">后台管理系统部分没有表单验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在使用jQuery-uploadify时，发现post不一定会先发一次OPTION请求"><span class="nav-number">3.3.</span> <span class="nav-text">在使用jQuery.uploadify时，发现post不一定会先发一次OPTION请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#游戏配置部分应该使用js的防篡改对象，防止意外修改配置表"><span class="nav-number">3.4.</span> <span class="nav-text">游戏配置部分应该使用js的防篡改对象，防止意外修改配置表</span></a></li></ol></li></ol></div>
             
 
           </div>
