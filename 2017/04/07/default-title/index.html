@@ -95,7 +95,7 @@
 <meta property="og:site_name" content="HelloWorld20">
 <meta property="og:description" content="原文：JavaScript 对象转换之toString、valueOf 首先，JavaScript中有3个基本类型，String、Number和Boolean。JavaScript在某些情况下会将数据转换成基本类型，及JavaScript会自动调用toString和valueOf方法来完成数据转换。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-23T03:50:52.201Z">
+<meta property="og:updated_time" content="2018-08-22T02:45:46.139Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于toString、valueOf自动执行的问题">
 <meta name="twitter:description" content="原文：JavaScript 对象转换之toString、valueOf 首先，JavaScript中有3个基本类型，String、Number和Boolean。JavaScript在某些情况下会将数据转换成基本类型，及JavaScript会自动调用toString和valueOf方法来完成数据转换。">
@@ -336,17 +336,17 @@
         <p>原文：<a href="http://frontenddev.org/link/convert-the-tostring-the-valueof-javascript-object.html" target="_blank" rel="noopener">JavaScript 对象转换之toString、valueOf</a></p>
 <p>首先，JavaScript中有3个基本类型，String、Number和Boolean。JavaScript在某些情况下会将数据转换成基本类型，及JavaScript会自动调用toString和valueOf方法来完成数据转换。</p>
 <a id="more"></a>
-<h3 id="转换成String"><a href="#转换成String" class="headerlink" title="转换成String"></a>转换成String</h3><ol>
+<h2 id="转换成String"><a href="#转换成String" class="headerlink" title="转换成String"></a>转换成String</h2><ol>
 <li>如果toString方法存在并且返回“原始类型”，返回toString的结果。</li>
 <li>如果toString方法不存在或者返回的不是“原始类型”，调用valueOf方法，如果valueOf方法存在，并且返回“原始类型”数据，返回valueOf的结果。</li>
 <li>其他情况，抛出错误。</li>
 </ol>
-<h3 id="转换成Number"><a href="#转换成Number" class="headerlink" title="转换成Number"></a>转换成Number</h3><ol>
+<h2 id="转换成Number"><a href="#转换成Number" class="headerlink" title="转换成Number"></a>转换成Number</h2><ol>
 <li>如果valueOf存在，且返回“原始类型”数据，返回valueOf的结果</li>
 <li>如果toString存在，且返回“原始类型”数据，返回toString的结果。</li>
 <li>报错。</li>
 </ol>
-<h3 id="转换成Boolean"><a href="#转换成Boolean" class="headerlink" title="转换成Boolean"></a>转换成Boolean</h3><p>按照一定规则转换成Boolean</p>
+<h2 id="转换成Boolean"><a href="#转换成Boolean" class="headerlink" title="转换成Boolean"></a>转换成Boolean</h2><p>按照一定规则转换成Boolean</p>
 <table>
 <thead>
 <tr>
@@ -377,6 +377,12 @@
 </tr>
 </tbody>
 </table>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在JavaScript进行对比或者各种运算的时候会把对象转换成String、Number、Boolean三种类型。</p>
+<ul>
+<li>在转换成String类型时，先调用toString，如果toString不合法（怎么为合法，看开头原始链接），则调用toValue，否则报错；</li>
+<li>在转换成Number类型时，先调用toValue，如果toValue不合法，则调用toString，否则报错；</li>
+<li>在转换成Boolean时，按照上面的表进行转换</li>
+</ul>
 
       
     </div>
@@ -418,6 +424,10 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/21/node.js处理gb2312编码的文本/" rel="next" title="node.js处理gb2312编码的文本">
+                <i class="fa fa-chevron-left"></i> node.js处理gb2312编码的文本
+              </a>
             
           </div>
 
@@ -499,7 +509,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -567,7 +577,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#转换成String"><span class="nav-number">1.</span> <span class="nav-text">转换成String</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#转换成Number"><span class="nav-number">2.</span> <span class="nav-text">转换成Number</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#转换成Boolean"><span class="nav-number">3.</span> <span class="nav-text">转换成Boolean</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#转换成String"><span class="nav-number">1.</span> <span class="nav-text">转换成String</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转换成Number"><span class="nav-number">2.</span> <span class="nav-text">转换成Number</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转换成Boolean"><span class="nav-number">3.</span> <span class="nav-text">转换成Boolean</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>

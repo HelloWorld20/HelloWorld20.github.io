@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="总结," />
 
 
 
@@ -87,16 +87,18 @@
 
 
 
-<meta name="description" content="weijianghong&apos;s hexo personal blog. still under construction.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="HelloWorld20">
-<meta property="og:url" content="http://yoursite.com/archives/2017/11/index.html">
+<meta name="description" content="由于node.js的读写文件的方法中编码参数不支持gb2312，所以在处理gb2312或者其他node.js不支持的编码格式时需要进行特殊处理，才能让node.js处理中文时不会出现乱码。 关于编码格式推荐阅读阮一峰的日志。简单的来说呢，编码是为了让计算机显示出各种特殊字符，而设计出来的一张表，这张表把特殊字符与二进制一一对应，让计算机要显示特殊字符时把二进制的数据通过表转换成对应的字符，从而显示">
+<meta name="keywords" content="总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="node.js处理gb2312编码的文本">
+<meta property="og:url" content="http://yoursite.com/2016/08/21/node.js处理gb2312编码的文本/index.html">
 <meta property="og:site_name" content="HelloWorld20">
-<meta property="og:description" content="weijianghong&apos;s hexo personal blog. still under construction.">
+<meta property="og:description" content="由于node.js的读写文件的方法中编码参数不支持gb2312，所以在处理gb2312或者其他node.js不支持的编码格式时需要进行特殊处理，才能让node.js处理中文时不会出现乱码。 关于编码格式推荐阅读阮一峰的日志。简单的来说呢，编码是为了让计算机显示出各种特殊字符，而设计出来的一张表，这张表把特殊字符与二进制一一对应，让计算机要显示特殊字符时把二进制的数据通过表转换成对应的字符，从而显示">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-22T09:11:09.868Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HelloWorld20">
-<meta name="twitter:description" content="weijianghong&apos;s hexo personal blog. still under construction.">
+<meta name="twitter:title" content="node.js处理gb2312编码的文本">
+<meta name="twitter:description" content="由于node.js的读写文件的方法中编码参数不支持gb2312，所以在处理gb2312或者其他node.js不支持的编码格式时需要进行特殊处理，才能让node.js处理中文时不会出现乱码。 关于编码格式推荐阅读阮一峰的日志。简单的来说呢，编码是为了让计算机显示出各种特殊字符，而设计出来的一张表，这张表把特殊字符与二进制一一对应，让计算机要显示特殊字符时把二进制的数据通过表转换成对应的字符，从而显示">
 
 
 
@@ -124,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2017/11/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/08/21/node.js处理gb2312编码的文本/"/>
 
 
 
 
 
-  <title> 归档 | HelloWorld20 </title>
+  <title> node.js处理gb2312编码的文本 | HelloWorld20 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -155,7 +157,7 @@
     
   
 
-  <div class="container sidebar-position-right  page-archive  ">
+  <div class="container sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -249,103 +251,167 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      嗯..! 目前共计 19 篇日志。 继续努力。
-    </span>
-
+  <div id="posts" class="posts-expand">
     
-
-      
-      
-      
-
-      
-        
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2017">2017</h2>
-        </div>
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/11/10/preload/" itemprop="url">
-              
-                <span itemprop="name">用vue-cli搭建项目图片预加载的问题</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-11-10T22:44:26+08:00"
-              content="2017-11-10" >
-          11-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/11/05/git/" itemprop="url">
-              
-                <span itemprop="name">git的使用傻瓜版</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-11-05T09:20:07+08:00"
-              content="2017-11-05" >
-          11-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-  </section>
 
   
 
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/08/21/node.js处理gb2312编码的文本/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leon.W">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/timg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HelloWorld20">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                node.js处理gb2312编码的文本
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-21T09:20:07+08:00">
+                2016-08-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>由于node.js的读写文件的方法中编码参数不支持gb2312，所以在处理gb2312或者其他node.js不支持的编码格式时需要进行特殊处理，才能让node.js处理中文时不会出现乱码。</p>
+<h1 id="关于编码格式"><a href="#关于编码格式" class="headerlink" title="关于编码格式"></a>关于编码格式</h1><p>推荐阅读<a href="http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html" target="_blank" rel="noopener">阮一峰的日志</a>。简单的来说呢，编码是为了让计算机显示出各种特殊字符，而设计出来的一张表，这张表把特殊字符与二进制一一对应，让计算机要显示特殊字符时把二进制的数据通过表转换成对应的字符，从而显示出来。所以说，一样的文字，用不同的编码存储在硬盘中是不同的二进制数据，一段二进制数据只有用存储时的编码表才能解析出正确的字符串。</p>
+<h1 id="node-js的读写操作。"><a href="#node-js的读写操作。" class="headerlink" title="node.js的读写操作。"></a>node.js的读写操作。</h1><p>node.js提供的读写文件方法都会提供字符编码的设置参数（encoding），如果设置了encoding参数，那么node.js读文件的原生方法会把存储在文档中的二进制数据转换之后再提供给你，如果原生方法不支持的编码，那么直接读取二进制数据，然后再用iconv-lite模块转换即可。</p>
+<pre><code>npm install iconv-lite
+
+
+var iconv = require(&apos;iconv-lite&apos;);
+var str = iconv.decode(buf, &apos;gb2312&apos;);
+//
+var newBuf = iconv.encode(str, &apos;gb2312&apos;);
+</code></pre><p>在处理过后，再用iconv-lite模块转成二进制，然后直接写入文档即可。</p>
+<h1 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h1><p>不要相信console.log打印出来的东西，console.log不管打印什么格式的内容都能正确显示中文。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/总结/" rel="tag"># 总结</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/07/default-title/" rel="prev" title="关于toString、valueOf自动执行的问题">
+                关于toString、valueOf自动执行的问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -353,6 +419,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -372,8 +442,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/timg.jpg"
@@ -446,6 +525,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关于编码格式"><span class="nav-number">1.</span> <span class="nav-text">关于编码格式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#node-js的读写操作。"><span class="nav-number">2.</span> <span class="nav-text">node.js的读写操作。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注意"><span class="nav-number">3.</span> <span class="nav-text">注意</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -555,11 +650,9 @@
   
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
 
 
   
