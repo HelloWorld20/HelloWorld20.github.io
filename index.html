@@ -462,64 +462,14 @@
 
       
         
-          
-            <h1 id="Global对象下有用的方法、参数"><a href="#Global对象下有用的方法、参数" class="headerlink" title="Global对象下有用的方法、参数"></a>Global对象下有用的方法、参数</h1><h2 id="原生已经实现了Base64的转换"><a href="#原生已经实现了Base64的转换" class="headerlink" title="原生已经实现了Base64的转换"></a>原生已经实现了Base64的转换</h2><pre><code>// base64 =》文本
-window.atob()
-// 文本 =》base64
-window.btoa()
-</code></pre><p><em>中文转base64会报错，可以先encodeURIComponent中文，再去btoa</em></p>
-<h2 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h2><p>Math自带了max和min。就不需要所谓的求最大值、最小值</p>
-<pre><code>Math.max(3, 45, 32, 16)
-
-// ES6中快速求数组中最大值的方法
-Math.max(...[3, 45, 32, 16])
-</code></pre><h2 id="Date"><a href="#Date" class="headerlink" title="Date"></a>Date</h2><p>Date的格式化基于<code>Date.parse</code>和<code>Date.UTC</code></p>
-<p><code>Date.parse</code>传入的参数是常见的<code>YYYY/MM/DD hh:mm:ss</code>格式，而<code>Date.UTC</code>是分别传入年、月、日、时、分、秒</p>
-<pre><code>new Date(&apos;YYYY/MM/DD hh:mm:ss&apos;)    //不用Date.parse是这种写法自动调用Date.parse
-
-new Date(Date.UTC(2018, 0, 1, 12, 12, 21))
-</code></pre><p>第二种写法应该很有用</p>
-<h1 id="关于对象"><a href="#关于对象" class="headerlink" title="关于对象"></a>关于对象</h1><h1 id="关于数组"><a href="#关于数组" class="headerlink" title="关于数组"></a>关于数组</h1><h2 id="数组的sort方法不能直接干sort"><a href="#数组的sort方法不能直接干sort" class="headerlink" title="数组的sort方法不能直接干sort"></a>数组的sort方法不能直接干sort</h2><p>正确的排序方法是</p>
-<pre><code>var a = [1, 5, 20, 15, 500]
-// 从小到大
-a.sort(function(a, b){
-    // 要注意的是，return的值需要的是数字：正、副、或者0
-    return a - b
-})
-</code></pre><p>如果不加回调函数，排序是按字符串去排序的，即使数组中每一项都是Number类型</p>
-<h1 id="关于Ajax"><a href="#关于Ajax" class="headerlink" title="关于Ajax"></a>关于Ajax</h1><h1 id="关于字符串"><a href="#关于字符串" class="headerlink" title="关于字符串"></a>关于字符串</h1><h2 id="trim方法原生已经实现"><a href="#trim方法原生已经实现" class="headerlink" title="trim方法原生已经实现"></a>trim方法原生已经实现</h2><pre><code>var s = &apos; fs &apos;
-
-s.trim()  // &apos;fs’
-</code></pre><p>还有trimStart、trimEnd、trimLeft、trimRight</p>
-<h2 id="字符串常用方法"><a href="#字符串常用方法" class="headerlink" title="字符串常用方法"></a>字符串常用方法</h2><ul>
-<li>concat：一般用<code>+</code>来连接字符串</li>
-<li>subStr：切割字符串 subStr(start, stop)</li>
-<li>subString：切割字符串 subString(start, end) ，<strong>end&gt;start可以智能调换</strong></li>
-<li>slice：切割字符串 slice(start, end)，<strong>end为负数，则从后面计算</strong></li>
-<li>search：类似indexOf，但是查询条件可以是正则，所以性能比indexOf差</li>
-</ul>
-<h1 id="关于-DOM"><a href="#关于-DOM" class="headerlink" title="关于 DOM"></a>关于 DOM</h1><h2 id="createElement、createDocumentFrame"><a href="#createElement、createDocumentFrame" class="headerlink" title="createElement、createDocumentFrame"></a>createElement、createDocumentFrame</h2><h2 id="其他可能有用的api"><a href="#其他可能有用的api" class="headerlink" title="其他可能有用的api"></a>其他可能有用的api</h2><ul>
-<li><p>cloneNode<br>  如果直接getElementBy***，然后在插入某个地方，原来的地方会被移除。因为html标签的插入式引用的方式。要复制的话，要用cloneNode。</p>
-</li>
-<li><p>replaceChild：替换</p>
-</li>
-<li>insertBefore: 插入不再仅限于jq的after、before、append、prepend</li>
-</ul>
-<h1 id="理解Document和Element"><a href="#理解Document和Element" class="headerlink" title="理解Document和Element"></a>理解Document和Element</h1><p>Document是整个HTML文档，或者整个XML，对应的是window.document；nodeType为9</p>
-<p>ELement是包括\&lt;html>标签以内的所有标签；nodeType为1</p>
-<h1 id="callee-caller"><a href="#callee-caller" class="headerlink" title="callee caller"></a>callee caller</h1><p>callee指向当前执行的函数<br>caller指向当前函数执行的函数环境</p>
-<p>他们的共同点除了名字像，就是他们都是<code>指向函数</code>。没其他了</p>
-<p>emmmm</p>
-<h2 id="callee"><a href="#callee" class="headerlink" title="callee"></a>callee</h2><p>callee常用于递归，是arguments对象默认存在的方法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">factorial</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x&lt;=<span class="number">1</span> ? <span class="number">1</span> : x * <span class="built_in">arguments</span>.callee(x<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="caller"><a href="#caller" class="headerlink" title="caller"></a>caller</h2><p>caller是指向当前函数执行的环境的函数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(b.caller)		<span class="comment">// 指向的是函数a</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	b()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>倒是和this很像。</p>
-<p>this指向执行环境的对象，caller指向的是执行环境的函数</p>
-<p>如果执行环境不是函数。caller为null</p>
-<h2 id="callee和caller的很不同"><a href="#callee和caller的很不同" class="headerlink" title="callee和caller的很不同"></a>callee和caller的很不同</h2><p>callee在arguments对象下，caller在argument.callee下。。。。</p>
-<p>arguments.callee是自己。自己.caller是爸爸</p>
-
-          
+          <p>未完成</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/21/重温js 高设总结的经验/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
