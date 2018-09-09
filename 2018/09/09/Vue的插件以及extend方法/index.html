@@ -1,0 +1,736 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="总结,前端技术," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="工作中要开发一个弹窗组件，然后项目经理希望不仅保留传统的组件形式，也希望通过一个方法直接弹出弹窗，就像Element UI的this.$message()方法一样，需要的时候，直接调用这个方法，直接完成了dom插入、弹出、隐藏的过程。不需要在任何地方import、components、插入template等等操作。">
+<meta name="keywords" content="总结,前端技术">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue的插件与extend方法">
+<meta property="og:url" content="http://yoursite.com/2018/09/09/Vue的插件以及extend方法/index.html">
+<meta property="og:site_name" content="HelloWorld20">
+<meta property="og:description" content="工作中要开发一个弹窗组件，然后项目经理希望不仅保留传统的组件形式，也希望通过一个方法直接弹出弹窗，就像Element UI的this.$message()方法一样，需要的时候，直接调用这个方法，直接完成了dom插入、弹出、隐藏的过程。不需要在任何地方import、components、插入template等等操作。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-09-09T02:46:06.938Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vue的插件与extend方法">
+<meta name="twitter:description" content="工作中要开发一个弹窗组件，然后项目经理希望不仅保留传统的组件形式，也希望通过一个方法直接弹出弹窗，就像Element UI的this.$message()方法一样，需要的时候，直接调用这个方法，直接完成了dom插入、弹出、隐藏的过程。不需要在任何地方import、components、插入template等等操作。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"right","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/09/09/Vue的插件以及extend方法/"/>
+
+
+
+
+
+  <title> Vue的插件与extend方法 | HelloWorld20 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HelloWorld20</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">there is nothing on subtitle</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/09/Vue的插件以及extend方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leon.W">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/timg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HelloWorld20">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Vue的插件与extend方法
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-09T09:20:07+08:00">
+                2018-09-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>工作中要开发一个弹窗组件，然后项目经理希望不仅保留传统的组件形式，也希望通过一个方法直接弹出弹窗，就像Element UI的<code>this.$message()</code>方法一样，需要的时候，直接调用这个方法，直接完成了dom插入、弹出、隐藏的过程。不需要在任何地方import、components、插入template等等操作。</p>
+<a id="more"></a>
+<h1 id="注入Vue原型"><a href="#注入Vue原型" class="headerlink" title="注入Vue原型"></a>注入Vue原型</h1><p>如果想要实现<code>this.$message()</code>这样的调用方法，只是需要在<code>Vue.prototype</code> 上定义一个方法就好。问题是在什么地方合理地注入。Vue官方给的方案是<a href="https://cn.vuejs.org/v2/guide/plugins.html" target="_blank" rel="noopener">Vue.use</a></p>
+<h1 id="Vue-use-和install方法"><a href="#Vue-use-和install方法" class="headerlink" title="Vue.use()和install方法"></a>Vue.use()和install方法</h1><p>平时使用的时候应该有发现，Vue引入第三方插件都有Vue.use(Plugins)这个操作，然后就可以在各种地方使用第三方插件了。why？</p>
+<p>其实很简单。开发第三方插件时，插件应该是一个对象或者方法。如果引入的插件是对象，应该提供一个install方法，然后Vue.use()或调用插件对象的install方法，如果引入的插件是一个方法，则Vue.use()直接调用该方法。然后我们的定义的插件，应该定义一个install方法，让Vue来调用。而我们所有的“注册”之类的操作都应该在这个install方法下定义。</p>
+<p>之所以不直接把定义流程直接写在代码逻辑里，一是因为Vue.use()代码逻辑更清晰、二是Vue.use()会防止重复注册插件，从而防止一些可能会出现重复注册带来的bug。</p>
+<h1 id="Vue-extend"><a href="#Vue-extend" class="headerlink" title="Vue.extend"></a>Vue.extend</h1><p>Vue.extend方法接受一个对象，该对象和平时我们给组件或者new Vue()时传的对象结构是一模一样的（至少目前我没发现有什么不同），那extend和component、new Vue()有什么不同呢。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// template</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">value</span>=<span class="string">"a"</span> <span class="attr">v-model</span>=<span class="string">"model"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">value</span>=<span class="string">"b"</span> <span class="attr">v-model</span>=<span class="string">"model"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// js</span></span><br><span class="line"><span class="keyword">let</span> config = &#123;</span><br><span class="line">    el: <span class="string">'#event'</span>,</span><br><span class="line">    data() &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            model: <span class="string">'b'</span>,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> vm = <span class="keyword">new</span> Vue(config)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> con = Vue.extend(config)</span><br><span class="line"><span class="keyword">new</span> con()</span><br></pre></td></tr></table></figure>
+<p>两个方法都能渲染模板。效果上是一模一样的。</p>
+<p><strong><em>不一样的是他们的返回值</em></strong></p>
+<p>new Vue()返回的是vue实例，作用是什么我们都已经很熟悉了。</p>
+<p>而Vue.extend()方法返回的是一个构造函数。（虽然new这个构造函数的结构和new Vue()结构一样）</p>
+<p>一开始以为返回一个构造函数有点多此一举。后来看了<a href="https://segmentfault.com/a/1190000010095089" target="_blank" rel="noopener">这篇文章</a>知道，extend返回构造函数的目的是为了<strong>复用</strong>。</p>
+<p>所以按照原理，我们不应该在传给extend传入el，让其直接挂在到某个元素上。应该利用实例的$mount()方法挂载到指定元素上。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> con = Vue.extend(config)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> instance = <span class="keyword">new</span> con()</span><br><span class="line"></span><br><span class="line">instance.$mount(<span class="string">'#ele'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 复用</span></span><br><span class="line"><span class="keyword">let</span> instance2 = <span class="keyword">new</span> con()</span><br><span class="line"></span><br><span class="line">instance2.$mount(<span class="string">"#ele2"</span>)</span><br></pre></td></tr></table></figure>
+<p>虽然new Vue()的实例也有$mount方法，但是没有办法绑定第二个，也无法重复绑定。</p>
+<p>所以我们可以利用extend来生成一个组件，拿到其渲染后的dom，然后手动插入到document.body里，来达到不用手动把组件插入template的效果。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> con = Vue.extend(config)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> instance = <span class="keyword">new</span> con()</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> tpl = instance.$mount(<span class="string">'#ele'</span>).$el</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.body.appendChild(tpl)</span><br></pre></td></tr></table></figure>
+<p>然后要做的弹窗就出现在页面里了。</p>
+<h1 id="插件式和组件式的结合"><a href="#插件式和组件式的结合" class="headerlink" title="插件式和组件式的结合"></a>插件式和组件式的结合</h1><p>项目需求是组件式和插件式的两种都要有。开始觉得有点脱裤子放屁，其实发现写下来两者也没有很多冲突。</p>
+<p>组件式还是照常开发，然后插件式的可以利用已经写好的组件。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pupUps <span class="keyword">from</span> <span class="string">'componets/popUps'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> con = Vue.extend(pupUps);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> instance = <span class="keyword">new</span> con()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改参数</span></span><br><span class="line">instance.show = <span class="literal">true</span></span><br><span class="line">instance.title = <span class="string">'弹窗标题'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> tpl = instance.$mount(<span class="string">'#ele'</span>).$el</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.body.appendChild(tpl)</span><br></pre></td></tr></table></figure>
+<p>参数应该在实例(instance)上修改好，然后tpl是修改参数后渲染的dom。</p>
+<h2 id="两种方式不和谐的地方"><a href="#两种方式不和谐的地方" class="headerlink" title="两种方式不和谐的地方"></a>两种方式不和谐的地方</h2><p>插件式引入组件，并没有用到prop。在实例上修改的参数就等于组件里定义的data，有没有prop都没关系，所以对于插件来说，组件里定义的prop是多余的。</p>
+<p>传入slot很麻烦。在插件式里，slot是在实例对象的$slots对象里。<br>每一个slot是一个vNode实例，好像Vue没有暴露出直接通过template生成vNode的方法，所以没有很好的办法以slot的方式给组件传值。</p>
+<p>至于event、v-model。因为使用方式不一样。所以插件式也不存在父组件接受event、定义v-model这类说法，所以对于插件式、组件里抛出的event、v-model这类东西都没意义。</p>
+<h1 id="插件式的不同"><a href="#插件式的不同" class="headerlink" title="插件式的不同"></a>插件式的不同</h1><p>插件式有个思路上的不同。因为插件每次都是<code>document.body.appendChild(tpl)</code>直接插入到dom里，所以清除掉dom也得手动去做了。</p>
+<p>常用的做法是，维护一个对象保留dom实例。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">domCache[tpl.id] = tpl			// 这个id可以换成weakmap？</span><br><span class="line">// 插入前用以对象缓存</span><br><span class="line">document.body.appendChild(tpl)</span><br><span class="line"></span><br><span class="line">// 移除dom</span><br><span class="line">delete domCache[tpl.id]</span><br><span class="line"></span><br><span class="line">tpl.remove()</span><br></pre></td></tr></table></figure>
+<h1 id="插件式总结"><a href="#插件式总结" class="headerlink" title="插件式总结"></a>插件式总结</h1><p>综合来说插件式的用法不适合太复杂的组件。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/总结/" rel="tag"># 总结</a>
+          
+            <a href="/tags/前端技术/" rel="tag"># 前端技术</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/25/js的继承/" rel="next" title="js的继承">
+                <i class="fa fa-chevron-left"></i> js的继承
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/timg.jpg"
+               alt="Leon.W" />
+          <p class="site-author-name" itemprop="name">Leon.W</p>
+           
+              <p class="site-description motion-element" itemprop="description">weijianghong's hexo personal blog. still under construction.</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/HelloWorld20" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2182668367" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#注入Vue原型"><span class="nav-number">1.</span> <span class="nav-text">注入Vue原型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vue-use-和install方法"><span class="nav-number">2.</span> <span class="nav-text">Vue.use()和install方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vue-extend"><span class="nav-number">3.</span> <span class="nav-text">Vue.extend</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#插件式和组件式的结合"><span class="nav-number">4.</span> <span class="nav-text">插件式和组件式的结合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#两种方式不和谐的地方"><span class="nav-number">4.1.</span> <span class="nav-text">两种方式不和谐的地方</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#插件式的不同"><span class="nav-number">5.</span> <span class="nav-text">插件式的不同</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#插件式总结"><span class="nav-number">6.</span> <span class="nav-text">插件式总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-weijianghong"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leon.W</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
