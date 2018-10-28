@@ -96,8 +96,7 @@
 <meta property="og:description" content="工作中要开发一个弹窗组件，然后项目经理希望不仅保留传统的组件形式，也希望通过一个方法直接弹出弹窗，就像Element UI的this.$message()方法一样，需要的时候，直接调用这个方法，直接完成了dom插入、弹出、隐藏的过程。不需要在任何地方import、components、插入template等等操作。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ooxy8egxa.bkt.clouddn.com/小书匠/1536486856450.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/09/09/Vue的插件以及extend方法/attachments/1536461237228.drawio.html">
-<meta property="og:updated_time" content="2018-09-09T15:31:16.446Z">
+<meta property="og:updated_time" content="2018-10-15T09:26:25.140Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue的插件与extend方法">
 <meta name="twitter:description" content="工作中要开发一个弹窗组件，然后项目经理希望不仅保留传统的组件形式，也希望通过一个方法直接弹出弹窗，就像Element UI的this.$message()方法一样，需要的时候，直接调用这个方法，直接完成了dom插入、弹出、隐藏的过程。不需要在任何地方import、components、插入template等等操作。">
@@ -367,7 +366,6 @@
 <h1 id="插件式的不同"><a href="#插件式的不同" class="headerlink" title="插件式的不同"></a>插件式的不同</h1><p>插件式有个思路上的不同。因为插件每次都是<code>document.body.appendChild(tpl)</code>直接插入到dom里，所以清除掉dom也得手动去做了。</p>
 <p>常用的做法是，维护一个对象保留dom实例。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">domCache[tpl.id] = tpl			// 这个id可以换成weakmap？</span><br><span class="line">// 插入前用以对象缓存</span><br><span class="line">document.body.appendChild(tpl)</span><br><span class="line"></span><br><span class="line">// 移除dom</span><br><span class="line">delete domCache[tpl.id]</span><br><span class="line"></span><br><span class="line">tpl.remove()</span><br></pre></td></tr></table></figure>
-<p><img src="./attachments/1536461237228.drawio.html" alt="Diagram"></p>
 <h1 id="插件式总结"><a href="#插件式总结" class="headerlink" title="插件式总结"></a>插件式总结</h1><p>综合来说插件式的用法不适合太复杂的组件。</p>
 
       
@@ -422,6 +420,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/27/从零配置一个前端项目/" rel="prev" title="从零配置一个前端项目">
+                从零配置一个前端项目 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -493,7 +495,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
