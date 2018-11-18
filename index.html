@@ -261,6 +261,132 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/14/记一个基于Vue-cli3搭建的前端项目/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leon.W">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/timg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HelloWorld20">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/11/14/记一个基于Vue-cli3搭建的前端项目/" itemprop="url">
+                  记一个基于Vue-cli3搭建的前端项目
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-14T15:21:24+08:00">
+                2018-11-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>在工作中有幸参与一个全新前端架构的搭建，这份经验对于我来说弥足珍贵，可能这是我走出初级前端开发工程师的一个很重要的转折点吧。这份经验不仅让我对webpack、项目整体方面有个很深入的了解，也让我对前端各方面的技术原理、基础有了个比较深入的了解。所以有必要记录下这份经验。</p>
+<p>注：由于我们公司代码不能外传，所以没有源码、项目目录结构等可以看。也只能介绍部分结构。。。。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/11/14/记一个基于Vue-cli3搭建的前端项目/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/15/四姑娘山/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -710,49 +836,14 @@
 
       
         
-          
-            <a id="more"></a>
-<h2 id="配置package-json"><a href="#配置package-json" class="headerlink" title="配置package.json"></a>配置package.json</h2><p>前端项目必备，不需要单独配置，但是也应该初始化一下。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init</span><br></pre></td></tr></table></figure>
-<p>然后根据提示一路确定就行。</p>
-<h2 id="写一个readme"><a href="#写一个readme" class="headerlink" title="写一个readme"></a>写一个readme</h2><p>良好的项目应该有个readme文档。告诉使用的人，怎么把项目跑起来，因为不一定所有的项目都是<code>npm run dev</code>、<code>npm run build</code>。而且放到github上，别人第一眼看见的就是readme</p>
-<h2 id="配置-editorconfig"><a href="#配置-editorconfig" class="headerlink" title="配置.editorconfig"></a>配置.editorconfig</h2><p>作用是在编辑代码的时候就保证项目中每个程序员的格式都一致。避免风格不一致，修改别人代码不小心格式化的问题。</p>
-<p>配置方法很简单，这个功能是由浏览器插件实现。</p>
-<ol>
-<li>在项目根目录下新建一个<code>.editorconfig</code>文件夹。</li>
-<li>编辑器下载对应的插件就好，如vscode的是<a href="https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig" target="_blank" rel="noopener">EditorConfig for VS Code</a></li>
-</ol>
-<p>工程化的时候，应该上传该配置文件且保证每个开发者都安装了对应插件。<a href="https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties" target="_blank" rel="noopener">配置</a>也非常简单。</p>
-<h2 id="配置eslint"><a href="#配置eslint" class="headerlink" title="配置eslint"></a>配置eslint</h2><p>功能就不用说了，<code>editorconfig</code>只能保证风格，<code>eslint</code>更强大，可以高亮错误、自动格式化错误代码等。配置也非常多。</p>
-<p>但是eslint是被动修改，是编辑之后再纠错。所以<code>editorconfig</code>也是有必要的</p>
-<ol>
-<li>项目安装eslint</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install eslint --save-dev</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>初始化eslint配置文件</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./node_modules/.bin/eslint --init</span><br></pre></td></tr></table></figure>
-<p>根据提示走完配置即可在项目根目录下创建一份eslint配置文件。可以给配置文件添加<a href="https://eslint.org/docs/user-guide/getting-started" target="_blank" rel="noopener">配置内容</a>以达到目的</p>
-<ol start="3">
-<li>下载对应插件</li>
-</ol>
-<p>VSCode的插件就叫<code>Eslint</code></p>
-<ol start="4">
-<li>启用插件即可</li>
-</ol>
-<p>在设置中添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;eslint.enable&quot;: true</span><br></pre></td></tr></table></figure></p>
-<h3 id="eslintignore"><a href="#eslintignore" class="headerlink" title="eslintignore"></a>eslintignore</h3><p>在根目录下新建文件：<code>.eslintignore</code>。eslint则不会去检查指定的文件。语法同<code>.gitignore</code>。但是不同的是，eslintignore默认禁止/node_modules/<em> 和 /bower_components/</em></p>
-<p>在工程化的时候，应该把eslint的配置文件上传到项目中，并且确保每个人都安装了编辑器eslint插件</p>
-<h2 id="git配置"><a href="#git配置" class="headerlink" title="git配置"></a>git配置</h2><p><strong>简单描述一下怎样初始化一个空项目、开始一个已经存在的项目、进行到一半并连接已有的项目、submodule等</strong></p>
-<h3 id="配置git"><a href="#配置git" class="headerlink" title="配置git"></a>配置git</h3><p>初始化git项目</p>
-<pre><code>git init
-</code></pre><p>关联github</p>
-<pre><code>git remote add origin git@github.com:HelloWorld20/webpack-demo.git
-</code></pre><h3 id="gitignore"><a href="#gitignore" class="headerlink" title="gitignore"></a>gitignore</h3><p>添加不想被git版本控制的文件和文件夹，语法参考<a href="https://juejin.im/post/5ae1e6ed6fb9a07a9b35a941" target="_blank" rel="noopener">.gitignore语法参考</a></p>
-<h2 id="webpack配置"><a href="#webpack配置" class="headerlink" title="webpack配置"></a>webpack配置</h2><p>是个大头，另起一篇文章记录</p>
-
-          
+          <p>工作中需要我优化项目，所以有必要按项目结构从头撸一遍。不然根本不了解细节。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/27/从零配置一个前端项目/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1425,131 +1516,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/24/花生fm项目总结/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Leon.W">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/timg.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HelloWorld20">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/06/24/花生fm项目总结/" itemprop="url">
-                  花生fm项目总结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-24T09:20:07+08:00">
-                2018-06-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="项目概况"><a href="#项目概况" class="headerlink" title="项目概况"></a>项目概况</h1><p>是一个答题类的h5。是我首次的后端项目，项目结构参考其他后端项目</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/06/24/花生fm项目总结/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1599,7 +1565,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

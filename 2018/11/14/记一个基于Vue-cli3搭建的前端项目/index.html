@@ -1,0 +1,808 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="总结,前端技术," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="在工作中有幸参与一个全新前端架构的搭建，这份经验对于我来说弥足珍贵，可能这是我走出初级前端开发工程师的一个很重要的转折点吧。这份经验不仅让我对webpack、项目整体方面有个很深入的了解，也让我对前端各方面的技术原理、基础有了个比较深入的了解。所以有必要记录下这份经验。 注：由于我们公司代码不能外传，所以没有源码、项目目录结构等可以看。也只能介绍部分结构。。。。">
+<meta name="keywords" content="总结,前端技术">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记一个基于Vue-cli3搭建的前端项目">
+<meta property="og:url" content="http://yoursite.com/2018/11/14/记一个基于Vue-cli3搭建的前端项目/index.html">
+<meta property="og:site_name" content="HelloWorld20">
+<meta property="og:description" content="在工作中有幸参与一个全新前端架构的搭建，这份经验对于我来说弥足珍贵，可能这是我走出初级前端开发工程师的一个很重要的转折点吧。这份经验不仅让我对webpack、项目整体方面有个很深入的了解，也让我对前端各方面的技术原理、基础有了个比较深入的了解。所以有必要记录下这份经验。 注：由于我们公司代码不能外传，所以没有源码、项目目录结构等可以看。也只能介绍部分结构。。。。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-11-18T02:27:23.025Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="记一个基于Vue-cli3搭建的前端项目">
+<meta name="twitter:description" content="在工作中有幸参与一个全新前端架构的搭建，这份经验对于我来说弥足珍贵，可能这是我走出初级前端开发工程师的一个很重要的转折点吧。这份经验不仅让我对webpack、项目整体方面有个很深入的了解，也让我对前端各方面的技术原理、基础有了个比较深入的了解。所以有必要记录下这份经验。 注：由于我们公司代码不能外传，所以没有源码、项目目录结构等可以看。也只能介绍部分结构。。。。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"right","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/14/记一个基于Vue-cli3搭建的前端项目/"/>
+
+
+
+
+
+  <title> 记一个基于Vue-cli3搭建的前端项目 | HelloWorld20 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HelloWorld20</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">there is nothing on subtitle</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/14/记一个基于Vue-cli3搭建的前端项目/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leon.W">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/timg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HelloWorld20">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                记一个基于Vue-cli3搭建的前端项目
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-14T15:21:24+08:00">
+                2018-11-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在工作中有幸参与一个全新前端架构的搭建，这份经验对于我来说弥足珍贵，可能这是我走出初级前端开发工程师的一个很重要的转折点吧。这份经验不仅让我对webpack、项目整体方面有个很深入的了解，也让我对前端各方面的技术原理、基础有了个比较深入的了解。所以有必要记录下这份经验。</p>
+<p>注：由于我们公司代码不能外传，所以没有源码、项目目录结构等可以看。也只能介绍部分结构。。。。</p>
+<a id="more"></a>
+<h1 id="项目介绍"><a href="#项目介绍" class="headerlink" title="项目介绍"></a>项目介绍</h1><p>我们公司的项目还是和传统Vue-cli自动生成的项目有很大区别的。主要的特点：</p>
+<ul>
+<li>多页面应用</li>
+<li>本地mock数据</li>
+<li>Store、Api、mock都分有公共和业务两部分，需要合并</li>
+<li>接口错误处理既需要公共处理也需要业务处理</li>
+<li>业务代码质量普遍不高</li>
+<li>新增debug、debugmock模式</li>
+<li>打包项目结构有要求</li>
+</ul>
+<p>说明：</p>
+<ol>
+<li>debug模式只是在production模式上多加一个vconsole。为了在测试环境调试用</li>
+<li>debugmock是debug模式上拦截接口，用mock数据。为了方便调试样式</li>
+<li>Store指的是Vuex</li>
+</ol>
+<h1 id="项目初始化"><a href="#项目初始化" class="headerlink" title="项目初始化"></a>项目初始化</h1><p>这次目的就是用最新的架构重搭建一个合适的前端项目结构，所以自然的选择了最新的Vue-cli3 + webpack4来搭建。所以先初始化一个Vue-cli3</p>
+<pre><code>vue create vue-tpl
+</code></pre><p>选择</p>
+<ul>
+<li>vue-router</li>
+<li>vuex</li>
+<li>mocha单元测试</li>
+<li>less</li>
+<li>eslint</li>
+</ul>
+<p>安装完依赖即可</p>
+<h1 id="TODO-LIST"><a href="#TODO-LIST" class="headerlink" title="TODO LIST"></a>TODO LIST</h1><p>新建一个readme，先思考讨论一番，要做的功能点，然后逐一击破。</p>
+<ul>
+<li>多页面配置 （资源要更细致地分配，测试打包方式和正式打包不一样） </li>
+<li>eslint配置，整理代码 </li>
+<li>新增环境判断（development、debug、debugmock、production）</li>
+<li>mock数据 </li>
+<li>http封装（自定义错误、拦截请求。接口防重发）</li>
+<li>封装基础工具方法（引入lodash）</li>
+<li>单元测试 </li>
+<li>webpack配置文件夹别名 </li>
+<li>合并公共和私有（mock , api , store） </li>
+<li>子路由demo（如果异步加载组件的话，分离的组件chunk会识别为common chunk。从而于common-vendor.js一起打包到了dist/common文件夹下了。暂时不考虑异步组件） </li>
+<li>vue.config.js 分环境配置 </li>
+<li>撸规范、helloworld页面（包括接口调用）</li>
+<li>初始化脚本</li>
+<li>定义项目配置 </li>
+<li>自动化测试 </li>
+</ul>
+<h1 id="开始干活"><a href="#开始干活" class="headerlink" title="开始干活"></a>开始干活</h1><p>1、创建配置文件</p>
+<p>Vue-cli3 的灵魂是<code>vue.config.js</code>。所以在项目根目录新建一个vue.config.js。所有的配置都是通过vue.config.js来控制的。<code>不应该直接操作webpack的配置</code>，当然Vue-cli3搭建的项目结构里也没暴露webpack配置。</p>
+<p>因为需要不同环境进行不同的打包配置，所以根目录下新建build文件夹，把四个环境的配置文件写在build文件夹里（production、development、debug、debugmock）。然后vue.config.js根据环境获取不同的配置来干活</p>
+<p>vue.config.js看起来是这样的</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 根据环境变量获取不同的配置文件</span></span><br><span class="line"><span class="keyword">const</span> config = <span class="built_in">require</span>(<span class="string">`./build/config.<span class="subst">$&#123;process.env.NODE_ENV&#125;</span>`</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> pages = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 根据业务配置生成pages参数</span></span><br><span class="line">config.businessArray &amp;&amp; config.businessArray.forEach(<span class="function"><span class="params">v</span> =&gt;</span> &#123;</span><br><span class="line">	pages[v.chunk] = &#123;</span><br><span class="line">		<span class="comment">// page 的入口</span></span><br><span class="line">		entry: <span class="string">`src/business/<span class="subst">$&#123;v.chunk&#125;</span>/index.js`</span>,</span><br><span class="line">		<span class="comment">// 模板来源</span></span><br><span class="line">		template: <span class="string">'public/index.html'</span>,</span><br><span class="line">		<span class="comment">// 打包出口</span></span><br><span class="line">		filename: <span class="string">`business/<span class="subst">$&#123;v.chunk&#125;</span>/index.html`</span>,</span><br><span class="line">		<span class="comment">// 当使用 title 选项时，</span></span><br><span class="line">		<span class="comment">// template 中的 title 标签需要是 &lt;title&gt;&lt;%= htmlWebpackPlugin.options.title %&gt;&lt;/title&gt;</span></span><br><span class="line">		title: v.chunkName</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 直接修改webpack配置，不需要return</span></span><br><span class="line"><span class="keyword">let</span> configureWebpack = <span class="function"><span class="params">webpackConfig</span> =&gt;</span> &#123;</span><br><span class="line">	<span class="comment">// 配置别名</span></span><br><span class="line">	config.alias &amp;&amp; <span class="built_in">Object</span>.keys(config.alias).forEach(<span class="function"><span class="params">v</span> =&gt;</span> &#123;</span><br><span class="line">		webpackConfig.resolve.alias[v] = config.alias[v];</span><br><span class="line">	&#125;);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 合并plugins</span></span><br><span class="line">	webpackConfig.plugins = webpackConfig.plugins.concat(config.plugins || []);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 修改打包的业务js文件，放到入口下</span></span><br><span class="line">	webpackConfig.output.filename = <span class="string">'business/[name]/[name].[hash:8].js'</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">	baseUrl: config.baseUrl,</span><br><span class="line">	pages,</span><br><span class="line">	assetsDir: config.assetsDir || <span class="string">'common'</span>,</span><br><span class="line">	lintOnSave: config.lintOnSave, <span class="comment">// 是否需要eslint</span></span><br><span class="line">	productionSourceMap: config.productionSourceMap, <span class="comment">// 是否需要sourcemap</span></span><br><span class="line">	configureWebpack,</span><br><span class="line">	css: &#123;</span><br><span class="line">		<span class="comment">// 作用于ExtractTextWebpackPlugin。修改css输出路径</span></span><br><span class="line">		extract: config.cssExtra</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>然后development环境的配置文件大概长这样</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">	baseUrl: <span class="string">'/'</span>,</span><br><span class="line">	businessArray: [</span><br><span class="line">		&#123; <span class="attr">chunk</span>: <span class="string">'demo'</span>, <span class="attr">chunkName</span>: <span class="string">'测试业务'</span> &#125;</span><br><span class="line">	],</span><br><span class="line">	plugins: [</span><br><span class="line"></span><br><span class="line">	],</span><br><span class="line">	lintOnSave: <span class="literal">true</span>,</span><br><span class="line">	productionSourceMap: <span class="literal">true</span>,</span><br><span class="line">	cssExtra: <span class="literal">false</span>,</span><br><span class="line">	alias: &#123;</span><br><span class="line">		<span class="string">'@common'</span>: path.resolve(<span class="string">'src/common/modules'</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>那么运行起来之后就可以访问<a href="http://localhost:8080/business/demo/index.html" target="_blank" rel="noopener">http://localhost:8080/business/demo/index.html</a>来看效果了。</p>
+<h2 id="eslint"><a href="#eslint" class="headerlink" title="eslint"></a>eslint</h2><p>eslint没啥好讲的，用默认的就行。简单的可以看我的另一篇文章：《从0配置一个前端项目》</p>
+<h2 id="新增环境变量"><a href="#新增环境变量" class="headerlink" title="新增环境变量"></a>新增环境变量</h2><p>默认Vue-cli3搭建的项目默认有<code>development</code>和<code>production</code>两个环境，要新增的话需要在项目根目录创建<code>.env</code>文件（<a href="https://cli.vuejs.org/zh/guide/mode-and-env.html#%E6%A8%A1%E5%BC%8F" target="_blank" rel="noopener">文档说明</a>）。项目中要加debug和debugmock。则需要加上<code>.env.debug</code>和<code>.env.debugmock</code>文件</p>
+<p>然后在.env.debug文件中加上：<code>NODE_ENV=debug</code></p>
+<p>再然后，在package.json里的scripts加上：<code>&quot;debug&quot;: &quot;vue-cli-service build --mode debug&quot;</code>,</p>
+<p>则可以在开发中用<code>process.env.NODE_ENV === ’debug&#39;</code>来判断是否是debug环境了。</p>
+<h2 id="mock数据"><a href="#mock数据" class="headerlink" title="mock数据"></a>mock数据</h2><p>mock数据是基于<a href="http://mockjs.com/" target="_blank" rel="noopener">mock.js</a>来实现的。不过现在都流行easymock这种在线mock数据，所以mock.js很久都没有维护了。但是我们项目是不能访问外网的，不得不用这种本地mock数据的办法。</p>
+<p>最后封装的效果大概是这样的</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 业务mock.js</span></span><br><span class="line"><span class="comment">// 引入公共mock</span></span><br><span class="line"><span class="keyword">import</span> commonMock <span class="keyword">from</span> <span class="string">'@/common/modules/mock.js'</span>;</span><br><span class="line"><span class="keyword">import</span> Apis <span class="keyword">from</span> <span class="string">'./apis'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在这定义业务mock接口</span></span><br><span class="line"><span class="comment">// 每个接口为一个数组,</span></span><br><span class="line"><span class="comment">// 数组里的</span></span><br><span class="line"><span class="comment">// 第一个参数为接口url,</span></span><br><span class="line"><span class="comment">// 第二个可选,请求类型,默认为get,</span></span><br><span class="line"><span class="comment">// 第三个为返回值</span></span><br><span class="line"><span class="keyword">const</span> mock = [</span><br><span class="line">	[</span><br><span class="line">		Apis.init,</span><br><span class="line">		&#123;</span><br><span class="line">			data: <span class="string">`来自业务接口:<span class="subst">$&#123;Apis.init&#125;</span>的get数据`</span></span><br><span class="line">		&#125;</span><br><span class="line">	],</span><br><span class="line">	[</span><br><span class="line">		Apis.comfirm,</span><br><span class="line">		<span class="string">'post'</span>,</span><br><span class="line">		&#123;</span><br><span class="line">			data: <span class="string">`来自业务接口:<span class="subst">$&#123;Apis.comfirm&#125;</span>的post数据`</span></span><br><span class="line">		&#125;</span><br><span class="line">	]</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 把定义好的数据扔给公共mock即可</span></span><br><span class="line">commonMock(mock);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 公共mock数据大概长这样</span></span><br><span class="line"><span class="keyword">import</span> Mock <span class="keyword">from</span> <span class="string">'mockjs'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Apis &#125; <span class="keyword">from</span> <span class="string">'./apis'</span>;</span><br><span class="line"></span><br><span class="line">Mock.setup(&#123;</span><br><span class="line">	timeout: <span class="string">'800 - 1000'</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在这定义mock接口</span></span><br><span class="line"><span class="comment">// 每个接口为一个数组,</span></span><br><span class="line"><span class="comment">// 数组里的</span></span><br><span class="line"><span class="comment">// 第一个参数为接口url,</span></span><br><span class="line"><span class="comment">// 第二个可选,请求类型,默认为get,</span></span><br><span class="line"><span class="comment">// 第三个为返回值</span></span><br><span class="line"><span class="keyword">const</span> mockData = [</span><br><span class="line">	[</span><br><span class="line">		Apis.fire,	<span class="comment">// 接口</span></span><br><span class="line">		<span class="comment">// 返回值</span></span><br><span class="line">		&#123;</span><br><span class="line">			data: <span class="string">`来自公共接口:<span class="subst">$&#123;Apis.fire&#125;</span>的get数据`</span></span><br><span class="line">		&#125;</span><br><span class="line">	],</span><br><span class="line">	[</span><br><span class="line">		Apis.test,</span><br><span class="line">		<span class="string">'post'</span>,		<span class="comment">// 第二个参数可以是请求类型，默认为get</span></span><br><span class="line">		&#123;</span><br><span class="line">			data: <span class="string">`来自公共接口:<span class="subst">$&#123;Apis.test&#125;</span>的post数据`</span></span><br><span class="line">		&#125;</span><br><span class="line">	]</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span>(<span class="params">businessMock</span>) </span>&#123;</span><br><span class="line">	<span class="comment">// 在这统一执行Mock.js</span></span><br><span class="line">	mockData.concat(businessMock).forEach(<span class="function"><span class="params">v</span> =&gt;</span> &#123;</span><br><span class="line">		Mock.mock(...v);</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2><p>用Vue-cli3默认的就好。如果要测试部分单元测试。修改package.json</p>
+<pre><code>vue-cli-service test:unit tests/**/*.spec.js
+</code></pre><p>后面的<code>tests/**/*.spec.js</code>是匹配<code>tests文件夹下的所有文件夹里的所有.spec.js结尾</code>的文件。用来匹配要测试的单元测试</p>
+<h2 id="合并公共和私有"><a href="#合并公共和私有" class="headerlink" title="合并公共和私有"></a>合并公共和私有</h2><p>因为业务的需要，项目里的Vuex、Api、mock要分为公共和业务私有。运行某个业务的时候，业务应该合并公共和当前业务的这些东西。</p>
+<p>然后再本着：<code>尽量让业务少写代码的原则</code>。合并代码的步骤不应该写在业务代码里，应该扔到公共部分。然后研究了很久，这样的写法应该是最简单的了。代码太多，不贴这了，看源码吧</p>
+<h2 id="初始化脚本"><a href="#初始化脚本" class="headerlink" title="初始化脚本"></a>初始化脚本</h2><p>虽然我已经尽力去解耦业务代码了，但是多多少少还有些不得不统一的写法。再说，为了统一项目代码结构，还是有必要写一个脚本来初始化项目。</p>
+<p>在build文件夹下新建一个文件：init.js</p>
+<p>init.js就是个纯<code>Node.js脚本</code>，copy文件夹的Node代码（至于为什么不用copy-webpack-plugin，遇到的问题是，不够灵活，而且必须指定entry和output，这个不知道要填啥，我的理解是：<code>webpack只是个“打包”工具，而初始化代码不是打包过程，不应该用webpack</code>）</p>
+<p>在根目录新建一个script文件夹，把最干净的初始化代码放到里面，然后init.js要干的活就是</p>
+<p>最后再package.json的scripts里多加一条</p>
+<pre><code>&quot;init&quot;: &quot;node ./build/init.js&quot;
+</code></pre><ol>
+<li>提示用户输入新建业务英文名</li>
+<li>判断是否已经存在业务</li>
+<li>在业务文件夹下新建一个业务文件夹</li>
+<li>把整个script文件夹下的东西复制到对应业务文件夹下</li>
+<li>如果有必要的话，在往初始化的业务里塞一些东西（如作者、创建时间等)</li>
+</ol>
+<p>具体看代码，量有点多。</p>
+<h1 id="细致的分配打包资源"><a href="#细致的分配打包资源" class="headerlink" title="细致的分配打包资源"></a>细致的分配打包资源</h1><p>打包后的资源分为私有资源和公共资源（chunk-vendors.js）。业务中需要把业务私有的js、css放到对应业务入口index.html同个文件夹下。然后公共js、css则单独放到一个公共文件夹里。</p>
+<p>修改业务css的路径，可以通过css.extract修改业务css的输出路径（css.extract直接作用于webpack的<a href="https://webpack.docschina.org/plugins/extract-text-webpack-plugin/" target="_blank" rel="noopener">ExtractTextWebpackPlugin</a>）</p>
+<p>要改js的输出路径要改webpack的<code>output</code>属性，但是Vue-cli3没有暴露出这个方法，但是暴露出了<code>configureWebpack</code>，它可以<code>直接修改webpack</code>的配置。</p>
+<p>ok没问题。</p>
+<pre><code>webpackConfig.output.filename = &apos;business/[name]/[name].[hash:8].js&apos;;
+</code></pre><p>但是在测试的时候遇到了一个很坑爹的问题。</p>
+<p>当配置路由需要用到动态路由来模块化路由组件的话，<code>模块化的js则被识别为公共资源</code>，然后和<code>chunk-vendors.js一起放到公共资源文件夹</code>下。但是从业务上理解，路由组件应该是业务代码才对。然后研究了一下，路由组件模块和公共代码模块都是由webpack的<code>output.chunkFilename</code>来控制的，暂时不知道怎么分开。</p>
+<h1 id="其他非代码部分"><a href="#其他非代码部分" class="headerlink" title="其他非代码部分"></a>其他非代码部分</h1><h2 id="关于BEM命名规范"><a href="#关于BEM命名规范" class="headerlink" title="关于BEM命名规范"></a>关于BEM命名规范</h2><p>了解过后才发现之前的理解是错误的。正确的理解应该是：</p>
+<p>BEM有3种连接线</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-   中划线 ：仅作为连字符使用，表示某个块或者某个子元素的多单词之间的连接记号。</span><br><span class="line">__  双下划线：双下划线用来连接块和块的子元素</span><br><span class="line">_   单下划线：单下划线用来描述一个块或者块的子元素的一种状态</span><br><span class="line"></span><br><span class="line">type-block__element_modifier</span><br></pre></td></tr></table></figure>
+<p>而每个组件中，应该只有几个<code>块</code>。</p>
+<p>所以可以简单约定：组件中除了<code>根标签以外最外层</code>的标签才能作为块。而这个块应该被控制在两三个以内</p>
+<h2 id="css路径变量"><a href="#css路径变量" class="headerlink" title="css路径变量"></a>css路径变量</h2><p>比如配置了@为src目录，则公共less的引入大概是这样的</p>
+<pre><code>// 引入公共样式，别名
+@import &apos;~@/assets/css/common.less&apos;;
+</code></pre><p>多加一个<code>~</code>即可</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>一顿操作下来，感觉Vue-cli3的配置精简了很多，添加了很多开箱即用的功能，在webpack配置五花八门的情况下确实省心不少。但问题是灵活性却不够高，比如我想把文件hash长度从8位改为5位，就没有统一的配置去改，而且修改webpack的话，也要改很多地方。</p>
+<p>其实还没有很认真的去了解webpack4，webpack最大的问题是loader、plugins太多，太杂，文档不够详细，配置错误也没有很好的提示。如果webpack4能真的像官网那样描述的，增加了很多开箱即用的功能，那webpack4应该用起来没那么繁琐了。那Vue-cli3可能会有点多此一举。</p>
+<p>所以我个人还是比较倾向于直接用webpack4来搭建项目。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/总结/" rel="tag"># 总结</a>
+          
+            <a href="/tags/前端技术/" rel="tag"># 前端技术</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/15/四姑娘山/" rel="next" title="四姑娘山">
+                <i class="fa fa-chevron-left"></i> 四姑娘山
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/timg.jpg"
+               alt="Leon.W" />
+          <p class="site-author-name" itemprop="name">Leon.W</p>
+           
+              <p class="site-description motion-element" itemprop="description">weijianghong's hexo personal blog. still under construction.</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/HelloWorld20" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2182668367" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#项目介绍"><span class="nav-number">1.</span> <span class="nav-text">项目介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#项目初始化"><span class="nav-number">2.</span> <span class="nav-text">项目初始化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TODO-LIST"><span class="nav-number">3.</span> <span class="nav-text">TODO LIST</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开始干活"><span class="nav-number">4.</span> <span class="nav-text">开始干活</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#eslint"><span class="nav-number">4.1.</span> <span class="nav-text">eslint</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新增环境变量"><span class="nav-number">4.2.</span> <span class="nav-text">新增环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mock数据"><span class="nav-number">4.3.</span> <span class="nav-text">mock数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单元测试"><span class="nav-number">4.4.</span> <span class="nav-text">单元测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合并公共和私有"><span class="nav-number">4.5.</span> <span class="nav-text">合并公共和私有</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化脚本"><span class="nav-number">4.6.</span> <span class="nav-text">初始化脚本</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#细致的分配打包资源"><span class="nav-number">5.</span> <span class="nav-text">细致的分配打包资源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他非代码部分"><span class="nav-number">6.</span> <span class="nav-text">其他非代码部分</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于BEM命名规范"><span class="nav-number">6.1.</span> <span class="nav-text">关于BEM命名规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#css路径变量"><span class="nav-number">6.2.</span> <span class="nav-text">css路径变量</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-weijianghong"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leon.W</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

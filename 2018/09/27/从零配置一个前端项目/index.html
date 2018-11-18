@@ -87,18 +87,18 @@
 
 
 
-<meta name="description" content="配置package.json前端项目必备，不需要单独配置，但是也应该初始化一下。 1npm init 然后根据提示一路确定就行。 写一个readme良好的项目应该有个readme文档。告诉使用的人，怎么把项目跑起来，因为不一定所有的项目都是npm run dev、npm run build。而且放到github上，别人第一眼看见的就是readme 配置.editorconfig作用是在编辑代码的">
+<meta name="description" content="工作中需要我优化项目，所以有必要按项目结构从头撸一遍。不然根本不了解细节。">
 <meta name="keywords" content="总结,前端技术">
 <meta property="og:type" content="article">
 <meta property="og:title" content="从零配置一个前端项目">
 <meta property="og:url" content="http://yoursite.com/2018/09/27/从零配置一个前端项目/index.html">
 <meta property="og:site_name" content="HelloWorld20">
-<meta property="og:description" content="配置package.json前端项目必备，不需要单独配置，但是也应该初始化一下。 1npm init 然后根据提示一路确定就行。 写一个readme良好的项目应该有个readme文档。告诉使用的人，怎么把项目跑起来，因为不一定所有的项目都是npm run dev、npm run build。而且放到github上，别人第一眼看见的就是readme 配置.editorconfig作用是在编辑代码的">
+<meta property="og:description" content="工作中需要我优化项目，所以有必要按项目结构从头撸一遍。不然根本不了解细节。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-26T05:46:21.630Z">
+<meta property="og:updated_time" content="2018-11-18T02:41:19.986Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从零配置一个前端项目">
-<meta name="twitter:description" content="配置package.json前端项目必备，不需要单独配置，但是也应该初始化一下。 1npm init 然后根据提示一路确定就行。 写一个readme良好的项目应该有个readme文档。告诉使用的人，怎么把项目跑起来，因为不一定所有的项目都是npm run dev、npm run build。而且放到github上，别人第一眼看见的就是readme 配置.editorconfig作用是在编辑代码的">
+<meta name="twitter:description" content="工作中需要我优化项目，所以有必要按项目结构从头撸一遍。不然根本不了解细节。">
 
 
 
@@ -333,7 +333,8 @@
       
 
       
-        <a id="more"></a>
+        <p>工作中需要我优化项目，所以有必要按项目结构从头撸一遍。不然根本不了解细节。</p>
+<a id="more"></a>
 <h2 id="配置package-json"><a href="#配置package-json" class="headerlink" title="配置package.json"></a>配置package.json</h2><p>前端项目必备，不需要单独配置，但是也应该初始化一下。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init</span><br></pre></td></tr></table></figure>
 <p>然后根据提示一路确定就行。</p>
@@ -366,12 +367,13 @@
 <p>在设置中添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;eslint.enable&quot;: true</span><br></pre></td></tr></table></figure></p>
 <h3 id="eslintignore"><a href="#eslintignore" class="headerlink" title="eslintignore"></a>eslintignore</h3><p>在根目录下新建文件：<code>.eslintignore</code>。eslint则不会去检查指定的文件。语法同<code>.gitignore</code>。但是不同的是，eslintignore默认禁止/node_modules/<em> 和 /bower_components/</em></p>
 <p>在工程化的时候，应该把eslint的配置文件上传到项目中，并且确保每个人都安装了编辑器eslint插件</p>
-<h2 id="git配置"><a href="#git配置" class="headerlink" title="git配置"></a>git配置</h2><p><strong>简单描述一下怎样初始化一个空项目、开始一个已经存在的项目、进行到一半并连接已有的项目、submodule等</strong></p>
-<h3 id="配置git"><a href="#配置git" class="headerlink" title="配置git"></a>配置git</h3><p>初始化git项目</p>
+<h2 id="git配置"><a href="#git配置" class="headerlink" title="git配置"></a>git配置</h2><h3 id="配置git"><a href="#配置git" class="headerlink" title="配置git"></a>配置git</h3><p>初始化git项目</p>
 <pre><code>git init
 </code></pre><p>关联github</p>
 <pre><code>git remote add origin git@github.com:HelloWorld20/webpack-demo.git
 </code></pre><h3 id="gitignore"><a href="#gitignore" class="headerlink" title="gitignore"></a>gitignore</h3><p>添加不想被git版本控制的文件和文件夹，语法参考<a href="https://juejin.im/post/5ae1e6ed6fb9a07a9b35a941" target="_blank" rel="noopener">.gitignore语法参考</a></p>
+<h3 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h3><p>搞到一半就不搞了。一般直接用Vue-cli来创建就好。</p>
+<p>只记得需要一个<code>mocha-webpack</code>的东西</p>
 <h2 id="webpack配置"><a href="#webpack配置" class="headerlink" title="webpack配置"></a>webpack配置</h2><p>是个大头，另起一篇文章记录</p>
 
       
@@ -501,7 +503,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -569,7 +571,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置package-json"><span class="nav-number">1.</span> <span class="nav-text">配置package.json</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写一个readme"><span class="nav-number">2.</span> <span class="nav-text">写一个readme</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置-editorconfig"><span class="nav-number">3.</span> <span class="nav-text">配置.editorconfig</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置eslint"><span class="nav-number">4.</span> <span class="nav-text">配置eslint</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#eslintignore"><span class="nav-number">4.1.</span> <span class="nav-text">eslintignore</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git配置"><span class="nav-number">5.</span> <span class="nav-text">git配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置git"><span class="nav-number">5.1.</span> <span class="nav-text">配置git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gitignore"><span class="nav-number">5.2.</span> <span class="nav-text">gitignore</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack配置"><span class="nav-number">6.</span> <span class="nav-text">webpack配置</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置package-json"><span class="nav-number">1.</span> <span class="nav-text">配置package.json</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写一个readme"><span class="nav-number">2.</span> <span class="nav-text">写一个readme</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置-editorconfig"><span class="nav-number">3.</span> <span class="nav-text">配置.editorconfig</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置eslint"><span class="nav-number">4.</span> <span class="nav-text">配置eslint</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#eslintignore"><span class="nav-number">4.1.</span> <span class="nav-text">eslintignore</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git配置"><span class="nav-number">5.</span> <span class="nav-text">git配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置git"><span class="nav-number">5.1.</span> <span class="nav-text">配置git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gitignore"><span class="nav-number">5.2.</span> <span class="nav-text">gitignore</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单元测试"><span class="nav-number">5.3.</span> <span class="nav-text">单元测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack配置"><span class="nav-number">6.</span> <span class="nav-text">webpack配置</span></a></li></ol></div>
             
 
           </div>
