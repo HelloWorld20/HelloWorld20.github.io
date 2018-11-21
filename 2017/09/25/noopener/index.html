@@ -95,7 +95,7 @@
 <meta property="og:site_name" content="HelloWorld20">
 <meta property="og:description" content="在某次翻阅技术博客的时候，偶然发现有opener这个东西。了解了一下，opener这个东西会带来一个很严重的问题。但是平时好像很少会谈及opener。所以觉得有必要记下来。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-23T03:50:52.205Z">
+<meta property="og:updated_time" content="2018-11-21T15:51:20.427Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于opener的问题">
 <meta name="twitter:description" content="在某次翻阅技术博客的时候，偶然发现有opener这个东西。了解了一下，opener这个东西会带来一个很严重的问题。但是平时好像很少会谈及opener。所以觉得有必要记下来。">
@@ -357,6 +357,18 @@
 <p>总结来说，父页面可以通过<code>window.open</code>方法返回的对象来控制子页面，子页面可以通过<code>window.opener</code>来控制父页面。</p>
 <p>反正为了安全，新开的页面<code>清除掉opener</code>就对了。至于两个页面会共享进程，阻塞彼此，暂时没好办法。</p>
 <p>另外，在老的浏览器中，可以使用 <code>rel=noreferrer</code> 禁用HTTP头部的Referer属性（未验证）</p>
+<p>以下更新于2018年11月21日 23:03:42</p>
+<h1 id="opener的好处"><a href="#opener的好处" class="headerlink" title="opener的好处"></a>opener的好处</h1><p>opener也不是一无是处，最近的工作中突然发现了opener才能实现的需求。</p>
+<p>首先需求是：</p>
+<ol>
+<li>在当前的业务打开第三方页面，然后与第三方页面进行一些数据交互</li>
+<li>然后又不想用iframe。</li>
+</ol>
+<p>就可以用window.open打开一个第三方页面，再利用postMessage来在两个页面之间进行数据交互就ok了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// index.html</span></span><br><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">'button'</span>);</span><br><span class="line"><span class="keyword">var</span> a;</span><br><span class="line"><span class="comment">// 弹出新弹窗需要用户手动触发</span></span><br><span class="line">btn.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    a = <span class="built_in">window</span>.open(<span class="string">'http://127.0.0.1:3000/local/frame.html'</span>)</span><br><span class="line">    setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="comment">// 每两秒给子页面抛出一个信息</span></span><br><span class="line">        a.postMessage(<span class="string">'message from index.html'</span>, <span class="string">'*'</span>);</span><br><span class="line">    &#125;, <span class="number">2000</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 监听来自子页面的信息</span></span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'message'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'message'</span>)</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+<p>然后子页面这样写</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 接收父页面的信息</span></span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'message'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'message from index'</span>, e)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 向父页面抛出信息</span></span><br><span class="line">setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">	<span class="built_in">window</span>.opener.postMessage(<span class="string">'message from iframe'</span>, <span class="string">'*'</span>)</span><br><span class="line">&#125;, <span class="number">2000</span>)</span><br></pre></td></tr></table></figure>
+<p>但是要注意的是。监听数据只有监听<code>message</code>一个事件，所以如果有多个opener，则可能需要手动来区分到底是哪个子页面传来的信息。</p>
 
       
     </div>
@@ -409,8 +421,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/10/25/AlloyTeam-conf/" rel="prev" title="AlloyTeam Web 2017大会总结">
-                AlloyTeam Web 2017大会总结 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/10/25/壹点壹客项目总结/" rel="prev" title="壹点壹客项目总结">
+                壹点壹客项目总结 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -458,8 +470,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/timg.jpg"
@@ -532,6 +553,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#opener的好处"><span class="nav-number">1.</span> <span class="nav-text">opener的好处</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
