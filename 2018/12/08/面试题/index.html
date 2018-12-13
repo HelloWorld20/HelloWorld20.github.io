@@ -1,0 +1,776 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="前端技术,总结," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="最近公司有要招人，然后叫我负责一下技术方面的面试，然后问着问着，好像发现有一些知识点我也不是记得特别清楚。所以有必要列一下自己面试需要问的问题，并且把所有问题点给摸索清楚。不然被问住了就很尴尬了。。。 HTML初级1. HTML5有哪些新特性，你用过哪一些？语义化标签、audio、video、canvas、geolocation、web worker、websocket cookie、localS">
+<meta name="keywords" content="前端技术,总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试题">
+<meta property="og:url" content="http://yoursite.com/2018/12/08/面试题/index.html">
+<meta property="og:site_name" content="HelloWorld20">
+<meta property="og:description" content="最近公司有要招人，然后叫我负责一下技术方面的面试，然后问着问着，好像发现有一些知识点我也不是记得特别清楚。所以有必要列一下自己面试需要问的问题，并且把所有问题点给摸索清楚。不然被问住了就很尴尬了。。。 HTML初级1. HTML5有哪些新特性，你用过哪一些？语义化标签、audio、video、canvas、geolocation、web worker、websocket cookie、localS">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-12T03:28:42.583Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面试题">
+<meta name="twitter:description" content="最近公司有要招人，然后叫我负责一下技术方面的面试，然后问着问着，好像发现有一些知识点我也不是记得特别清楚。所以有必要列一下自己面试需要问的问题，并且把所有问题点给摸索清楚。不然被问住了就很尴尬了。。。 HTML初级1. HTML5有哪些新特性，你用过哪一些？语义化标签、audio、video、canvas、geolocation、web worker、websocket cookie、localS">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"right","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/12/08/面试题/"/>
+
+
+
+
+
+  <title> 面试题 | HelloWorld20 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HelloWorld20</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">there is nothing on subtitle</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/08/面试题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leon.W">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/timg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HelloWorld20">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                面试题
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-08T17:15:04+08:00">
+                2018-12-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>最近公司有要招人，然后叫我负责一下技术方面的面试，然后问着问着，好像发现有一些知识点我也不是记得特别清楚。所以有必要列一下自己面试需要问的问题，并且把所有问题点给摸索清楚。不然被问住了就很尴尬了。。。</p>
+<h1 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h1><h2 id="初级"><a href="#初级" class="headerlink" title="初级"></a>初级</h2><h3 id="1-HTML5有哪些新特性，你用过哪一些？"><a href="#1-HTML5有哪些新特性，你用过哪一些？" class="headerlink" title="1. HTML5有哪些新特性，你用过哪一些？"></a>1. HTML5有哪些新特性，你用过哪一些？</h3><p>语义化标签、audio、video、canvas、geolocation、web worker、websocket</p>
+<h3 id="cookie、localStorage、sessionStorage的区别"><a href="#cookie、localStorage、sessionStorage的区别" class="headerlink" title="cookie、localStorage、sessionStorage的区别"></a>cookie、localStorage、sessionStorage的区别</h3><p>cookie：每次请求都会被发送到服务器。不大于4k。可以自定义过期时间；服务端可以设置httponly，前端不可访问。<br>sessionStorage：页面关闭后失效（window.open新页面还会存在）<br>localStorage：永久存储</p>
+<h2 id="中级"><a href="#中级" class="headerlink" title="中级"></a>中级</h2><h3 id="如何在移动设备实现物理1像素的线"><a href="#如何在移动设备实现物理1像素的线" class="headerlink" title="如何在移动设备实现物理1像素的线"></a>如何在移动设备实现物理1像素的线</h3><p>单边：1px的线然后再缩放 dpr 倍<br>四边：实现一个与目标元素dpr倍宽、dpr倍高的伪元素，然后整体缩放dpr倍。让其刚好覆盖到目标元素上。（兼容圆角）</p>
+<p>网上的方案还有：border-image、viewport+rem、box-shadow来实现。但是最实用的还是上述方法。</p>
+<p>升级：结合vue的指令可以更优雅的实现一像素问题。<a href="https://helloworld20.github.io/2018/10/15/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E4%B8%80%E5%83%8F%E7%B4%A0%E9%97%AE%E9%A2%98/" target="_blank" rel="noopener">见项目笔记</a></p>
+<h2 id="高级"><a href="#高级" class="headerlink" title="高级"></a>高级</h2><h3 id="如何在页面间传值"><a href="#如何在页面间传值" class="headerlink" title="如何在页面间传值"></a>如何在页面间传值</h3><ol>
+<li>监听storage事件，获取localStorage、sessionStorage 变化，从而传参（跨域限制)</li>
+<li>postMessage（无跨域限制、可用于iframe、openner）</li>
+<li>sharedWorker（高级、兼容性差）</li>
+</ol>
+<h1 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h1><h2 id="初级-1"><a href="#初级-1" class="headerlink" title="初级"></a>初级</h2><h3 id="css选择器有哪些？以及他们的优先级"><a href="#css选择器有哪些？以及他们的优先级" class="headerlink" title="css选择器有哪些？以及他们的优先级"></a>css选择器有哪些？以及他们的优先级</h3><p>1.id选择器（ # myid）<br>2.类选择器（.myclassname）<br>3.标签选择器（div, h1, p）<br>4.相邻选择器（h1 + p）<br>5.子选择器（ul &gt; li）<br>6.后代选择器（li a）<br>7.通配符选择器（ * ）<br>8.属性选择器（a[rel = “external”]）<br>9.伪类选择器（a:hover, li:nth-child）</p>
+<p>id &gt; class &gt; 属性 &gt; 标签 &gt; 通配符</p>
+<h3 id="解释一下rem、em、px、vh、vw的区别"><a href="#解释一下rem、em、px、vh、vw的区别" class="headerlink" title="解释一下rem、em、px、vh、vw的区别"></a>解释一下rem、em、px、vh、vw的区别</h3><ul>
+<li>rem：相对于\<htm>的<code>font-size</code>:来定义的单位。</htm></li>
+<li>em：相对于父元素的<code>font-size</code> 来定义的单位</li>
+<li>px：物理像素，基本单位</li>
+<li>vh：100vh === 1浏览器可视区域高度</li>
+<li>vw：100vw === 1浏览器可视区域宽度</li>
+</ul>
+<p>高级：</p>
+<ul>
+<li>vmin：相对于视口的宽度或高度中较小的那个。其中最小的那个被均分为100单位的vmin</li>
+<li>vmax：相对于视口的宽度或高度中较大的那个。其中最大的那个被均分为100单位的vmax</li>
+<li>rpx：微信小程序使用的单位，750rpx等于屏幕宽度</li>
+</ul>
+<h3 id="对盒子模型的理解，IE盒子模型和标准模型有什么区别"><a href="#对盒子模型的理解，IE盒子模型和标准模型有什么区别" class="headerlink" title="对盒子模型的理解，IE盒子模型和标准模型有什么区别"></a>对盒子模型的理解，IE盒子模型和标准模型有什么区别</h3><p>盒模型： 内容(content)、填充(padding)、边界(margin)、 边框(border)</p>
+<p>其实区别在于box-sizing属性:</p>
+<p>content-box：标准盒子模型；<br>border-box：IE盒子模型；content部分把 border 和 padding计算了进去</p>
+<h2 id="中级-1"><a href="#中级-1" class="headerlink" title="中级"></a>中级</h2><h2 id="高级-1"><a href="#高级-1" class="headerlink" title="高级"></a>高级</h2><h1 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h1><h2 id="初级-2"><a href="#初级-2" class="headerlink" title="初级"></a>初级</h2><h3 id="js基本数据类型"><a href="#js基本数据类型" class="headerlink" title="js基本数据类型"></a>js基本数据类型</h3><p>undefined、null、boolean、string、Number、Symble（ES6）</p>
+<h3 id="事件冒泡与事件捕获的区别"><a href="#事件冒泡与事件捕获的区别" class="headerlink" title="事件冒泡与事件捕获的区别"></a>事件冒泡与事件捕获的区别</h3><p>IE使用的是事件冒泡、另一种是事件捕获</p>
+<p>事件冒泡：事件开始于最具体的元素、然后逐级向上传播到较为不具体的节点</p>
+<p>事件捕获：由不太具体的节点应该更早接收到事件、而最具体的节点最后接收到事件</p>
+<p>通过addEventListener的第三个参数来启用监听事件冒泡还是事件捕获：true，事件捕获；false：事件冒泡；所以平时使用的都是false居多</p>
+<p>场景提问：如果有一个列表，有数千个选项要绑定事件，应该如何处理；</p>
+<h3 id="判断一个变量是不是function"><a href="#判断一个变量是不是function" class="headerlink" title="判断一个变量是不是function"></a>判断一个变量是不是function</h3><p>typeof variable === ‘function’</p>
+<p>是不是array</p>
+<p>Object.prototype.toString.call(variable) === ‘[object Array]‘</p>
+<h2 id="中级-2"><a href="#中级-2" class="headerlink" title="中级"></a>中级</h2><h3 id="宏任务与微任务"><a href="#宏任务与微任务" class="headerlink" title="宏任务与微任务"></a>宏任务与微任务</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="number">2</span>)</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="number">3</span>)</span><br><span class="line">	resolve()</span><br><span class="line">&#125;).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="number">4</span>)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<p>打印顺序：1、3、5、4、2</p>
+<p>setTimeout是<code>宏任务</code>，Promise是<code>微任务</code>，微任务会比宏任务快，可以简单的理解，微任务是vip吧；</p>
+<p>概念大概是这样的：js有个执行<code>堆栈</code>和排队<code>队列</code>的概念。如果是<code>同步任务，则直接进入堆栈</code>。如果是<code>异步任务，则进入队列</code>等待；<br>如果堆栈为空，则先查找微任务内的队列任务，再去查找宏任务的队列任务；</p>
+<p>比较特殊的是，Node的process.nextTick();该方法是直接把任务插入到堆栈底部，会比微任务与宏任务都快；</p>
+<p>属于微任务的有：Promise、MutationObserver、process.nextTick（Node)</p>
+<h3 id="箭头函数与普通函数的区别"><a href="#箭头函数与普通函数的区别" class="headerlink" title="箭头函数与普通函数的区别"></a>箭头函数与普通函数的区别</h3><h2 id="高级-2"><a href="#高级-2" class="headerlink" title="高级"></a>高级</h2><h3 id="Set和Map数据结构"><a href="#Set和Map数据结构" class="headerlink" title="Set和Map数据结构"></a>Set和Map数据结构</h3><h1 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h1><h2 id="初级-3"><a href="#初级-3" class="headerlink" title="初级"></a>初级</h2><h3 id="组件的生命周期，加上keep-alive、vue-router之后会新增什么钩子函数"><a href="#组件的生命周期，加上keep-alive、vue-router之后会新增什么钩子函数" class="headerlink" title="组件的生命周期，加上keep-alive、vue-router之后会新增什么钩子函数"></a>组件的生命周期，加上keep-alive、vue-router之后会新增什么钩子函数</h3><p>beforeCreate、created、beforeMounte、mounted、beforeUpdate、updated、beforeDestroy、destroyed</p>
+<p>keep-alive第二次进入不会触发<code>beforeCreate、created、beforeMounte、mounted、beforeDestroy、destroyed</code>；<br>新增<code>activated</code> 和 <code>deactivated</code></p>
+<p>加上vue-router之后会新增：<code>beforeRouteEnter、beforeRouteUpdate、beforeRouteLeave</code></p>
+<h3 id="created与mounted的区别，能不能在created里访问dom"><a href="#created与mounted的区别，能不能在created里访问dom" class="headerlink" title="created与mounted的区别，能不能在created里访问dom"></a>created与mounted的区别，能不能在created里访问dom</h3><p>created是组件实例加载完成，可访问data、prop、methods等等</p>
+<p>mounted可以访问除了created能访问的东西 + dom </p>
+<p>不能再created里访问dom</p>
+<h3 id="keep-alive"><a href="#keep-alive" class="headerlink" title="keep-alive"></a>keep-alive</h3><p>从场景中提问：比如一个分页组件，已经跳转到第三页，然后跳转到其他路由，再跳转回来需要还保留在第三页，应该用keep-alive；</p>
+<h2 id="中级-3"><a href="#中级-3" class="headerlink" title="中级"></a>中级</h2><h3 id="vue-router的不刷新加载实现原理是什么"><a href="#vue-router的不刷新加载实现原理是什么" class="headerlink" title="vue-router的不刷新加载实现原理是什么"></a>vue-router的不刷新加载实现原理是什么</h3><p>vue-router有两种模式：hash和history；</p>
+<p>hash：修改window.location.hash时，不会发生页面刷新、会给路由历史新增记录。且可以监听hashchange来监听hash的变化，以此来实现页面不刷新渲染页面。</p>
+<p>history：利用history.pushstate方法来实现。也是不刷新页面、给路由历史新增记录。更多的是，也可以修改url的相对路径且不发生页面刷新加载；然后可以通过监听popstate事件来实现监听路由变化。</p>
+<h3 id="自定义指令"><a href="#自定义指令" class="headerlink" title="自定义指令"></a>自定义指令</h3><h3 id="minxins"><a href="#minxins" class="headerlink" title="minxins"></a>minxins</h3><h3 id="组件v-model"><a href="#组件v-model" class="headerlink" title="组件v-model"></a>组件v-model</h3><h2 id="高级-3"><a href="#高级-3" class="headerlink" title="高级"></a>高级</h2><h3 id="Vue-use一个插件到底做了什么"><a href="#Vue-use一个插件到底做了什么" class="headerlink" title="Vue.use一个插件到底做了什么"></a>Vue.use一个插件到底做了什么</h3><h3 id="Vue-extends"><a href="#Vue-extends" class="headerlink" title="Vue.extends"></a>Vue.extends</h3><p>Vue.extends接受一个对象，与Vue、Vue.components接收的参数完全一致。返回的是一个构造函数（constructor）；new 该构造函数则返回一个组件实例（instance）。<br>该实例与new Vue生成的Vm实例、Vue.components生成的组件实例完全一致；不同的是一份配置=》一份构造函数=》多份实例。从而实现复用；</p>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><h2 id="初级-4"><a href="#初级-4" class="headerlink" title="初级"></a>初级</h2><h3 id="在提升代码性能做过哪些事情"><a href="#在提升代码性能做过哪些事情" class="headerlink" title="在提升代码性能做过哪些事情"></a>在提升代码性能做过哪些事情</h3><p>发散、很多</p>
+<h2 id="中级-4"><a href="#中级-4" class="headerlink" title="中级"></a>中级</h2><h3 id="解释import的各种用法的区别"><a href="#解释import的各种用法的区别" class="headerlink" title="解释import的各种用法的区别"></a>解释import的各种用法的区别</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> defaultExport <span class="keyword">from</span> <span class="string">"module-name"</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> name <span class="keyword">from</span> <span class="string">"module-name"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="keyword">export</span> &#125; <span class="keyword">from</span> <span class="string">"module-name"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="keyword">export</span> <span class="keyword">as</span> alias &#125; <span class="keyword">from</span> <span class="string">"module-name"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; export1 , export2 &#125; <span class="keyword">from</span> <span class="string">"module-name"</span>;</span><br><span class="line"><span class="keyword">import</span> defaultExport, * <span class="keyword">as</span> name <span class="keyword">from</span> <span class="string">"module-name"</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">"module-name"</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="https与http的区别，怎样做到加密的"><a href="#https与http的区别，怎样做到加密的" class="headerlink" title="https与http的区别，怎样做到加密的"></a>https与http的区别，怎样做到加密的</h3><h2 id="高级-4"><a href="#高级-4" class="headerlink" title="高级"></a>高级</h2><h3 id="require与import的区别"><a href="#require与import的区别" class="headerlink" title="require与import的区别"></a>require与import的区别</h3><p>require：规范出来之前的野生规范，遵守CommonJS规范。在import规范出来之前被大规模使用</p>
+<p>import：ES6官方模块管理规范</p>
+<p>使用：</p>
+<ul>
+<li>import 必须写在模块头部，必须在模块最外层；require可以在任何地方require；可以export多个代码</li>
+<li>可以require export出来的模块；但是import不能引用module.export的模块；虽然可以，但是强烈不建议使用；只能定义一个modules.exports</li>
+</ul>
+<p>原理：</p>
+<ul>
+<li>import是引用；require是立即运行</li>
+</ul>
+<h3 id="webpack怎样实现tree-shaking（去除不必要的代码）"><a href="#webpack怎样实现tree-shaking（去除不必要的代码）" class="headerlink" title="webpack怎样实现tree shaking（去除不必要的代码）"></a>webpack怎样实现tree shaking（去除不必要的代码）</h3><p>应该结合ES6的imoprt、export、DefinePlug、sideEffects和uglifyjs-webpack-plugin来实现；</p>
+<p>原理是，用import、export或者DefinePlugin来定义部分不能访问的代码。然后uglifyjs-webpack-plugin在压缩js时识别不能访问的代码，从而去除掉多余的代码；</p>
+<p>而sideEffects可以参考：<a href="https://zhuanlan.zhihu.com/p/40052192" target="_blank" rel="noopener">Webpack 中的 sideEffects 到底该怎么用</a>；</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端技术/" rel="tag"># 前端技术</a>
+          
+            <a href="/tags/总结/" rel="tag"># 总结</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/14/记一个基于Vue-cli3搭建的前端项目/" rel="next" title="记一个基于Vue-cli3搭建的前端项目">
+                <i class="fa fa-chevron-left"></i> 记一个基于Vue-cli3搭建的前端项目
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/timg.jpg"
+               alt="Leon.W" />
+          <p class="site-author-name" itemprop="name">Leon.W</p>
+           
+              <p class="site-description motion-element" itemprop="description">weijianghong's hexo personal blog. still under construction.</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/HelloWorld20" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2182668367" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTML"><span class="nav-number">1.</span> <span class="nav-text">HTML</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#初级"><span class="nav-number">1.1.</span> <span class="nav-text">初级</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-HTML5有哪些新特性，你用过哪一些？"><span class="nav-number">1.1.1.</span> <span class="nav-text">1. HTML5有哪些新特性，你用过哪一些？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cookie、localStorage、sessionStorage的区别"><span class="nav-number">1.1.2.</span> <span class="nav-text">cookie、localStorage、sessionStorage的区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中级"><span class="nav-number">1.2.</span> <span class="nav-text">中级</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#如何在移动设备实现物理1像素的线"><span class="nav-number">1.2.1.</span> <span class="nav-text">如何在移动设备实现物理1像素的线</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高级"><span class="nav-number">1.3.</span> <span class="nav-text">高级</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#如何在页面间传值"><span class="nav-number">1.3.1.</span> <span class="nav-text">如何在页面间传值</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS"><span class="nav-number">2.</span> <span class="nav-text">CSS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#初级-1"><span class="nav-number">2.1.</span> <span class="nav-text">初级</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#css选择器有哪些？以及他们的优先级"><span class="nav-number">2.1.1.</span> <span class="nav-text">css选择器有哪些？以及他们的优先级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解释一下rem、em、px、vh、vw的区别"><span class="nav-number">2.1.2.</span> <span class="nav-text">解释一下rem、em、px、vh、vw的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对盒子模型的理解，IE盒子模型和标准模型有什么区别"><span class="nav-number">2.1.3.</span> <span class="nav-text">对盒子模型的理解，IE盒子模型和标准模型有什么区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中级-1"><span class="nav-number">2.2.</span> <span class="nav-text">中级</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高级-1"><span class="nav-number">2.3.</span> <span class="nav-text">高级</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JS"><span class="nav-number">3.</span> <span class="nav-text">JS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#初级-2"><span class="nav-number">3.1.</span> <span class="nav-text">初级</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#js基本数据类型"><span class="nav-number">3.1.1.</span> <span class="nav-text">js基本数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件冒泡与事件捕获的区别"><span class="nav-number">3.1.2.</span> <span class="nav-text">事件冒泡与事件捕获的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断一个变量是不是function"><span class="nav-number">3.1.3.</span> <span class="nav-text">判断一个变量是不是function</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中级-2"><span class="nav-number">3.2.</span> <span class="nav-text">中级</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#宏任务与微任务"><span class="nav-number">3.2.1.</span> <span class="nav-text">宏任务与微任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#箭头函数与普通函数的区别"><span class="nav-number">3.2.2.</span> <span class="nav-text">箭头函数与普通函数的区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高级-2"><span class="nav-number">3.3.</span> <span class="nav-text">高级</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Set和Map数据结构"><span class="nav-number">3.3.1.</span> <span class="nav-text">Set和Map数据结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vue"><span class="nav-number">4.</span> <span class="nav-text">Vue</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#初级-3"><span class="nav-number">4.1.</span> <span class="nav-text">初级</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#组件的生命周期，加上keep-alive、vue-router之后会新增什么钩子函数"><span class="nav-number">4.1.1.</span> <span class="nav-text">组件的生命周期，加上keep-alive、vue-router之后会新增什么钩子函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#created与mounted的区别，能不能在created里访问dom"><span class="nav-number">4.1.2.</span> <span class="nav-text">created与mounted的区别，能不能在created里访问dom</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#keep-alive"><span class="nav-number">4.1.3.</span> <span class="nav-text">keep-alive</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中级-3"><span class="nav-number">4.2.</span> <span class="nav-text">中级</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#vue-router的不刷新加载实现原理是什么"><span class="nav-number">4.2.1.</span> <span class="nav-text">vue-router的不刷新加载实现原理是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义指令"><span class="nav-number">4.2.2.</span> <span class="nav-text">自定义指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#minxins"><span class="nav-number">4.2.3.</span> <span class="nav-text">minxins</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件v-model"><span class="nav-number">4.2.4.</span> <span class="nav-text">组件v-model</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高级-3"><span class="nav-number">4.3.</span> <span class="nav-text">高级</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Vue-use一个插件到底做了什么"><span class="nav-number">4.3.1.</span> <span class="nav-text">Vue.use一个插件到底做了什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vue-extends"><span class="nav-number">4.3.2.</span> <span class="nav-text">Vue.extends</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他"><span class="nav-number">5.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#初级-4"><span class="nav-number">5.1.</span> <span class="nav-text">初级</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在提升代码性能做过哪些事情"><span class="nav-number">5.1.1.</span> <span class="nav-text">在提升代码性能做过哪些事情</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中级-4"><span class="nav-number">5.2.</span> <span class="nav-text">中级</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解释import的各种用法的区别"><span class="nav-number">5.2.1.</span> <span class="nav-text">解释import的各种用法的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#https与http的区别，怎样做到加密的"><span class="nav-number">5.2.2.</span> <span class="nav-text">https与http的区别，怎样做到加密的</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高级-4"><span class="nav-number">5.3.</span> <span class="nav-text">高级</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#require与import的区别"><span class="nav-number">5.3.1.</span> <span class="nav-text">require与import的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#webpack怎样实现tree-shaking（去除不必要的代码）"><span class="nav-number">5.3.2.</span> <span class="nav-text">webpack怎样实现tree shaking（去除不必要的代码）</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-weijianghong"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leon.W</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
