@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="总结,前端技术," />
 
 
 
@@ -87,16 +87,18 @@
 
 
 
-<meta name="description" content="weijianghong&apos;s hexo personal blog. still under construction.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="HelloWorld20">
-<meta property="og:url" content="http://yoursite.com/tags/总结/index.html">
+<meta name="description" content="在项目开发中有大量的滚动，自然而然的想到了IOS的-webkit-overflow-scroll来启用平滑滚动，提高用户体验；但是在实际应用中又遇到了不少的问题：滚动穿透、无法禁用全局滚动、安卓设备不支持等等；相当的棘手；经过一番的坑，最后总结出了结论：用js来实现平滑滚动。">
+<meta name="keywords" content="总结,前端技术">
+<meta property="og:type" content="article">
+<meta property="og:title" content="双刃剑-webkit-overflow-scrolling">
+<meta property="og:url" content="http://yoursite.com/2018/12/23/webkitoverflow/index.html">
 <meta property="og:site_name" content="HelloWorld20">
-<meta property="og:description" content="weijianghong&apos;s hexo personal blog. still under construction.">
+<meta property="og:description" content="在项目开发中有大量的滚动，自然而然的想到了IOS的-webkit-overflow-scroll来启用平滑滚动，提高用户体验；但是在实际应用中又遇到了不少的问题：滚动穿透、无法禁用全局滚动、安卓设备不支持等等；相当的棘手；经过一番的坑，最后总结出了结论：用js来实现平滑滚动。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-22T20:25:32.381Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HelloWorld20">
-<meta name="twitter:description" content="weijianghong&apos;s hexo personal blog. still under construction.">
+<meta name="twitter:title" content="双刃剑-webkit-overflow-scrolling">
+<meta name="twitter:description" content="在项目开发中有大量的滚动，自然而然的想到了IOS的-webkit-overflow-scroll来启用平滑滚动，提高用户体验；但是在实际应用中又遇到了不少的问题：滚动穿透、无法禁用全局滚动、安卓设备不支持等等；相当的棘手；经过一番的坑，最后总结出了结论：用js来实现平滑滚动。">
 
 
 
@@ -124,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/总结/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/12/23/webkitoverflow/"/>
 
 
 
 
 
-  <title> 标签: 总结 | HelloWorld20 </title>
+  <title> 双刃剑-webkit-overflow-scrolling | HelloWorld20 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -155,7 +157,7 @@
     
   
 
-  <div class="container sidebar-position-right  ">
+  <div class="container sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -249,302 +251,160 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        总结
-        <small>标签</small>
-      </h2>
-    </div>
-
+  <div id="posts" class="posts-expand">
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2018/12/23/webkitoverflow/" itemprop="url">
-              
-                <span itemprop="name">双刃剑-webkit-overflow-scrolling</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-12-23T04:15:21+08:00"
-              content="2018-12-23" >
-          12-23
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2018/12/08/面试题/" itemprop="url">
-              
-                <span itemprop="name">面试题</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-12-08T17:15:04+08:00"
-              content="2018-12-08" >
-          12-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2018/11/14/记一个基于Vue-cli3搭建的前端项目/" itemprop="url">
-              
-                <span itemprop="name">记一个基于Vue-cli3搭建的前端项目</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-11-14T15:21:24+08:00"
-              content="2018-11-14" >
-          11-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2018/10/15/移动端一像素问题/" itemprop="url">
-              
-                <span itemprop="name">移动端一像素问题</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-15T17:13:38+08:00"
-              content="2018-10-15" >
-          10-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2018/10/09/从零配置webpack/" itemprop="url">
-              
-                <span itemprop="name">从零配置webpack</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-09T09:58:31+08:00"
-              content="2018-10-09" >
-          10-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2018/09/27/从零配置一个前端项目/" itemprop="url">
-              
-                <span itemprop="name">从零配置一个前端项目</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-27T10:01:28+08:00"
-              content="2018-09-27" >
-          09-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2018/09/09/Vue的插件以及extend方法/" itemprop="url">
-              
-                <span itemprop="name">Vue的插件与extend方法</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-09T09:20:07+08:00"
-              content="2018-09-09" >
-          09-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2018/08/25/js的继承/" itemprop="url">
-              
-                <span itemprop="name">js的继承</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-08-25T09:20:07+08:00"
-              content="2018-08-25" >
-          08-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2018/08/21/重温js 高设总结的经验/" itemprop="url">
-              
-                <span itemprop="name">重温js 高设总结的经验</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-08-21T09:20:07+08:00"
-              content="2018-08-21" >
-          08-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2018/07/14/第一个微信小程序的坑/" itemprop="url">
-              
-                <span itemprop="name">记第一个小程序遇到的那些坑</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-07-14T09:20:07+08:00"
-              content="2018-07-14" >
-          07-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-  </div>
 
   
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/tags/总结/page/2/">2</a><a class="extend next" rel="next" href="/tags/总结/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
 
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/23/webkitoverflow/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leon.W">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/timg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HelloWorld20">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                双刃剑-webkit-overflow-scrolling
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-23T04:15:21+08:00">
+                2018-12-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在项目开发中有大量的滚动，自然而然的想到了IOS的-webkit-overflow-scroll来启用平滑滚动，提高用户体验；但是在实际应用中又遇到了不少的问题：滚动穿透、无法禁用全局滚动、安卓设备不支持等等；相当的棘手；经过一番的坑，最后总结出了结论：用js来实现平滑滚动。</p>
+<a id="more"></a>
+<h1 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h1><h2 id="无法禁用的全局滚动"><a href="#无法禁用的全局滚动" class="headerlink" title="无法禁用的全局滚动"></a>无法禁用的全局滚动</h2><h2 id="全局滚动时不能局部滚动"><a href="#全局滚动时不能局部滚动" class="headerlink" title="全局滚动时不能局部滚动"></a>全局滚动时不能局部滚动</h2><h2 id="滚动穿透"><a href="#滚动穿透" class="headerlink" title="滚动穿透"></a>滚动穿透</h2><h2 id="与position：fixed的冲突"><a href="#与position：fixed的冲突" class="headerlink" title="与position：fixed的冲突"></a>与position：fixed的冲突</h2><h1 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h1><p>局部滚动全用第三方js库来解决</p>
+<h2 id="better-scroll"><a href="#better-scroll" class="headerlink" title="better-scroll"></a>better-scroll</h2><h2 id="Alloy-touch"><a href="#Alloy-touch" class="headerlink" title="Alloy-touch"></a>Alloy-touch</h2>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/总结/" rel="tag"># 总结</a>
+          
+            <a href="/tags/前端技术/" rel="tag"># 前端技术</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/08/面试题/" rel="next" title="面试题">
+                <i class="fa fa-chevron-left"></i> 面试题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -552,6 +412,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -571,8 +435,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/timg.jpg"
@@ -645,6 +518,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#遇到的问题"><span class="nav-number">1.</span> <span class="nav-text">遇到的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#无法禁用的全局滚动"><span class="nav-number">1.1.</span> <span class="nav-text">无法禁用的全局滚动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全局滚动时不能局部滚动"><span class="nav-number">1.2.</span> <span class="nav-text">全局滚动时不能局部滚动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#滚动穿透"><span class="nav-number">1.3.</span> <span class="nav-text">滚动穿透</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#与position：fixed的冲突"><span class="nav-number">1.4.</span> <span class="nav-text">与position：fixed的冲突</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决办法"><span class="nav-number">2.</span> <span class="nav-text">解决办法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#better-scroll"><span class="nav-number">2.1.</span> <span class="nav-text">better-scroll</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Alloy-touch"><span class="nav-number">2.2.</span> <span class="nav-text">Alloy-touch</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -754,6 +643,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 

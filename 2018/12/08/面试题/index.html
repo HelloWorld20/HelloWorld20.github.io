@@ -95,7 +95,7 @@
 <meta property="og:site_name" content="HelloWorld20">
 <meta property="og:description" content="最近公司有要招人，然后叫我负责一下技术方面的面试，然后问着问着，好像发现有一些知识点我也不是记得特别清楚。所以有必要列一下自己面试需要问的问题，并且把所有问题点给摸索清楚。不然被问住了就很尴尬了。。。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-13T10:50:44.279Z">
+<meta property="og:updated_time" content="2018-12-22T11:23:31.185Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试题">
 <meta name="twitter:description" content="最近公司有要招人，然后叫我负责一下技术方面的面试，然后问着问着，好像发现有一些知识点我也不是记得特别清楚。所以有必要列一下自己面试需要问的问题，并且把所有问题点给摸索清楚。不然被问住了就很尴尬了。。。">
@@ -376,9 +376,15 @@
 <p>打印顺序：1、3、5、4、2</p>
 <p>setTimeout是<code>宏任务</code>，Promise是<code>微任务</code>，微任务会比宏任务快，可以简单的理解，微任务是vip吧；</p>
 <p>概念大概是这样的：js有个执行<code>堆栈</code>和排队<code>队列</code>的概念。如果是<code>同步任务，则直接进入堆栈</code>。如果是<code>异步任务，则进入队列</code>等待；<br>如果堆栈为空，则先查找微任务内的队列任务，再去查找宏任务的队列任务；</p>
-<p>比较特殊的是，Node的process.nextTick();该方法是直接把任务插入到堆栈底部，会比微任务与宏任务都快；</p>
+<p>比较特殊的是，Node的<code>process.nextTick()</code>;和前端的<code>MessageChannel</code>(Vue的nextTick是利用MessageChannel来实现的)。该方法是直接把任务插入到堆栈底部，会比微任务与宏任务都快；</p>
 <p>属于微任务的有：Promise、MutationObserver、process.nextTick（Node)</p>
-<h3 id="箭头函数与普通函数的区别"><a href="#箭头函数与普通函数的区别" class="headerlink" title="箭头函数与普通函数的区别"></a>箭头函数与普通函数的区别</h3><h2 id="高级-2"><a href="#高级-2" class="headerlink" title="高级"></a>高级</h2><h3 id="Set和Map数据结构"><a href="#Set和Map数据结构" class="headerlink" title="Set和Map数据结构"></a>Set和Map数据结构</h3><h1 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h1><h2 id="初级-3"><a href="#初级-3" class="headerlink" title="初级"></a>初级</h2><h3 id="组件的生命周期，加上keep-alive、vue-router之后会新增什么钩子函数"><a href="#组件的生命周期，加上keep-alive、vue-router之后会新增什么钩子函数" class="headerlink" title="组件的生命周期，加上keep-alive、vue-router之后会新增什么钩子函数"></a>组件的生命周期，加上keep-alive、vue-router之后会新增什么钩子函数</h3><p>beforeCreate、created、beforeMounte、mounted、beforeUpdate、updated、beforeDestroy、destroyed</p>
+<h3 id="箭头函数与普通函数的区别"><a href="#箭头函数与普通函数的区别" class="headerlink" title="箭头函数与普通函数的区别"></a>箭头函数与普通函数的区别</h3><ol>
+<li>this指向不一样。无法通过call、apply、bind从新修改this</li>
+<li>没有arguments、也没有caller和callee；</li>
+<li>不可以使用new 命令，会抛出错误</li>
+<li>不可以使用yield命令，因此不能用作 Generator 函数。</li>
+</ol>
+<h2 id="高级-2"><a href="#高级-2" class="headerlink" title="高级"></a>高级</h2><h3 id="Set和Map数据结构"><a href="#Set和Map数据结构" class="headerlink" title="Set和Map数据结构"></a>Set和Map数据结构</h3><h1 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h1><h2 id="初级-3"><a href="#初级-3" class="headerlink" title="初级"></a>初级</h2><h3 id="组件的生命周期，加上keep-alive、vue-router之后会新增什么钩子函数"><a href="#组件的生命周期，加上keep-alive、vue-router之后会新增什么钩子函数" class="headerlink" title="组件的生命周期，加上keep-alive、vue-router之后会新增什么钩子函数"></a>组件的生命周期，加上keep-alive、vue-router之后会新增什么钩子函数</h3><p>beforeCreate、created、beforeMounte、mounted、beforeUpdate、updated、beforeDestroy、destroyed</p>
 <p>keep-alive第二次进入不会触发<code>beforeCreate、created、beforeMounte、mounted、beforeDestroy、destroyed</code>；<br>新增<code>activated</code> 和 <code>deactivated</code></p>
 <p>加上vue-router之后会新增：<code>beforeRouteEnter、beforeRouteUpdate、beforeRouteLeave</code></p>
 <h3 id="created与mounted的区别，能不能在created里访问dom"><a href="#created与mounted的区别，能不能在created里访问dom" class="headerlink" title="created与mounted的区别，能不能在created里访问dom"></a>created与mounted的区别，能不能在created里访问dom</h3><p>created是组件实例加载完成，可访问data、prop、methods等等</p>
@@ -388,10 +394,36 @@
 <h2 id="中级-3"><a href="#中级-3" class="headerlink" title="中级"></a>中级</h2><h3 id="vue-router的不刷新加载实现原理是什么"><a href="#vue-router的不刷新加载实现原理是什么" class="headerlink" title="vue-router的不刷新加载实现原理是什么"></a>vue-router的不刷新加载实现原理是什么</h3><p>vue-router有两种模式：hash和history；</p>
 <p>hash：修改window.location.hash时，不会发生页面刷新、会给路由历史新增记录。且可以监听hashchange来监听hash的变化，以此来实现页面不刷新渲染页面。</p>
 <p>history：利用history.pushstate方法来实现。也是不刷新页面、给路由历史新增记录。更多的是，也可以修改url的相对路径且不发生页面刷新加载；然后可以通过监听popstate事件来实现监听路由变化。</p>
-<h3 id="自定义指令"><a href="#自定义指令" class="headerlink" title="自定义指令"></a>自定义指令</h3><h3 id="minxins"><a href="#minxins" class="headerlink" title="minxins"></a>minxins</h3><h3 id="组件v-model"><a href="#组件v-model" class="headerlink" title="组件v-model"></a>组件v-model</h3><h2 id="高级-3"><a href="#高级-3" class="headerlink" title="高级"></a>高级</h2><h3 id="Vue-use一个插件到底做了什么"><a href="#Vue-use一个插件到底做了什么" class="headerlink" title="Vue.use一个插件到底做了什么"></a>Vue.use一个插件到底做了什么</h3><h3 id="Vue-extends"><a href="#Vue-extends" class="headerlink" title="Vue.extends"></a>Vue.extends</h3><p>Vue.extends接受一个对象，与Vue、Vue.components接收的参数完全一致。返回的是一个构造函数（constructor）；new 该构造函数则返回一个组件实例（instance）。<br>该实例与new Vue生成的Vm实例、Vue.components生成的组件实例完全一致；不同的是一份配置=》一份构造函数=》多份实例。从而实现复用；</p>
+<h3 id="自定义指令"><a href="#自定义指令" class="headerlink" title="自定义指令"></a>自定义指令</h3><p>通过Vue.directive全局注册自定义指令或者directives: {} 局部注册自定义指令；</p>
+<p>自定义指令用于给某个dom扩展特定的功能，自定义指令当中允许对当前dom进行直接操作；</p>
+<p>钩子函数：</p>
+<p>bind：被绑定到元素时<br>inserted：绑定元素被插入到父节点时（仅保证父节点存在）<br>update：所在组件的vNode更新时<br>componentUpdated：指令所在组件的 VNode 及其子 VNode 全部更新后调用<br>unbind：只调用一次，指令与元素解绑时调用。</p>
+<p>钩子函数参数：</p>
+<p>el：指令所绑定的元素，可以用来直接操作 DOM<br>binding：一个对象包含各种属性：name、value、oldValue、expression、arg、modifiers<br>vNode：<br>oldVnode：</p>
+<h3 id="minxins"><a href="#minxins" class="headerlink" title="minxins"></a>minxins</h3><p>在混入和组件数据冲突时以组件数据优先；</p>
+<p>钩子函数会被合并、先调用混入的钩子函数</p>
+<h3 id="组件v-model"><a href="#组件v-model" class="headerlink" title="组件v-model"></a>组件v-model</h3><p>允许一个自定义组件在使用 v-model 时定制 prop 和 event。默认情况下，一个组件上的 v-model 会把 value 用作 prop 且把 input 用作 event</p>
+<p>使用model选项可以修改默认的prop和event</p>
+<pre><code>model: {
+    prop: &apos;checked&apos;,
+    event: &apos;change&apos;
+  }
+</code></pre><h2 id="高级-3"><a href="#高级-3" class="headerlink" title="高级"></a>高级</h2><h3 id="Vue-use一个插件到底做了什么"><a href="#Vue-use一个插件到底做了什么" class="headerlink" title="Vue.use一个插件到底做了什么"></a>Vue.use一个插件到底做了什么</h3><p>Vue.use用于安装插件，该方法需要传入一个function或者一个对象。如果传入的是function，则调用function。如果传入的是一个对象，则调用对象中的install方法。</p>
+<p>Vue.use还做了一件事是防止重复安装插件</p>
+<h3 id="Vue-extends"><a href="#Vue-extends" class="headerlink" title="Vue.extends"></a>Vue.extends</h3><p>Vue.extends接受一个对象，与Vue、Vue.components接收的参数完全一致。返回的是一个构造函数（constructor）；new 该构造函数则返回一个组件实例（instance）。<br>该实例与new Vue生成的Vm实例、Vue.components生成的组件实例完全一致；不同的是一份配置=》一份构造函数=》多份实例。从而实现复用；</p>
 <h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><h2 id="初级-4"><a href="#初级-4" class="headerlink" title="初级"></a>初级</h2><h3 id="在提升代码性能做过哪些事情"><a href="#在提升代码性能做过哪些事情" class="headerlink" title="在提升代码性能做过哪些事情"></a>在提升代码性能做过哪些事情</h3><p>发散、很多</p>
 <h2 id="中级-4"><a href="#中级-4" class="headerlink" title="中级"></a>中级</h2><h3 id="解释import的各种用法的区别"><a href="#解释import的各种用法的区别" class="headerlink" title="解释import的各种用法的区别"></a>解释import的各种用法的区别</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> defaultExport <span class="keyword">from</span> <span class="string">"module-name"</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> name <span class="keyword">from</span> <span class="string">"module-name"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="keyword">export</span> &#125; <span class="keyword">from</span> <span class="string">"module-name"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="keyword">export</span> <span class="keyword">as</span> alias &#125; <span class="keyword">from</span> <span class="string">"module-name"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; export1 , export2 &#125; <span class="keyword">from</span> <span class="string">"module-name"</span>;</span><br><span class="line"><span class="keyword">import</span> defaultExport, * <span class="keyword">as</span> name <span class="keyword">from</span> <span class="string">"module-name"</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">"module-name"</span>;</span><br></pre></td></tr></table></figure>
-<h3 id="https与http的区别，怎样做到加密的"><a href="#https与http的区别，怎样做到加密的" class="headerlink" title="https与http的区别，怎样做到加密的"></a>https与http的区别，怎样做到加密的</h3><h2 id="高级-4"><a href="#高级-4" class="headerlink" title="高级"></a>高级</h2><h3 id="require与import的区别"><a href="#require与import的区别" class="headerlink" title="require与import的区别"></a>require与import的区别</h3><p>require：规范出来之前的野生规范，遵守CommonJS规范。在import规范出来之前被大规模使用</p>
+<h3 id="https与http的区别，怎样做到加密的"><a href="#https与http的区别，怎样做到加密的" class="headerlink" title="https与http的区别，怎样做到加密的"></a>https与http的区别，怎样做到加密的</h3><p>https是http + ssl；</p>
+<p>然后：</p>
+<ol>
+<li>客户端像服务器发送请求</li>
+<li>服务器向客户端发送公钥</li>
+<li>客户端先验证公钥有效性</li>
+<li>通过后生成一个随机值（私钥），然后用公钥对随机值进行加密</li>
+<li>服务器用公钥解析随机值，拿到私钥；这样双方都有了唯一私钥</li>
+<li>则双方利用私钥对数据进行对称加密，进行数据传输</li>
+</ol>
+<h2 id="高级-4"><a href="#高级-4" class="headerlink" title="高级"></a>高级</h2><h3 id="require与import的区别"><a href="#require与import的区别" class="headerlink" title="require与import的区别"></a>require与import的区别</h3><p>require：规范出来之前的野生规范，遵守CommonJS规范。在import规范出来之前被大规模使用</p>
 <p>import：ES6官方模块管理规范</p>
 <p>使用：</p>
 <ul>
@@ -458,6 +490,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/23/webkitoverflow/" rel="prev" title="双刃剑-webkit-overflow-scrolling">
+                双刃剑-webkit-overflow-scrolling <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -529,7 +565,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
