@@ -87,21 +87,22 @@
 
 
 
-<meta name="description" content="最近公司项目要解决一像素问题，自己琢磨了一阵子并且网上搜索了一堆博客，总结出最好的办法应该是通过通过css的transform scale缩放1px的内容来模拟设备上1px的效果了。但是这个方法有太多局限。然后秉着css解决不了的问题就用js来解决的原则，然后结合vue的自定义指令，手撸了一个一像素vue自定义指令。打算扔到giuhub留存。顺便总结一下遇到的问题。">
+<meta name="description" content="最近公司项目要解决一像素问题，自己琢磨了一阵子并且网上搜索了一堆博客，总结出最好的办法应该是通过css的transform scale缩放1px的内容来模拟设备上1px的效果了。但是这个方法有太多局限。然后秉着css解决不了的问题就用js来解决的原则，然后结合vue的自定义指令，手撸了一个一像素vue自定义指令。打算扔到giuhub留存。顺便总结一下遇到的问题。 项目地址：https://gith">
 <meta name="keywords" content="总结,前端技术">
 <meta property="og:type" content="article">
 <meta property="og:title" content="移动端一像素问题">
 <meta property="og:url" content="http://yoursite.com/2018/10/15/移动端一像素问题/index.html">
 <meta property="og:site_name" content="HelloWorld20">
-<meta property="og:description" content="最近公司项目要解决一像素问题，自己琢磨了一阵子并且网上搜索了一堆博客，总结出最好的办法应该是通过通过css的transform scale缩放1px的内容来模拟设备上1px的效果了。但是这个方法有太多局限。然后秉着css解决不了的问题就用js来解决的原则，然后结合vue的自定义指令，手撸了一个一像素vue自定义指令。打算扔到giuhub留存。顺便总结一下遇到的问题。">
+<meta property="og:description" content="最近公司项目要解决一像素问题，自己琢磨了一阵子并且网上搜索了一堆博客，总结出最好的办法应该是通过css的transform scale缩放1px的内容来模拟设备上1px的效果了。但是这个方法有太多局限。然后秉着css解决不了的问题就用js来解决的原则，然后结合vue的自定义指令，手撸了一个一像素vue自定义指令。打算扔到giuhub留存。顺便总结一下遇到的问题。 项目地址：https://gith">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://image-static.segmentfault.com/166/348/1663480477-5c4ab5d5abd47_articlex">
 <meta property="og:image" content="http://yoursite.com/2018/10/15/移动端一像素问题/images/微信截图_20181104222414.png">
 <meta property="og:image" content="http://yoursite.com/2018/10/15/移动端一像素问题/images/1541342653412.png">
-<meta property="og:updated_time" content="2018-11-04T14:45:30.583Z">
+<meta property="og:updated_time" content="2019-01-25T07:13:08.436Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="移动端一像素问题">
-<meta name="twitter:description" content="最近公司项目要解决一像素问题，自己琢磨了一阵子并且网上搜索了一堆博客，总结出最好的办法应该是通过通过css的transform scale缩放1px的内容来模拟设备上1px的效果了。但是这个方法有太多局限。然后秉着css解决不了的问题就用js来解决的原则，然后结合vue的自定义指令，手撸了一个一像素vue自定义指令。打算扔到giuhub留存。顺便总结一下遇到的问题。">
-<meta name="twitter:image" content="http://yoursite.com/2018/10/15/移动端一像素问题/images/微信截图_20181104222414.png">
+<meta name="twitter:description" content="最近公司项目要解决一像素问题，自己琢磨了一阵子并且网上搜索了一堆博客，总结出最好的办法应该是通过css的transform scale缩放1px的内容来模拟设备上1px的效果了。但是这个方法有太多局限。然后秉着css解决不了的问题就用js来解决的原则，然后结合vue的自定义指令，手撸了一个一像素vue自定义指令。打算扔到giuhub留存。顺便总结一下遇到的问题。 项目地址：https://gith">
+<meta name="twitter:image" content="https://image-static.segmentfault.com/166/348/1663480477-5c4ab5d5abd47_articlex">
 
 
 
@@ -336,22 +337,32 @@
       
 
       
-        <p>最近公司项目要解决一像素问题，自己琢磨了一阵子并且网上搜索了一堆博客，总结出最好的办法应该是通过通过css的transform scale缩放1px的内容来模拟设备上1px的效果了。但是这个方法有太多局限。然后秉着css解决不了的问题就用js来解决的原则，然后结合vue的自定义指令，手撸了一个一像素vue自定义指令。打算扔到giuhub留存。顺便总结一下遇到的问题。</p>
+        <p>最近公司项目要解决一像素问题，自己琢磨了一阵子并且网上搜索了一堆博客，总结出最好的办法应该是通过css的<code>transform scale</code>缩放1px的内容来模拟设备上1px的效果了。但是这个方法有太多局限。然后秉着css解决不了的问题就用js来解决的原则，然后结合vue的自定义指令，手撸了一个一像素vue自定义指令。打算扔到giuhub留存。顺便总结一下遇到的问题。</p>
+<p>项目地址：<a href="https://github.com/HelloWorld20/onepx" target="_blank" rel="noopener">https://github.com/HelloWorld20/onepx</a></p>
+<p>手机访问：</p>
+<p>欢迎各位取用。如有错误的地方，也欢迎指正。</p>
 <a id="more"></a>
 <h1 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h1><p>众所周知，自从iPhone 4带来了Retina display后，移动端开始引入了一个叫<a href="https://www.zhangxinxu.com/wordpress/2012/08/window-devicepixelratio/" target="_blank" rel="noopener">设备像素比（devicePixelRatio）</a>的东西。</p>
 <p>另一方面，如果给一个html标签写一个小于1px（H5）的border；IOS可以正常渲染，但是安卓设备不渲染。所以是不能用正常的方法来让安卓设备渲染一个1物理像素的线。</p>
-<p>（插入几个demo）</p>
-<h1 id="网上的解决方案"><a href="#网上的解决方案" class="headerlink" title="网上的解决方案"></a>网上的解决方案</h1><p>网上搜能搜出很多解决方案，<a href="https://segmentfault.com/a/1190000007604842" target="_blank" rel="noopener">这篇文章</a>基本汇总了网上的所有方案。然后结论是：使用css的伪元素来渲染一个1px（H5）的div，并且使用CSS3的scale来缩放dpr，从而渲染一个1px物理像素的线。</p>
+<p><a href="https://helloworld20.github.io/onepx/dist" target="_blank" rel="noopener">戳这里看效果</a></p>
+<p>当然在移动端才能看到效果：</p>
+<p><img src="https://image-static.segmentfault.com/166/348/1663480477-5c4ab5d5abd47_articlex" alt="qrcode"></p>
+<h1 id="网上的解决方案"><a href="#网上的解决方案" class="headerlink" title="网上的解决方案"></a>网上的解决方案</h1><p>网上搜能搜出很多解决方案，<a href="https://segmentfault.com/a/1190000007604842" target="_blank" rel="noopener">这篇文章</a>基本汇总了网上的所有方案。然后结论是：<strong>使用css的伪元素来渲染一个1px（H5）的div，并且使用CSS3的scale来缩放dpr倍，从而渲染一个1px物理像素的线。</strong></p>
 <p>然而理论毕竟理论，用到项目中的时候还是遇到了很多问题</p>
-<h2 id="不能渲染3边的border"><a href="#不能渲染3边的border" class="headerlink" title="不能渲染3边的border"></a>不能渲染3边的border</h2><p>网上的方案都是用CSS伪元素来实现的，而伪元素只有before和after两个，所以要实现3边1像素是不可能的。</p>
-<h2 id="必须手动设置圆角"><a href="#必须手动设置圆角" class="headerlink" title="必须手动设置圆角"></a>必须手动设置圆角</h2><p>如果遇到圆角是最头疼的问题。用CSS伪元素可以做到圆角，但是CSS伪元素只能通过<code>border-radius: inherit</code>得到和父元素一样值的圆角大小，无法计算缩放后还和父元素一样的圆角。而且js也不能操作CSS伪元素，所以不得不手动计算dpr，然后给CSS伪元素设置圆角。</p>
-<h2 id="webkit-device-pixel-ratio不是标准方法"><a href="#webkit-device-pixel-ratio不是标准方法" class="headerlink" title="-webkit-device-pixel-ratio不是标准方法"></a><code>-webkit-device-pixel-ratio</code>不是标准方法</h2><p><img src="./images/微信截图_20181104222414.png" alt="MDN"></p>
+<h2 id="1-如果两个伪元素都被占用，则无法实现"><a href="#1-如果两个伪元素都被占用，则无法实现" class="headerlink" title="1. 如果两个伪元素都被占用，则无法实现"></a>1. 如果两个伪元素都被占用，则无法实现</h2><p>网上的方案都是用CSS伪元素来实现的，而伪元素只有before和after两个，所以要是实际开发中中占用了before、after，则无法用CSS来实现模拟一像素。</p>
+<h2 id="2-必须手动设置圆角"><a href="#2-必须手动设置圆角" class="headerlink" title="2. 必须手动设置圆角"></a>2. 必须手动设置圆角</h2><p>圆角是最头疼的问题。用CSS伪元素虽然可以做到圆角，但是CSS伪元素只能通过<code>border-radius: inherit</code>得到和父元素一样值的圆角大小，缩放之后就不一样了，且css无法计算缩放后还和父元素一样的圆角。而且js也不能操作CSS伪元素，所以不得不手动计算dpr，然后给CSS伪元素设置圆角。</p>
+<h2 id="3-webkit-device-pixel-ratio不是标准方法"><a href="#3-webkit-device-pixel-ratio不是标准方法" class="headerlink" title="3. -webkit-device-pixel-ratio不是标准方法"></a>3. <code>-webkit-device-pixel-ratio</code>不是标准方法</h2><p><img src="./images/微信截图_20181104222414.png" alt="MDN"></p>
 <p>CSS中判断设备设备像素比的方法是<code>-webkit-device-pixel-ratio</code>，不是标准的方法，所以用起来心慌慌。而JS的<code>window.devicePixelRatio</code>已经全面支持，顶多也就一个undefined。完全不用担心兼容性问题。</p>
-<h2 id="部分标签不能设置伪元素"><a href="#部分标签不能设置伪元素" class="headerlink" title="部分标签不能设置伪元素"></a>部分标签不能设置伪元素</h2><p>type为textinput标签就无法在标签内插入dom（虽然控制台里显示已经被插入，但是不会被渲染出来），所以伪元素也无法给其加上模拟的1像素。</p>
+<h2 id="4-部分标签不能设置伪元素"><a href="#4-部分标签不能设置伪元素" class="headerlink" title="4. 部分标签不能设置伪元素"></a>4. 部分标签不能设置伪元素</h2><p>type为text的input标签就无法在标签内插入的dom（虽然控制台里显示已经被插入，但是不会被渲染出来），所以伪元素也无法给其加上模拟的1像素。</p>
 <p><img src="./images/1541342653412.png" alt="some text you can&#39;t see"></p>
-<h1 id="更好的方案"><a href="#更好的方案" class="headerlink" title="更好的方案"></a>更好的方案</h1><p>本着CSS解决不了的问题就用JS来解决的思想。再结合Vue提供的自定义指令，可以在想要加1像素的html标签上加上一个指令</p>
-<p>js能通过Vue的自定义指令拿到对应的DOM，那么就一切皆有可能。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1>
+<h1 id="更好的方案"><a href="#更好的方案" class="headerlink" title="更好的方案"></a>更好的方案</h1><p>本着CSS解决不了的问题就用JS来解决的思想。再结合Vue提供的自定义指令，可以在想要加1像素的html标签上加上一个指令，js能通过Vue的自定义指令拿到对应的DOM，那么就一切皆有可能。</p>
+<p>最终实现了一个Vue指令，只需要给对应的HTML标签加上一条指令就行。其他的Vue指令自动处理。并且这个指令在我们项目中运行过一段时间，基本是可靠的。</p>
+<h1 id="要注意的地方"><a href="#要注意的地方" class="headerlink" title="要注意的地方"></a>要注意的地方</h1><ul>
+<li>绑定的元素必须显示声明其position值为：relative、fixed、absolute之一，不然模拟一像素的div无法定位到位置</li>
+<li>务必给对应的DOM清除掉border样式</li>
+<li>不能用于<code>&lt;input type=&quot;text&quot; /&gt;</code>标签等内部不能插入元素的标签</li>
+</ul>
+
       
     </div>
 
@@ -547,7 +558,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#原因"><span class="nav-number">1.</span> <span class="nav-text">原因</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网上的解决方案"><span class="nav-number">2.</span> <span class="nav-text">网上的解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#不能渲染3边的border"><span class="nav-number">2.1.</span> <span class="nav-text">不能渲染3边的border</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#必须手动设置圆角"><span class="nav-number">2.2.</span> <span class="nav-text">必须手动设置圆角</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webkit-device-pixel-ratio不是标准方法"><span class="nav-number">2.3.</span> <span class="nav-text">-webkit-device-pixel-ratio不是标准方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部分标签不能设置伪元素"><span class="nav-number">2.4.</span> <span class="nav-text">部分标签不能设置伪元素</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#更好的方案"><span class="nav-number">3.</span> <span class="nav-text">更好的方案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#原因"><span class="nav-number">1.</span> <span class="nav-text">原因</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网上的解决方案"><span class="nav-number">2.</span> <span class="nav-text">网上的解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-如果两个伪元素都被占用，则无法实现"><span class="nav-number">2.1.</span> <span class="nav-text">1. 如果两个伪元素都被占用，则无法实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-必须手动设置圆角"><span class="nav-number">2.2.</span> <span class="nav-text">2. 必须手动设置圆角</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-webkit-device-pixel-ratio不是标准方法"><span class="nav-number">2.3.</span> <span class="nav-text">3. -webkit-device-pixel-ratio不是标准方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-部分标签不能设置伪元素"><span class="nav-number">2.4.</span> <span class="nav-text">4. 部分标签不能设置伪元素</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#更好的方案"><span class="nav-number">3.</span> <span class="nav-text">更好的方案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#要注意的地方"><span class="nav-number">4.</span> <span class="nav-text">要注意的地方</span></a></li></ol></div>
             
 
           </div>
@@ -570,7 +581,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-weijianghong"></i>
   </span>
