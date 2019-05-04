@@ -1,0 +1,776 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="总结,前端技术," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="flex整体知识来源于阮一峰的博客 容器上的属性 display: flex/inline-flex; flex-direction：不解释 flex-wrap：不解释 flex-flow：是flex-direction和flex-wrap的简写 justify-content：flex-start | flex-end | center | space-between | space-aroun">
+<meta name="keywords" content="总结,前端技术">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于flex与grid的理解">
+<meta property="og:url" content="http://yoursite.com/2019/04/21/关于flex与grid/index.html">
+<meta property="og:site_name" content="HelloWorld20">
+<meta property="og:description" content="flex整体知识来源于阮一峰的博客 容器上的属性 display: flex/inline-flex; flex-direction：不解释 flex-wrap：不解释 flex-flow：是flex-direction和flex-wrap的简写 justify-content：flex-start | flex-end | center | space-between | space-aroun">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071013.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071014.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071015.jpg">
+<meta property="og:updated_time" content="2019-04-22T01:39:47.992Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于flex与grid的理解">
+<meta name="twitter:description" content="flex整体知识来源于阮一峰的博客 容器上的属性 display: flex/inline-flex; flex-direction：不解释 flex-wrap：不解释 flex-flow：是flex-direction和flex-wrap的简写 justify-content：flex-start | flex-end | center | space-between | space-aroun">
+<meta name="twitter:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071013.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"right","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/21/关于flex与grid/"/>
+
+
+
+
+
+  <title> 关于flex与grid的理解 | HelloWorld20 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HelloWorld20</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">there is nothing on subtitle</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/21/关于flex与grid/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leon.W">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/timg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HelloWorld20">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                关于flex与grid的理解
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-21T18:03:03+08:00">
+                2019-04-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h1><p>整体知识来源于<a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank" rel="noopener">阮一峰的博客</a></p>
+<h2 id="容器上的属性"><a href="#容器上的属性" class="headerlink" title="容器上的属性"></a>容器上的属性</h2><ul>
+<li>display: flex/inline-flex;</li>
+<li>flex-direction：不解释</li>
+<li>flex-wrap：不解释</li>
+<li>flex-flow：是flex-direction和flex-wrap的简写</li>
+<li>justify-content：flex-start | flex-end | center | space-between | space-around</li>
+<li>align-item：flex-start | flex-end | center | <code>baseline</code> | <code>strench</code></li>
+<li>align-content：flex-start | flex-end | center | <code>strench</code> | space-between | space-around</li>
+</ul>
+<h1 id="display-flex与inline-flex"><a href="#display-flex与inline-flex" class="headerlink" title="display: flex与inline-flex"></a>display: flex与inline-flex</h1><p>容器可以定义flex与inline-flex。flex则容器还是display: block的效果，与其他<code>display: block</code>的元素<code>各占一行</code>。inline-flex则与多个<code>inline</code>的元素<code>共占一行</code></p>
+<h1 id="align-content"><a href="#align-content" class="headerlink" title="align-content"></a>align-content</h1><p>多跟轴线的对其方式，即flex-wrap设置为wrap，且项目换行之后。否则无效</p>
+<h2 id="项目上的属性"><a href="#项目上的属性" class="headerlink" title="项目上的属性"></a>项目上的属性</h2><h3 id="order"><a href="#order" class="headerlink" title="order"></a>order</h3><p>定义项目的排列顺序。数值越小，排列越靠前，默认为0。<code>但是项目中一般不用，因为用html的顺序更直观一些。</code></p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071013.png" alt=""></p>
+<h3 id="flex-grow（存在剩余空间）"><a href="#flex-grow（存在剩余空间）" class="headerlink" title="flex-grow（存在剩余空间）"></a>flex-grow（存在剩余空间）</h3><p>定义项目的放大比例，默认为0，即如果存在<strong>剩余空间</strong>，也不放大</p>
+<p>默认为0，不放大。正整数的话代表方法，并且根据参数大小来均分剩余空间</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071014.png" alt=""></p>
+<h3 id="flex-shrink（剩余空间不足）"><a href="#flex-shrink（剩余空间不足）" class="headerlink" title="flex-shrink（剩余空间不足）"></a>flex-shrink（剩余空间不足）</h3><p>定义了项目的缩小比例，默认为1，即如果<strong>空间不足</strong>，该项目将缩小。</p>
+<p>有两个值，0代表不启用，1代表启用；默认启用；即默认自动缩小；</p>
+<p>换句话说，如果该值为0，则项目在交叉轴占用的空间就为项目的宽或高；设置为1时，<code>才会利用flex去重新计算宽或高</code>。</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071015.jpg" alt=""></p>
+<h3 id="flex-basis"><a href="#flex-basis" class="headerlink" title="flex-basis"></a>flex-basis</h3><p>定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。</p>
+<p>它的表现与width在flex中的表现是一样的。但是它又与“width”的概念不一样。所以在flex中应该使用<code>flex-basis</code>而不是width或height；</p>
+<p>其具体表现见文章：<a href="https://www.jianshu.com/p/17b1b445ecd4" target="_blank" rel="noopener">[翻译]Flex Basis与Width的区别</a></p>
+<h3 id="flex-1"><a href="#flex-1" class="headerlink" title="flex"></a>flex</h3><p>flex-grow; flex-shrink; flex-basis的简写；</p>
+<h3 id="align-self"><a href="#align-self" class="headerlink" title="align-self"></a>align-self</h3><p>单独设置对齐方式</p>
+<h2 id="著名的flex-1"><a href="#著名的flex-1" class="headerlink" title="著名的flex: 1"></a>著名的<code>flex: 1</code></h2><p>在多个项目中，给某个项目设置<code>flex: 1</code>，就会得到神奇的<code>自适应剩余空间</code>的功能。往往也就记得这么设置就行了。这次得深究一下。</p>
+<p><code>flex: 1</code>在chrome中被解析为<code>flex: 1 1 0%</code>，即<code>flex-grow: 1; flex-shrink: 1; flex-basis: 0%</code></p>
+<p>而其中起作用的只是<code>flex-grow</code>而已。给要自适应的项目设置<code>flex-grow: 1</code>也能达到相同的效果</p>
+<p>因为flex-grow代表着”如果存在剩余空间，是否放大“；即，如果存在剩余空间，则放大自己，占满剩余空间。而项目的默认值为<code>flex-grow: 0</code>；意思为不占用空间，如果给某个设置了<code>flex-grow: 1</code>则，设置了<code>flex-grow: 1</code>的项目则会沾满空间，达到自适应剩余空间的效果</p>
+<h1 id="grid"><a href="#grid" class="headerlink" title="grid"></a>grid</h1><p>主要来源还是<a href="http://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html" target="_blank" rel="noopener">阮一峰的博客</a></p>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><h2 id="容器属性"><a href="#容器属性" class="headerlink" title="容器属性"></a>容器属性</h2><ul>
+<li>grid-template-columns：分行</li>
+<li>grid-template-rows：分列</li>
+<li>grid-row-gap（row-gap)：列间距</li>
+<li>grid-column-gap（column-gap）：行间距</li>
+<li>grid-gap（gap）：间距简写 \<row column=""></row></li>
+<li>grid-template-areas：定义区域</li>
+<li>grid-auto-flow：填充方法，行填充还是列填充等</li>
+<li>justify-items：项目的水平对齐方式，start | end | center | stretch;</li>
+<li>align-items：项目的垂直对齐方式，start | end | center | stretch;</li>
+<li>place-items：上俩属性的简写 \<align-item justify-items=""></align-item></li>
+<li>justify-content：每个网格的水平对齐方式</li>
+<li>align-content：每个网格的垂直对齐方式</li>
+<li>place-content：简写（align-content justify-content）</li>
+<li>grid-auto-columns：网格外部的布局，参数与grid-template-columns一致</li>
+<li>grid-auto-rows：网格外部的布局，参数与grid-template-rows一致</li>
+<li>grid-template：简写 \<grid-template-rows grid-template-columns="" grid-template-areas="" grid-auto-rows=""></grid-template-rows></li>
+<li>grid：简写 \<grid-template-rows grid-template-columns="" grid-template-areas="" grid-auto-rows="" grid-auto-columns="" grid-auto-flow=""></grid-template-rows></li>
+</ul>
+<h3 id="display-grid-与-inline-grid"><a href="#display-grid-与-inline-grid" class="headerlink" title="display: grid 与 inline-grid"></a>display: grid 与 inline-grid</h3><p>同flex与inline-flex。</p>
+<h2 id="项目属性"><a href="#项目属性" class="headerlink" title="项目属性"></a>项目属性</h2><ul>
+<li>grid-column-start：根据网格线定位位置</li>
+<li>grid-column-end：根据网格线定位位置</li>
+<li>grid-row-start：根据网格线定位位置</li>
+<li>grid-row-end：根据网格线定位位置</li>
+<li>grid-column：简写 \&lt;grid-column-start / grid-column-end&gt;</li>
+<li>grid-row：简写 \&lt;grid-row-start / grid-row-end&gt;</li>
+<li>grid-area：位置，应该时grid-template-area定义的位置，也可以是网格线</li>
+<li>justify-self：单个项目的水平位置，参数同justify-content</li>
+<li>align-self：单个项目的垂直位置，参数同align-content</li>
+<li>place-self：简写\<align-self justify-self=""></align-self></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/总结/" rel="tag"># 总结</a>
+          
+            <a href="/tags/前端技术/" rel="tag"># 前端技术</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/08/面试题/" rel="next" title="面试题">
+                <i class="fa fa-chevron-left"></i> 面试题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/27/数据结构之排序算法总结/" rel="prev" title="数据结构之排序算法总结">
+                数据结构之排序算法总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/timg.jpg"
+               alt="Leon.W" />
+          <p class="site-author-name" itemprop="name">Leon.W</p>
+           
+              <p class="site-description motion-element" itemprop="description">weijianghong's hexo personal blog. still under construction.</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/HelloWorld20" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2182668367" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#flex"><span class="nav-number">1.</span> <span class="nav-text">flex</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#容器上的属性"><span class="nav-number">1.1.</span> <span class="nav-text">容器上的属性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#display-flex与inline-flex"><span class="nav-number">2.</span> <span class="nav-text">display: flex与inline-flex</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#align-content"><span class="nav-number">3.</span> <span class="nav-text">align-content</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#项目上的属性"><span class="nav-number">3.1.</span> <span class="nav-text">项目上的属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#order"><span class="nav-number">3.1.1.</span> <span class="nav-text">order</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flex-grow（存在剩余空间）"><span class="nav-number">3.1.2.</span> <span class="nav-text">flex-grow（存在剩余空间）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flex-shrink（剩余空间不足）"><span class="nav-number">3.1.3.</span> <span class="nav-text">flex-shrink（剩余空间不足）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flex-basis"><span class="nav-number">3.1.4.</span> <span class="nav-text">flex-basis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flex-1"><span class="nav-number">3.1.5.</span> <span class="nav-text">flex</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#align-self"><span class="nav-number">3.1.6.</span> <span class="nav-text">align-self</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#著名的flex-1"><span class="nav-number">3.2.</span> <span class="nav-text">著名的flex: 1</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#grid"><span class="nav-number">4.</span> <span class="nav-text">grid</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">4.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#容器属性"><span class="nav-number">4.2.</span> <span class="nav-text">容器属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#display-grid-与-inline-grid"><span class="nav-number">4.2.1.</span> <span class="nav-text">display: grid 与 inline-grid</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目属性"><span class="nav-number">4.3.</span> <span class="nav-text">项目属性</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-weijianghong"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leon.W</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

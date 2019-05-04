@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="前端技术,总结," />
+  <meta name="keywords" content="总结,前端技术," />
 
 
 
@@ -88,14 +88,14 @@
 
 
 <meta name="description" content="额，js的继承，每次面试都要问，每次都是看了记住一下，过会又忘了，很尴尬。有必要写一下，加强记忆。顺便把ES6 class继承给联系起来。">
-<meta name="keywords" content="前端技术,总结">
+<meta name="keywords" content="总结,前端技术">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js的继承">
 <meta property="og:url" content="http://yoursite.com/2018/08/25/js的继承/index.html">
 <meta property="og:site_name" content="HelloWorld20">
 <meta property="og:description" content="额，js的继承，每次面试都要问，每次都是看了记住一下，过会又忘了，很尴尬。有必要写一下，加强记忆。顺便把ES6 class继承给联系起来。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-09T01:07:24.912Z">
+<meta property="og:updated_time" content="2019-04-30T03:03:37.643Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js的继承">
 <meta name="twitter:description" content="额，js的继承，每次面试都要问，每次都是看了记住一下，过会又忘了，很尴尬。有必要写一下，加强记忆。顺便把ES6 class继承给联系起来。">
@@ -436,7 +436,7 @@
 <p>我倒是觉得没什么用。用处是给后面的终极解决方案提供思路</p>
 <h1 id="寄生组合式继承"><a href="#寄生组合式继承" class="headerlink" title="寄生组合式继承"></a>寄生组合式继承</h1><p><strong><em>寄生组合式继承是最常用的ES5继承方法</em></strong></p>
 <p>所谓寄生组合式继承，即通过借用构造函数来继承属性，通过原型链的混成形式来继承方法。其背后的基本思路是：不必为了指定子类型的原型而调用超类型的构造函数，我们所需要的无非就是超类型原型的一个副本而已。本质上，就是使用寄生式继承来继承超类型的原型，然后再将结果指定给子类型的原型。寄生组合式继承的基本模式如下</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inheritPrototype</span>(<span class="params">subType, superType</span>) </span>&#123;</span><br><span class="line">	<span class="comment">// 创建超类型原型的一个副本</span></span><br><span class="line">	<span class="comment">// 把超类型的prototype赋值给子类型。</span></span><br><span class="line">	<span class="comment">// 其实和再new一次SuperType目的相同。只是new 一次SuperType会重复调用SuperType，且实例上会有重复的属性。</span></span><br><span class="line">	<span class="keyword">var</span> prototype = <span class="built_in">Object</span>.create(superType.prototype)		<span class="comment">// 创建对象</span></span><br><span class="line">	<span class="comment">// 为创建的副本添加constructor属性，从而弥补因重写原型而失去默认的constructor属性</span></span><br><span class="line">	prototype.constructor = subType;		<span class="comment">// 增强对象</span></span><br><span class="line">	<span class="comment">// 将创建的对象（副本）赋值给子类型的原型。</span></span><br><span class="line">	subType.prototype = prototype;		<span class="comment">// 指定对象</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inheritPrototype</span>(<span class="params">subType, superType</span>) </span>&#123;</span><br><span class="line">	<span class="comment">// 创建超类型原型的一个副本</span></span><br><span class="line">	<span class="comment">// 把超类型的prototype赋值给子类型。</span></span><br><span class="line">	<span class="comment">// 其实和再new一次SuperType目的相同。只是new 一次SuperType会重复调用SuperType，且实例上会有重复的属性。</span></span><br><span class="line">	<span class="comment">// 与组合继承唯一的区别是，组合继承是SubType.prototype = new SuperType()</span></span><br><span class="line">	<span class="keyword">var</span> prototype = <span class="built_in">Object</span>.create(superType.prototype)		<span class="comment">// 创建对象</span></span><br><span class="line">	<span class="comment">// 为创建的副本添加constructor属性，从而弥补因重写原型而失去默认的constructor属性</span></span><br><span class="line">	prototype.constructor = subType;		<span class="comment">// 增强对象</span></span><br><span class="line">	<span class="comment">// 将创建的对象（副本）赋值给子类型的原型。</span></span><br><span class="line">	subType.prototype = prototype;		<span class="comment">// 指定对象</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这样就可以用inheritPrototype来继承了</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SuperType</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name</span><br><span class="line">    <span class="keyword">this</span>.colors = [<span class="string">'red'</span>, <span class="string">'blue'</span>, <span class="string">'green'</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">SuperType.prototype.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SubType</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">	<span class="comment">// 借用构造函数的方式继承超类型的属性和方法，防止实例之间共享引用类型属性</span></span><br><span class="line">    SuperType.call(<span class="keyword">this</span>, name)</span><br><span class="line">    <span class="keyword">this</span>.age = age</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">inheritPrototype(SubType, SuperType)</span><br><span class="line"></span><br><span class="line">SubType.prototype.sayAge = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.age)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> instance = <span class="keyword">new</span> SubType(<span class="string">'Nicholas'</span>, <span class="number">29</span>)</span><br><span class="line"><span class="built_in">console</span>.log(instance)</span><br></pre></td></tr></table></figure>
 <p>instance实例对象结构为：</p>
@@ -472,6 +472,10 @@
 </ul>
 <p>构造函数内的属性和方法，new出来之后是实例对象的属性和方法。<br>构造函数prototype下的属性和方法，new出来之后是实例对象的__proto__下的属性和方法</p>
 <h1 id="关于ES6的继承"><a href="#关于ES6的继承" class="headerlink" title="关于ES6的继承"></a>关于ES6的继承</h1><p>呃，，，有点复杂，我感觉怎么写都不如直接看<a href="http://es6.ruanyifeng.com/#docs/class" target="_blank" rel="noopener">阮一峰的ES6</a>更容易清楚。总之ES6的class不仅是ES5构造函数的语法糖，也有做了一些功能上的扩充。</p>
+<p>简单列一下ES6的继承，ES6的继承与ES5<code>寄生组合式继承</code>效果是一样的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SuperType</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.color = [<span class="string">'red'</span>, <span class="string">'blue'</span>]</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    sayName() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SubType</span> <span class="keyword">extends</span> <span class="title">SuperType</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name, age) &#123;</span><br><span class="line">        <span class="keyword">super</span>(name);</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    sayAge() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.age)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> instance = <span class="keyword">new</span> SubType(<span class="string">'Nicholas'</span>, <span class="number">29</span>);</span><br><span class="line"><span class="built_in">console</span>.log(instance)</span><br></pre></td></tr></table></figure>
+<p>然后instance打印的结果与<code>寄生组合式继承</code>是一毛一样的。</p>
+<p>需要注意的是，SubType的构造函数中必须调用super方法，此处super方法为父类的constructor。</p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>ES5的继承无非是对构造函数、prototype、__proto__、constructor的熟练操作。</p>
 <p>就是想让实例的结构像下面的样子</p>
 <ul>
@@ -525,9 +529,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/前端技术/" rel="tag"># 前端技术</a>
-          
             <a href="/tags/总结/" rel="tag"># 总结</a>
+          
+            <a href="/tags/前端技术/" rel="tag"># 前端技术</a>
           
         </div>
       
@@ -624,7 +628,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -637,7 +641,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

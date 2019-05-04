@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="总结," />
+  <meta name="keywords" content="前端技术," />
 
 
 
@@ -87,18 +87,18 @@
 
 
 
-<meta name="description" content="项目概况是一个答题类的h5。是我首次的后端项目，项目结构参考其他后端项目">
-<meta name="keywords" content="总结">
+<meta name="description" content="原文：JavaScript 对象转换之toString、valueOf 首先，JavaScript中有3个原始类型，String、Number和Boolean。JavaScript在某些情况下会将数据转换成原始类型，及JavaScript会自动调用toString和valueOf方法来完成数据转换。">
+<meta name="keywords" content="前端技术">
 <meta property="og:type" content="article">
-<meta property="og:title" content="花生fm项目总结">
-<meta property="og:url" content="http://yoursite.com/2018/06/24/花生fm项目总结/index.html">
+<meta property="og:title" content="关于toString、valueOf自动执行的问题">
+<meta property="og:url" content="http://yoursite.com/2017/04/07/关于toString、valueOf自动执行的问题/index.html">
 <meta property="og:site_name" content="HelloWorld20">
-<meta property="og:description" content="项目概况是一个答题类的h5。是我首次的后端项目，项目结构参考其他后端项目">
+<meta property="og:description" content="原文：JavaScript 对象转换之toString、valueOf 首先，JavaScript中有3个原始类型，String、Number和Boolean。JavaScript在某些情况下会将数据转换成原始类型，及JavaScript会自动调用toString和valueOf方法来完成数据转换。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-14T09:34:37.685Z">
+<meta property="og:updated_time" content="2019-03-25T08:50:28.890Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="花生fm项目总结">
-<meta name="twitter:description" content="项目概况是一个答题类的h5。是我首次的后端项目，项目结构参考其他后端项目">
+<meta name="twitter:title" content="关于toString、valueOf自动执行的问题">
+<meta name="twitter:description" content="原文：JavaScript 对象转换之toString、valueOf 首先，JavaScript中有3个原始类型，String、Number和Boolean。JavaScript在某些情况下会将数据转换成原始类型，及JavaScript会自动调用toString和valueOf方法来完成数据转换。">
 
 
 
@@ -126,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/06/24/花生fm项目总结/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/04/07/关于toString、valueOf自动执行的问题/"/>
 
 
 
 
 
-  <title> 花生fm项目总结 | HelloWorld20 </title>
+  <title> 关于toString、valueOf自动执行的问题 | HelloWorld20 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -261,7 +261,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/24/花生fm项目总结/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/07/关于toString、valueOf自动执行的问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Leon.W">
@@ -282,7 +282,7 @@
             
             
               
-                花生fm项目总结
+                关于toString、valueOf自动执行的问题
               
             
           </h1>
@@ -297,8 +297,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-24T09:20:07+08:00">
-                2018-06-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-07T16:33:07+08:00">
+                2017-04-07
               </time>
             
 
@@ -333,33 +333,56 @@
       
 
       
-        <h1 id="项目概况"><a href="#项目概况" class="headerlink" title="项目概况"></a>项目概况</h1><p>是一个答题类的h5。是我首次的后端项目，项目结构参考其他后端项目</p>
+        <p>原文：<a href="http://frontenddev.org/link/convert-the-tostring-the-valueof-javascript-object.html" target="_blank" rel="noopener">JavaScript 对象转换之toString、valueOf</a></p>
+<p>首先，JavaScript中有3个原始类型，String、Number和Boolean。JavaScript在某些情况下会将数据转换成原始类型，及JavaScript会自动调用toString和valueOf方法来完成数据转换。</p>
 <a id="more"></a>
-<h1 id="成就"><a href="#成就" class="headerlink" title="成就"></a>成就</h1><ul>
-<li>RESTful url风格的定义。</li>
-<li>Koa 中间件的使用和定义</li>
-<li>错误处理中间件的使用和原理</li>
-<li>熟悉mongo数据库查询语句</li>
-<li>熟悉rancher、jankins、阿里云等自动化部署</li>
-<li>环境变量的配置和使用</li>
-<li>数据库表的定义</li>
-<li>利用postman进行接口调试<h1 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h1></li>
-</ul>
-<ol>
-<li>关于配置表是放到内存还是数据库中</li>
+<h2 id="转换成String"><a href="#转换成String" class="headerlink" title="转换成String"></a>转换成String</h2><ol>
+<li>如果toString方法存在并且返回“原始类型”，返回toString的结果。</li>
+<li>如果toString方法不存在或者返回的不是“原始类型”，调用valueOf方法，如果valueOf方法存在，并且返回“原始类型”数据，返回valueOf的结果。</li>
+<li>其他情况，抛出错误。</li>
 </ol>
+<h2 id="转换成Number"><a href="#转换成Number" class="headerlink" title="转换成Number"></a>转换成Number</h2><ol>
+<li>如果valueOf存在，且返回“原始类型”数据，返回valueOf的结果</li>
+<li>如果toString存在，且返回“原始类型”数据，返回toString的结果。</li>
+<li>报错。</li>
+</ol>
+<h2 id="转换成Boolean"><a href="#转换成Boolean" class="headerlink" title="转换成Boolean"></a>转换成Boolean</h2><p>按照一定规则转换成Boolean</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">值</th>
+<th style="text-align:right">布尔值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">true/false</td>
+<td style="text-align:right">true.false</td>
+</tr>
+<tr>
+<td style="text-align:left">undefined,null</td>
+<td style="text-align:right">false</td>
+</tr>
+<tr>
+<td style="text-align:left">Number</td>
+<td style="text-align:right">0,NaN =&gt; false;其他=&gt; true;</td>
+</tr>
+<tr>
+<td style="text-align:left">String</td>
+<td style="text-align:right">“” =&gt; false; 其他 =&gt; true;</td>
+</tr>
+<tr>
+<td style="text-align:left">Object</td>
+<td style="text-align:right">true</td>
+</tr>
+</tbody>
+</table>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在JavaScript进行对比或者各种运算的时候会把对象转换成String、Number、Boolean三种类型。</p>
 <ul>
-<li>放入数据库中优点是方便日后修改，缺点是每次接口请求都要多查询一次数据库。根据俊俊的意思，开发者应该利用好mongo的优点，利用mongo来提高开发效率。</li>
-<li>放入内存中，如需修改，则必须每次都要提交代码、更新代码</li>
+<li>在转换成String类型时，先调用toString，如果toString不合法（怎么为合法，看开头原始链接），则调用toValue，否则报错；</li>
+<li>在转换成Number类型时，先调用toValue，如果toValue不合法，则调用toString，否则报错；</li>
+<li>在转换成Boolean时，按照上面的表进行转换</li>
 </ul>
-<h1 id="剩余的问题"><a href="#剩余的问题" class="headerlink" title="剩余的问题"></a>剩余的问题</h1><ol>
-<li>个人排行榜的数据获取<ul>
-<li>正确点做法是，获取大于当前玩家身份分数的人数数量+1；</li>
-</ul>
-</li>
-</ol>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>其实接口更多的是操作数据库、拼接数据和处理数据。重要的是架构的搭建，一个良好的架构可以把任何多余的代码整合到一起，组成中间件，逻辑开发只需要简单的加工数据、操作数据库即可</p>
-<p>另外，项目开发前期一个很重要的点是和前端定义好接口文档，接口文档一旦成型，对后面的开发有个很明确的指路作用</p>
 
       
     </div>
@@ -389,7 +412,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/总结/" rel="tag"># 总结</a>
+            <a href="/tags/前端技术/" rel="tag"># 前端技术</a>
           
         </div>
       
@@ -402,8 +425,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/23/美宜佳BDuck项目总结/" rel="next" title="美宜佳BDuck项目总结">
-                <i class="fa fa-chevron-left"></i> 美宜佳BDuck项目总结
+              <a href="/2016/08/21/node.js处理gb2312编码的文本/" rel="next" title="node.js处理gb2312编码的文本">
+                <i class="fa fa-chevron-left"></i> node.js处理gb2312编码的文本
               </a>
             
           </div>
@@ -412,8 +435,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/07/14/第一个微信小程序的坑/" rel="prev" title="记第一个小程序遇到的那些坑">
-                记第一个小程序遇到的那些坑 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/11/node-upload/" rel="prev" title="使用express搭建文件上传服务器遇到的坑">
+                使用express搭建文件上传服务器遇到的坑 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -554,7 +577,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#项目概况"><span class="nav-number">1.</span> <span class="nav-text">项目概况</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#成就"><span class="nav-number">2.</span> <span class="nav-text">成就</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#遇到的问题"><span class="nav-number">3.</span> <span class="nav-text">遇到的问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#剩余的问题"><span class="nav-number">4.</span> <span class="nav-text">剩余的问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#转换成String"><span class="nav-number">1.</span> <span class="nav-text">转换成String</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转换成Number"><span class="nav-number">2.</span> <span class="nav-text">转换成Number</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转换成Boolean"><span class="nav-number">3.</span> <span class="nav-text">转换成Boolean</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
