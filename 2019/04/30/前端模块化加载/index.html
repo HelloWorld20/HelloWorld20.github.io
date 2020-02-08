@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="前端技术,总结," />
+  <meta name="keywords" content="总结,前端技术," />
 
 
 
@@ -87,18 +87,18 @@
 
 
 
-<meta name="description" content="面试被问到了AMD、CMD的区别，因为平时用考虑这个问题，所以没有回答上来。本来觉得这是个过时的技术，所以没有很认真对待。但是了解过后，觉得前端模块化历史还是可以了解一下。并且可以深入了解一下CommonJs、以及现在的ES6modules。 之所以要单独记录一下，因为网上搜到的解释比较刻意，而阮一峰大神解释的虽然循序渐进、通俗易懂，但是由于历史原因，只解释了CommonJs与AMD。">
-<meta name="keywords" content="前端技术,总结">
+<meta name="description" content="面试被问到了AMD、CMD的区别，因为平时用考虑这个问题，所以没有回答上来。本来觉得这是个过时的技术，所以没有很认真对待。但是了解过后，至少可以把这当做前端模块化历史去了解一下。并且可以深入了解一下CommonJs、以及现在的ES6modules。 之所以要单独记录一下，因为网上搜到的解释比较刻意，而阮一峰大神解释的虽然循序渐进、通俗易懂，但是由于历史原因，只解释了CommonJs与AMD。">
+<meta name="keywords" content="总结,前端技术">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端模块化加载">
 <meta property="og:url" content="http://yoursite.com/2019/04/30/前端模块化加载/index.html">
 <meta property="og:site_name" content="HelloWorld20">
-<meta property="og:description" content="面试被问到了AMD、CMD的区别，因为平时用考虑这个问题，所以没有回答上来。本来觉得这是个过时的技术，所以没有很认真对待。但是了解过后，觉得前端模块化历史还是可以了解一下。并且可以深入了解一下CommonJs、以及现在的ES6modules。 之所以要单独记录一下，因为网上搜到的解释比较刻意，而阮一峰大神解释的虽然循序渐进、通俗易懂，但是由于历史原因，只解释了CommonJs与AMD。">
+<meta property="og:description" content="面试被问到了AMD、CMD的区别，因为平时用考虑这个问题，所以没有回答上来。本来觉得这是个过时的技术，所以没有很认真对待。但是了解过后，至少可以把这当做前端模块化历史去了解一下。并且可以深入了解一下CommonJs、以及现在的ES6modules。 之所以要单独记录一下，因为网上搜到的解释比较刻意，而阮一峰大神解释的虽然循序渐进、通俗易懂，但是由于历史原因，只解释了CommonJs与AMD。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-30T13:23:55.736Z">
+<meta property="og:updated_time" content="2019-05-04T07:15:02.783Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端模块化加载">
-<meta name="twitter:description" content="面试被问到了AMD、CMD的区别，因为平时用考虑这个问题，所以没有回答上来。本来觉得这是个过时的技术，所以没有很认真对待。但是了解过后，觉得前端模块化历史还是可以了解一下。并且可以深入了解一下CommonJs、以及现在的ES6modules。 之所以要单独记录一下，因为网上搜到的解释比较刻意，而阮一峰大神解释的虽然循序渐进、通俗易懂，但是由于历史原因，只解释了CommonJs与AMD。">
+<meta name="twitter:description" content="面试被问到了AMD、CMD的区别，因为平时用考虑这个问题，所以没有回答上来。本来觉得这是个过时的技术，所以没有很认真对待。但是了解过后，至少可以把这当做前端模块化历史去了解一下。并且可以深入了解一下CommonJs、以及现在的ES6modules。 之所以要单独记录一下，因为网上搜到的解释比较刻意，而阮一峰大神解释的虽然循序渐进、通俗易懂，但是由于历史原因，只解释了CommonJs与AMD。">
 
 
 
@@ -333,7 +333,7 @@
       
 
       
-        <p>面试被问到了AMD、CMD的区别，因为平时用考虑这个问题，所以没有回答上来。本来觉得这是个过时的技术，所以没有很认真对待。但是了解过后，觉得前端模块化历史还是可以了解一下。并且可以深入了解一下CommonJs、以及现在的ES6modules。</p>
+        <p>面试被问到了AMD、CMD的区别，因为平时用考虑这个问题，所以没有回答上来。本来觉得这是个过时的技术，所以没有很认真对待。但是了解过后，至少可以把这当做前端模块化历史去了解一下。并且可以深入了解一下CommonJs、以及现在的ES6modules。</p>
 <p>之所以要单独记录一下，因为网上搜到的解释比较刻意，而<a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html" target="_blank" rel="noopener">阮一峰大神</a>解释的虽然循序渐进、通俗易懂，但是由于历史原因，只解释了CommonJs与AMD。</p>
 <a id="more"></a>
 <h1 id="CommonJs"><a href="#CommonJs" class="headerlink" title="CommonJs"></a>CommonJs</h1><p>CommonJs是一个由 Mozilla 的工程师 Kevin Dangoor 在2009年1月创建的<a href="https://zhaoda.net/webpack-handbook/commonjs.html" target="_blank" rel="noopener">标准规范</a>，然后当年Node.js诞生的时候，就参考了CommonJs来实现Node.js的模块化。</p>
@@ -404,9 +404,9 @@ math.random();
       
         <div class="post-tags">
           
-            <a href="/tags/前端技术/" rel="tag"># 前端技术</a>
-          
             <a href="/tags/总结/" rel="tag"># 总结</a>
+          
+            <a href="/tags/前端技术/" rel="tag"># 前端技术</a>
           
         </div>
       
@@ -428,6 +428,10 @@ math.random();
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/21/小程序授权登录/" rel="prev" title="小程序的授权登录">
+                小程序的授权登录 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -499,7 +503,7 @@ math.random();
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">28</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -590,7 +594,7 @@ math.random();
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-weijianghong"></i>
   </span>

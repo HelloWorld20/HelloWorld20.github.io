@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="前端技术,总结," />
+  <meta name="keywords" content="总结,前端技术," />
 
 
 
@@ -87,18 +87,18 @@
 
 
 
-<meta name="description" content="weijianghong&apos;s hexo personal blog. still under construction.">
-<meta name="keywords" content="前端技术,总结">
+<meta name="description" content="有机会搭建一个全新的项目，类似移动端门户网站的那种。然后Vue-cli各种问题。反正有时间，所以想从头搭建一个，刚好可以学习一下。">
+<meta name="keywords" content="总结,前端技术">
 <meta property="og:type" content="article">
-<meta property="og:title" content="从零配置webpack">
+<meta property="og:title" content="从零配置webpack4">
 <meta property="og:url" content="http://yoursite.com/2018/10/09/从零配置webpack/index.html">
 <meta property="og:site_name" content="HelloWorld20">
-<meta property="og:description" content="weijianghong&apos;s hexo personal blog. still under construction.">
+<meta property="og:description" content="有机会搭建一个全新的项目，类似移动端门户网站的那种。然后Vue-cli各种问题。反正有时间，所以想从头搭建一个，刚好可以学习一下。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-09T02:03:29.488Z">
+<meta property="og:updated_time" content="2019-05-14T06:18:43.652Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="从零配置webpack">
-<meta name="twitter:description" content="weijianghong&apos;s hexo personal blog. still under construction.">
+<meta name="twitter:title" content="从零配置webpack4">
+<meta name="twitter:description" content="有机会搭建一个全新的项目，类似移动端门户网站的那种。然后Vue-cli各种问题。反正有时间，所以想从头搭建一个，刚好可以学习一下。">
 
 
 
@@ -132,7 +132,7 @@
 
 
 
-  <title> 从零配置webpack | HelloWorld20 </title>
+  <title> 从零配置webpack4 | HelloWorld20 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -282,7 +282,7 @@
             
             
               
-                从零配置webpack
+                从零配置webpack4
               
             
           </h1>
@@ -333,7 +333,77 @@
       
 
       
-        
+        <p>有机会搭建一个全新的项目，类似移动端门户网站的那种。然后Vue-cli各种问题。反正有时间，所以想从头搭建一个，刚好可以学习一下。</p>
+<a id="more"></a>
+<h1 id="计划"><a href="#计划" class="headerlink" title="计划"></a>计划</h1><p>第一步肯定要好好想想，技术的选型。</p>
+<ul>
+<li>Vue + Vue-router + axios + Vuex + webpack4</li>
+<li>sass</li>
+<li>mint UI</li>
+<li>eslint</li>
+<li>单元测试（次要）</li>
+</ul>
+<p>没有选择Typescript</p>
+<p>关于webpack，需要</p>
+<ul>
+<li>js混淆压缩，去除死代码</li>
+<li>js公共代码分离打包</li>
+<li>sass转换、css分离、合并、压缩</li>
+<li>打包分析</li>
+<li>支持vue单文件</li>
+<li>静态资源</li>
+</ul>
+<p>项目中要支持</p>
+<ul>
+<li>路由拦截</li>
+<li>接口封装</li>
+<li></li>
+</ul>
+<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><h2 id="建目录结构"><a href="#建目录结构" class="headerlink" title="建目录结构"></a>建目录结构</h2><h2 id="建webpack配置"><a href="#建webpack配置" class="headerlink" title="建webpack配置"></a>建webpack配置</h2><p>新建两个webpack配置文件，一个用于本地调试（webpack.dev.js），另一个打包上线（webpack.pro.js）</p>
+<p>写入基本的配置：entry、output、module、plugins；</p>
+<h3 id="dev"><a href="#dev" class="headerlink" title="dev"></a>dev</h3><p>dev模式只需要最基本的配置:copy-webpack-plugin、html-webpack-plugin、vue-loader、sass-loader等必须的功能。为了打包速度，其余代码压缩、css抽离等都不需要；</p>
+<p>dev额外的需要配置<a href="https://www.webpackjs.com/configuration/dev-server/" target="_blank" rel="noopener">webpack-dev-server</a>，然后再package.json文件里script字段里加上一句：<code>webpack-dev-server --config build/webpack.dev.js</code>就能跑起来了。</p>
+<p>dev还要一个额外的配置：<a href="https://www.webpackjs.com/configuration/devtool/" target="_blank" rel="noopener">devtool</a>方便开发调试时可以看到源码。</p>
+<h3 id="pro"><a href="#pro" class="headerlink" title="pro"></a>pro</h3><p>所有优化的项目都该下上去</p>
+<p>package.json script里加上<code>&quot;build&quot;: &quot;webpack --config build/webpack.pro.js&quot;</code></p>
+<p>安装webpack、webpack-cli和其他相关依赖即可</p>
+<h2 id="关于loader"><a href="#关于loader" class="headerlink" title="关于loader"></a>关于loader</h2><h2 id="样式loader"><a href="#样式loader" class="headerlink" title="样式loader"></a>样式loader</h2><p>关于css的几个loader，官网的注释是：</p>
+<pre><code>&quot;style-loader&quot;, // 将 JS 字符串生成为 style 节点
+&quot;css-loader&quot;, // 将 CSS 转化成 CommonJS 模块
+&quot;sass-loader&quot;, // 将 Sass 编译成 CSS，默认使用 Node Sass
+</code></pre><p>没什么特别的。注意顺序就好。如果处理的是.css，则去掉sass-loader</p>
+<p>安装 style-loader、css-loader、sass-loader；</p>
+<h3 id="抽离公共css"><a href="#抽离公共css" class="headerlink" title="抽离公共css"></a>抽离公共css</h3><p>生产环境需要抽离css，所以用到<code>mini-css-extract-plugin</code>（webpack旧版本用的是extract-text-plugin），而<code>mini-css-extract-plugin</code>与<code>style-loader</code>是冲突的，所以生产版本的css loader配置应该是：</p>
+<pre><code>MiniCssExtractPlugin.loader,
+// &quot;style-loader&quot;, // 将 JS 字符串生成为 style 节点
+&quot;css-loader&quot;, // 将 CSS 转化成 CommonJS 模块
+&quot;sass-loader&quot;, // 将 Sass 编译成 CSS，默认使用 Node Sass
+</code></pre><h3 id="postcss-loader"><a href="#postcss-loader" class="headerlink" title="postcss-loader"></a>postcss-loader</h3><p>postcss-loader是功能比较强大的css预处理loader，但是我暂时只需要它的autoprefix前缀功能。</p>
+<p>生产环境下，在<code>css-loader</code>前加上<code>postcss-loader</code>。</p>
+<p>然后在项目根目录新建文件：<code>postcss.config.js</code>。里面可以细粒化的配置postcss。</p>
+<pre><code>module.exports = data =&gt; ({
+    // parser: this.webpack.resourcePath.endsWith(&apos;.css&apos;) ? &apos;sugarss&apos; : false,
+    // 这里应该是“sugarss”，但是sugarss不能处理sass，所以不能写
+    parser: false,
+    plugins: {
+        &apos;postcss-cssnext&apos;: {},
+        &apos;autoprefixer&apos;: {},
+        &apos;cssnano&apos;: data.env === &apos;production&apos; ? {} : false
+    }
+});
+</code></pre><p>然后根据报错依次安装sugarss、postcss-cssnext、autoprefixer、cssnano即可。</p>
+<p><strong>postcss-loader是个大项，可以好好学学</strong></p>
+<h2 id="babel-loader"><a href="#babel-loader" class="headerlink" title="babel-loader"></a>babel-loader</h2><p>babel-loader是把js的ES6以上的语法转换为ES5语法的loader，为了前端的浏览器兼容性，还有可以在开发的时候大胆的用上新语法，babel还是必不可少的。</p>
+<p>虽然在网上好多文章都要给loader写很多配置，但是目前我构建的（babel-loader版本8.0.5）来看，不需要任何额外的配置（只填了<code>cacheDirectory: true</code>）。只要webpack中指定了babel-loader，则babel会自动找到<code>.babelrc</code>文件，读取其配置。在babel的配置文件里配置babel即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&quot;presets&quot;: [&quot;@babel/preset-env&quot;],</span><br><span class="line">	&quot;plugins&quot;: [&quot;@babel/plugin-syntax-dynamic-import&quot;]	// 支持动态路由 import(&apos;&apos;)语法</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可能是最新版内置了很多默认配置吧</p>
+<p>然后根据需求、报错安装与配置指定配置即可</p>
+<h2 id="vue-loader"><a href="#vue-loader" class="headerlink" title="vue-loader"></a>vue-loader</h2><p>vue开发中绝对少不了vue单文件。而vue-loader就是把<code>.vue</code>文件转换为js的loader。同时还包括自动处理资源路径、scoped css功能。</p>
+<p>在这次安装的<code>14.2.2</code>版本的配置貌似也是很自动化的，会根据<code>lang</code>属性自动识别其他已经配置的loader而自动转换。（\&lt;template>应该会自动走vue-template-compiler，script，应该会匹配.js后缀的loader）</p>
+<p>新版本<code>15.0.0</code>之后的版本貌似就不会那么智能了，需要手动配置很多东西。略。</p>
+<h2 id="关于plugins"><a href="#关于plugins" class="headerlink" title="关于plugins"></a>关于plugins</h2><h2 id="关于optimization"><a href="#关于optimization" class="headerlink" title="关于optimization"></a>关于optimization</h2><h1 id="jest-单元测试"><a href="#jest-单元测试" class="headerlink" title="jest 单元测试"></a>jest 单元测试</h1><p><a href="https://vue-test-utils.vuejs.org/zh/guides/testing-single-file-components-with-jest.html" target="_blank" rel="noopener">https://vue-test-utils.vuejs.org/zh/guides/testing-single-file-components-with-jest.html</a></p>
+<p>安装jest、@vue/test-units、vue-jest</p>
+
       
     </div>
 
@@ -362,9 +432,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/前端技术/" rel="tag"># 前端技术</a>
-          
             <a href="/tags/总结/" rel="tag"># 总结</a>
+          
+            <a href="/tags/前端技术/" rel="tag"># 前端技术</a>
           
         </div>
       
@@ -436,8 +506,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/timg.jpg"
@@ -452,7 +531,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">28</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -511,6 +590,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#计划"><span class="nav-number">1.</span> <span class="nav-text">计划</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#步骤"><span class="nav-number">2.</span> <span class="nav-text">步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#建目录结构"><span class="nav-number">2.1.</span> <span class="nav-text">建目录结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建webpack配置"><span class="nav-number">2.2.</span> <span class="nav-text">建webpack配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dev"><span class="nav-number">2.2.1.</span> <span class="nav-text">dev</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pro"><span class="nav-number">2.2.2.</span> <span class="nav-text">pro</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于loader"><span class="nav-number">2.3.</span> <span class="nav-text">关于loader</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样式loader"><span class="nav-number">2.4.</span> <span class="nav-text">样式loader</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#抽离公共css"><span class="nav-number">2.4.1.</span> <span class="nav-text">抽离公共css</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#postcss-loader"><span class="nav-number">2.4.2.</span> <span class="nav-text">postcss-loader</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#babel-loader"><span class="nav-number">2.5.</span> <span class="nav-text">babel-loader</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vue-loader"><span class="nav-number">2.6.</span> <span class="nav-text">vue-loader</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于plugins"><span class="nav-number">2.7.</span> <span class="nav-text">关于plugins</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于optimization"><span class="nav-number">2.8.</span> <span class="nav-text">关于optimization</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jest-单元测试"><span class="nav-number">3.</span> <span class="nav-text">jest 单元测试</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -527,7 +622,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-weijianghong"></i>
   </span>
