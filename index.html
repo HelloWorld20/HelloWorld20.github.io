@@ -337,23 +337,18 @@
 
       
         
-          
-            <hr>
-<p>title: 关于css的position:sticky<br>date: 2020-04-18 13:22:48</p>
+          <hr>
+<p>title: 关于css的sticky<br>date: 2020-04-18 13:22:48</p>
 <h2 id="tags-总结-前端技术-CSS"><a href="#tags-总结-前端技术-CSS" class="headerlink" title="tags: [总结,前端技术,CSS]"></a>tags: [总结,前端技术,CSS]</h2><p>工作中要实现一个这样的效果，找来找去，找到了张鑫旭大神实现的sticky title的demo。虽然posotion:sticky并没有办法实现我需要的效果，但是觉得看完sticky的定位效果确实比我之前想象的有意思（至少我没想到position:sticky可以实现多个sticky title，并且后者会把前者网上顶的效果），所以记下，方便以后回顾。</p>
 <p>张鑫旭原文：<a href="https://www.zhangxinxu.com/wordpress/2018/12/css-position-sticky/" target="_blank" rel="noopener">杀了个回马枪，还是说说position:sticky吧</a></p>
-<p><img src="https://image.zhangxinxu.com/image/blog/201812/sticky-layout-s.gif" alt="multi sticky title"></p>
-<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>先简单介绍下概念。position:sticky。顾名思义就是“粘性”定位。在元素在视图窗口内，表现为 position:relative。当元素滚动到视图之外之后，表现为 position: fixed。很方便的实现了粘性定位。没有position:sticky。就只能借助js来实现类似的效果。方便许多。</p>
-<h1 id="重要点"><a href="#重要点" class="headerlink" title="重要点"></a>重要点</h1><p>详细的概念就不在这展开了。概念其实不多，需要的话可以看张鑫旭的文章或者MDN，就总结一下关键点。</p>
-<ol>
-<li>sticky由两个关键因素影响其定位是fixed还是relative。一个是浏览器视图窗口，另一个是其父元素（sticky元素只能“黏”窗口，活动范围只能在父元素内）。</li>
-<li>父元素只有在overflow:visible时，sticky元素才会表现出粘性效果</li>
-<li>可以设置top、left、bottom、right来设置偏移量</li>
-</ol>
-<h1 id="multi-sticky-title效果解释"><a href="#multi-sticky-title效果解释" class="headerlink" title="multi sticky title效果解释"></a>multi sticky title效果解释</h1><p>后面的title顶走上面的title，其实不是sticky互相“顶”，而是后者的父元素”顶”走了前者的父元素。而，sticky元素的活动范围只能在父元素内，所以前者的sticky就随着父元素被”顶”走了。</p>
-<p>给父元素加上border就一目了然了（懒得截图）。</p>
-
-          
+<p><img src="https://image.zhangxinxu.com/image/blog/201812/sticky-layout-s.gif" alt="multi sticky title"><br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/18/sticky定位/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
